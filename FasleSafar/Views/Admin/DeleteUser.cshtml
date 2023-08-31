@@ -1,0 +1,49 @@
+﻿@model FasleSafar.Models.User
+
+@{
+    ViewData["Title"] = "حذف کاربر " + @Model.FullName;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>آیا از حذف کاربر @Model.FullName اطمینان دارید؟</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.FullName) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Email) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.MobileNumber) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Password) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.IsAdmin) <br />
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteUser" >
+        <input type="hidden" asp-for="UserId" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="ShowUsers" asp-route-pageid="@ViewBag.UsersPageID">بازگشت</a>
+    </form>
+</div>

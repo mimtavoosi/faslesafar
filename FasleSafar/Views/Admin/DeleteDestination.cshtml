@@ -1,0 +1,81 @@
+﻿@model FasleSafar.Models.Destination
+
+@{
+    ViewData["Title"] = "حذف مقصد " + @Model.DestinationName;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>آیا از حذف مقصد @Model.DestinationName اطمینان دارید؟</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DestinationName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.DestinationName) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Country) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Province)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Province) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.City) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.GeoCoordinates)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GeoCoordinates) <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DestinationDescription)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.DestinationDescription)<br/>
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.IsAttraction)
+        </dt>
+        <dd class="col-sm-8">
+            @if (Model.IsAttraction)
+            {
+                <span>&#9989</span>
+            }
+            else
+            {
+                <span>&#10060</span>
+            } <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.OnVitrin)
+        </dt>
+        <dd class="col-sm-8">
+            @if (Model.OnVitrin)
+            {
+                <span>&#9989</span>
+            }
+            else
+            {
+                <span>&#10060</span>
+            } <br />
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteDestination" >
+        <input type="hidden" asp-for="DestinationId" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="ShowDestinations" asp-route-pageid="@ViewBag.DestinationsPageID">بازگشت</a>
+    </form>
+</div>

@@ -1,0 +1,67 @@
+﻿@model FasleSafar.Models.ReqTrip
+
+@{
+    ViewData["Title"] = "حذف درخواست سفر " + @Model.User.FullName;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>آیا از حذف درخواست سفر @Model.DestinationName متعلق به @Model.User.FullName اطمینان دارید؟</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.User.FullName) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DestinationName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.DestinationName) <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.StartDate) <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.EndDate) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.PassengersCount)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.PassengersCount) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.TransportType)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TransportType) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ReqTripDescription)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ReqTripDescription) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.CreateDate) <br />
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteReqTrip" >
+        <input type="hidden" asp-for="ReqTripId" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="ShowReqTrips" asp-route-pageid="@ViewBag.ReqTripsPageID">بازگشت</a>
+    </form>
+</div>

@@ -1,0 +1,5 @@
+﻿@model List<Content> 
+@foreach (Content item in Model)
+ {
+     <li><a asp-controller="Home" asp-action="ViewContent" asp-route-id="@item.ContentId">@item.ContentTitle</a></li>
+ }

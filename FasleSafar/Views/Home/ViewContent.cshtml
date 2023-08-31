@@ -1,0 +1,38 @@
+﻿@model Content
+@{
+    ViewData["Title"] = Model.ContentTitle;
+}
+
+<div class="image-top">
+	@if (Model.HasImage)
+	{
+		<img src="~/pics/sitepics/@(Model.ContentId + Model.ImageExt)" alt="@Model.ContentTitle"
+				class="img-responsive">
+	}
+	else
+	{
+		<img src="~/pics/sitepics/DefaultContentPic.jpg" alt="@Model.ContentTitle"
+				class="img-responsive">
+	}
+</div>
+		<!-- Main Container  -->
+		<div class="destination-detail">
+			<div class="container product-detail page-builder-ltr">
+				<div class="row row-style row_a1">
+					<div id="content" class="destination-content col-md-9 col-sm-12 col-xs-12">
+						<a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i
+								class="fa fa-phone"></i>اطلاعات تماس</a>
+						<h1>@Model.ContentTitle</h1>
+						<div class="destination-top">
+							<p class="descview">@Model.ContentText</p>
+						</div>
+					</div>
+					<aside class="col-md-3 col-sm-4 col-xs-12 content-aside right_column sidebar-offcanvas">
+						<span id="close-sidebar" class="fa fa-times"></span>
+						<div class="image-top"><a asp-controller="Home" asp-action="ShowNewTours"><img src="~/pics/sitepics/banner-right.jpg" alt="فصل صفر"
+								class="img-responsive"></a></div>
+						@await Component.InvokeAsync("PhoneBoxComponent")
+					</aside>
+				</div>
+			</div>
+		</div>

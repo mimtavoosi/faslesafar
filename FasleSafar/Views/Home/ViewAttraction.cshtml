@@ -1,0 +1,77 @@
+﻿@model Attraction
+@{
+    ViewData["Title"] = Model.AttractionName;
+}
+
+<div class="page-builder-ltr">
+	<div class="row row_a90w row-style">
+		<!--- SLider right-->
+		<div class="module sohomepage-slider so-homeslider-ltr">
+			<div class="modcontent">
+				<div id="sohomepage-slider1" class="slider-home1">
+					<div class="so-homeslider sohomeslider-inner-1">
+						<div class="item">
+							<img class="responsive" src="~/pics/attrpics/@(Model.BigImage)"
+								 alt="@Model.AttractionName">
+						</div>
+						@if (Model.ImagesAlbum != null && Model.ImagesAlbum !="")
+						{
+							@foreach (string item in Model.ImagesAlbum.Split(','))
+						{
+							<div class="item">
+								<img class="responsive"
+									 src="~/pics/attrpics/@(item)" alt="@Model.AttractionName">
+							</div>
+						}
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Main Container  -->
+		<div class="container product-detail tour-single">
+			<div class="row">
+				<div id="content" class="col-md-9 col-sm-12 col-xs-12">
+			<a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md">
+				<i class="fa fa-shopping-cart"></i>&nbsp; رزرو تور</a>
+					<div class="detail-content">
+						<!-- <div class="view-top">
+							<a href="#"><i class="fa fa-camera-retro" aria-hidden="true"></i>مشاهده تصاویر</a>
+							<a href="#"><i class="fa fa-play" aria-hidden="true"></i>مشاهده پیش نمایش</a>
+						</div> -->
+						<div class="sticky-content">
+							<h1 class="mttitle">@Model.AttractionName</h1>
+							<ul class="box-meta">
+							</ul>
+							<div class="top-tab" id="nav">
+								<ul class="nav nav-tabs">
+									<li><a href="#home">مرور</a></li>
+									@if (Model.GeoCoordinates!="")
+						{
+							        <li><a href="#menu2">نقشه</a></li>
+						}
+								</ul>
+							</div>
+						</div>
+						<div class="content-tabs">
+							<div class="tab-content">
+						@if (Model.GeoCoordinates!="")
+						{
+							<p class="descview" id="home">@Model.AttractionDescription </p>
+							<div id="menu2" class="tour-map">
+								<h3>نقشه موقعیت مکانی</h3>
+								<input id="geo" type="hidden" value="@Model.GeoCoordinates" />
+								<div id="map" class="naghshe">
+								</div>
+							</div>
+						}
+					</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- //Main Container -->

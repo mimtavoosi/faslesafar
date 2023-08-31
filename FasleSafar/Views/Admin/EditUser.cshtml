@@ -1,0 +1,58 @@
+﻿@model FasleSafar.Models.AddEditUserVM
+
+@{
+    ViewData["Title"] = "ویرایش کاربر " + @Model.FullName;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-sm-12">
+    <div class="card-box">
+<div class="row">
+    <div class="col-lg-6">
+         <h4 class="header-title m-t-0 m-b-30">ویرایش کاربر @Model.FullName</h4>
+        <form  class="form-horizontal" asp-action="EditUser" method="post">
+            <input type="hidden" asp-for="UserId" />
+             <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="MobileNumber" class="control-label"></label>
+                <input asp-for="MobileNumber" onkeypress="return isNumber(event);" class="form-control" pattern="\d+" />
+                <span asp-validation-for="MobileNumber" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="RePassword" class="control-label"></label>
+                <input asp-for="RePassword" class="form-control" />
+                <span asp-validation-for="RePassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsAdmin" class="control-label"></label>
+                <select asp-for="IsAdmin" class ="form-control">
+                   <option value="کاربر">کاربر</option>
+                    <option value="مدیر">مدیر</option>
+                </select>
+                <span asp-validation-for="IsAdmin" class="text-danger"></span>  
+            </div>
+           <button type="submit" class="savebtn btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">ذخیره</button>
+            <a asp-action="ShowUsers" asp-route-pageid="@ViewBag.UsersPageID" type="button" class="savebtn btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">بازگشت</a>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

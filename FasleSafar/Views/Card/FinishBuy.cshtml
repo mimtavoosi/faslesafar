@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "اطلاعات خرید";
+}
+@if (ViewBag.Status =="موفق")
+							{
+								<div class="grealert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            پرداخت انجام شد. | کد پیگیری پرداخت : @ViewBag.RefId
+			<br/> سفر خوبی داشته باشید...
+			@if(ViewBag.Deposit)
+			{
+			<br/><span>جهت پرداخت مابقی اقساط با به همراه داشتن کد سفارش خود (@ViewBag.OrderId) به آژانس فصل سفر مراجعه نمایید.</span>
+			}
+		</div><br/>
+							}
+							else{
+								<div class="redalert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             عملیات پرداخت با شکست مواجه شد
+		@if (ViewBag.Message!="")
+	{
+			<label>(ViewBag.Message)</label>
+     	}
+	</div><br/>
+							}
+<form method="get" class="form-bookingstep clearfix">
+			<div id="wizard">
+				<section class="clearfix">
+					<div class="conten-right pull-left">
+						<div class="choose-top mtlist clearfix">
+							<h3>اطلاعات خرید</h3>
+							<ul class="confirm">
+								<li>
+									<span>شماره سفارش</span>
+									<label>#@ViewBag.OrderId</label>
+								</li>
+								<li>
+									<span>عنوان تور</span>
+									<label>@ViewBag.TourTitle</label>
+								</li>
+								<li>
+									<span>تعداد بزرگسال</span>
+									<label>@ViewBag.AdultCount</label>
+								</li>
+								<li>
+									<span>تعداد کودک زیر 12 سال</span>
+									<label>@ViewBag.ChildCount</label>
+								</li>
+									<li>
+									<span>تعداد کودک زیر 2 سال</span>
+									<label>@ViewBag.BabyCount</label>
+								</li>
+								<li>
+									<span>قیمت کل</span>
+									<label>@ViewBag.Price تومان</label>
+								</li>
+								<li>
+									<span>شیوه پرداخت</span>
+									<label>@ViewBag.PayMode</label>
+								</li>
+								<li>
+									<span>نام خریدار</span>
+									<label>@ViewBag.UserName</label>
+								</li>
+								<li>
+									<span>پست الکترونیک</span>
+									<label>@ViewBag.Email</label>
+								</li>
+								<li>
+									<span>شماره تماس</span>
+									<label>@ViewBag.MobileNumber</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</div>
+		</form>
+		<a asp-controller="Home" asp-action="Index" class="button backbtn">بازگشت به خانه</a>

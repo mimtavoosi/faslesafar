@@ -1,0 +1,176 @@
+﻿@model FasleSafar.Models.Tour
+
+@{
+    ViewData["Title"] = "حذف تور " + @Model.TourTitle;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>آیا از حذف تور @Model.TourTitle اطمینان دارید؟</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.TourTitle)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.TourTitle) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.TourType)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.TourType) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.TransportType)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.TransportType) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Destination.DestinationName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Destination.DestinationName) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.GeoCoordinates)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GeoCoordinates) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Capacity) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DaysCount)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.DaysCount) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.StartDate) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.EndDate) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            <span>@ViewBag.Title3</span>
+        </dt>
+        <dd class = "col-sm-8">
+            @ViewBag.Price3 <br />
+        </dd>
+        <dt class = "col-sm-4">
+            <span>@ViewBag.Title4</span>
+        </dt>
+        <dd class = "col-sm-8">
+            @ViewBag.Price4 <br />
+        </dd>
+        <dt class = "col-sm-4">
+            <span>@ViewBag.Title5</span>
+        </dt>
+        <dd class = "col-sm-8">
+            @ViewBag.Price5 <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Vehicle)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Vehicle) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ReachTime)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ReachTime) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ReturnTime)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ReturnTime) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.IncludeCosts)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IncludeCosts) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ExcludeCosts)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ExcludeCosts) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Attractions)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Attractions) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Facilities)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Facilities) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.IsLeasing)
+        </dt>
+        <dd class = "col-sm-8">
+             @if (Model.IsLeasing)
+                {
+                    <span>&#9989</span>
+                }
+                else
+                {
+                   <span>&#10060</span>      
+                } <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.AvgScore)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.AvgScore) <br/>
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.TotalScore)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.TotalScore) <br/>
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.ScoreCount)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.ScoreCount) <br/>
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.TourDescription)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.TourDescription)<br/>
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.OpenState)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.OpenState)<br/>
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteTour" >
+        <input type="hidden" asp-for="TourId" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="ShowTours" asp-route-pageid="@ViewBag.ToursPageID">بازگشت</a>
+    </form>
+</div>

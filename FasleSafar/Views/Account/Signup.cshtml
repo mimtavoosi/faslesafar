@@ -1,0 +1,63 @@
+﻿@model FasleSafar.Models.SignupVM
+@{
+    ViewData["Title"] = "ثبت نام";
+}
+
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="title-breadcrumb">
+					ثبت نام
+				</div>
+				<ul class="breadcrumb-cate">
+					<li><a  asp-controller="Home" asp-action="Index">خانه</a></li>
+					<li><a asp-controller="Account" asp-action="Signup">ثبت نام</a></li>
+				</ul>
+			</div>
+		</div>
+				<div class="main-container container main-require">
+			<div class="row">
+				<div id="content" class="col-md-9">
+					<form asp-controller="Account" asp-action="Signup" method="post" class="form-infomation clearfix">
+														 <fieldset
+														class="tour-infomation clearfix">
+														<h3>ثبت نام</h3>
+														<div class="form-item item3 required">
+								<label asp-for="FullName" class="control-label"></label>
+								<input asp-for="FullName" type="text">
+								<span asp-validation-for="FullName" class="text-danger"></span>
+							</div>
+														<div class="form-item item1 required">
+								<label asp-for="Email" class="control-label"></label>
+								<input asp-for="Email">
+								<span asp-validation-for="Email" class="text-danger"></span>
+							</div>
+														<div class="form-item item2 required">
+								<label asp-for="MobileNumber" class="control-label"></label>
+								<input asp-for="MobileNumber" type="tel" onkeypress="return isNumber(event);" pattern="\d+">
+								<span asp-validation-for="MobileNumber" class="text-danger"></span>
+							</div>
+														<div class="form-item item1 required">
+								<label asp-for="Password" class="control-label"></label>
+								<input asp-for="Password" type="password">
+								<span asp-validation-for="Password" class="text-danger"></span>
+							</div>
+							<div class="form-item item2 required">
+								<label asp-for="RePassword" class="control-label"></label>
+								<input asp-for="RePassword" type="password">
+								<span asp-validation-for="RePassword" class="text-danger"></span>
+							</div>
+							<div class="buttons clearfix">
+							<input type="submit" value="ثبت نام" class="btn btn-primary regbtn">
+						</div>
+						</fieldset>
+					</form>
+					<p>قبلا عضو خانواده فصل سفر شده اید؟ همین حالا <a asp-controller="Account" asp-action="Login"><span class="mtlink">وارد</span></a> حساب خود شوید</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- //Main Container -->
+
+		@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

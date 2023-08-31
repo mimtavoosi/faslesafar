@@ -1,0 +1,23 @@
+﻿@model List<Content> 
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col_6ps1 footer--link">
+										<h3 class="title-footer">
+											صفحات
+										</h3>
+										<ul class="links">
+											<li>
+												<a asp-controller="Home" asp-action="Index">خانه</a>
+											</li>
+											<li>
+											   <a asp-controller="Home" asp-action="ShowIranTours">تورهای داخلی</a>
+											</li>
+											<li>
+												<a asp-controller="Home" asp-action="ShowWorldTours">تورهای خارجی</a>
+											</li>
+											@foreach (Content item in Model)
+											{
+												<li>
+												<a asp-controller="Home" asp-action="ViewContent" asp-route-id="@item.ContentId">@item.ContentTitle</a>
+											</li>
+											}
+										</ul>
+									</div>

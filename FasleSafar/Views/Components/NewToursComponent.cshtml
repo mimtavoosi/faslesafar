@@ -1,0 +1,90 @@
+﻿@model List<TourVM> 
+<section class="section-style4">
+					<div class="container page-builder-ltr">
+						<div class="row row-style row_a1">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_a1c">
+								<div class="module so-deals-1tr home1_deals so-deals">
+									<div class="head-title clearfix">
+										<div class="block-title pull-left">
+										<a asp-controller="Home" asp-action="ShowNewTours"><h3><span>جدیدترین تورها</span></h3></a>
+										</div>
+										<a asp-controller="Home" asp-action="ShowNewTours" class="pull-right">مشاهده همه <i class="fa fa-angle-left"
+												aria-hidden="true"></i></a>
+									</div>
+									<div class="modcontent">
+										<div
+											class="so-deal modcontent products-list grid clearfix clearfix preset00-3 preset01-3 preset02-2 preset03-2 preset04-1  button-type1  style2">
+											<div class="category-slider-inner products-list yt-content-slider"
+												data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4"
+												data-speed="0.6" data-margin="30" data-items_column00="3"
+												data-items_column0="3" data-items_column1="3" data-items_column2="2"
+												data-items_column3="2" data-items_column4="1" data-arrows="no"
+												data-pagination="no" data-lazyload="yes" data-loop="no"
+												data-hoverpause="yes">
+										@foreach (TourVM item in Model)
+										{
+															<div class="item">
+													<div class="item-inner">
+														<div class="transition product-layout">
+															<div class="product-item-container ">
+																<div class="item-block so-quickview">
+																	<div class="image">
+																		<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId" target="_self">
+																			<img src="~/pics/tourpics/@(item.BigImage)"
+																				alt="@item.TourTitle"
+																				class="img-responsive tour1">
+																		</a>
+															@*<img src="~/pics/tourpics/@(item.TourId)-small@(item.SmallImageExt)"
+																			alt="@item.TourTitle"
+																			class="img-responsive">*@
+																	</div>
+																	<div class="item-content clearfix">
+																		<h3><a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId">@item.TourTitle</a></h3>
+																		<div class="reviews-content">
+																			<div class="star">
+																				<span class="@("star" + item.AvgScore.ToString().Replace(".","-"))"></span>
+																			</div>
+																			<a href="#" class="review-link"
+																				rel="nofollow">(@item.ScoreCount بررسی)</a>
+																		</div>
+																		<ul>
+																			<li><i class="fa fa-map-marker"
+																					aria-hidden="true"></i> @item.Destination.DestinationName
+																			</li>
+																			<li><i class="fa fa-clock-o"
+																					aria-hidden="true"></i> @item.DaysCount روز</li>
+																			<li><i class="fa fa-user-circle"
+																					aria-hidden="true"></i> @item.Capacity نفر
+																			</li>
+																		</ul>
+																		<div class="item-bot clearfix">
+																			<div class="price pull-left">
+																	@if (@item.Price == "0")
+																	{
+																		<label>تعیین نشده</label>
+																	}
+																	else
+																	{
+																				<label>از&nbsp;</label><label>@item.Price</label><span>
+																					تومان</span>
+																	}
+																</div>
+																			<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId"
+																				class="book-now pull-right">مشاهده
+																				تور</a>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+										}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>

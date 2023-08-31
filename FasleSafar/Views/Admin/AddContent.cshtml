@@ -1,0 +1,47 @@
+﻿@model FasleSafar.Models.AddEditContent
+
+@{
+    ViewData["Title"] = "افزودن صفحه";
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-sm-12">
+    <div class="card-box">
+<div class="row">
+    <div class="col-lg-6">
+         <h4 class="header-title m-t-0 m-b-30">افزودن صفحه</h4>
+        <form  class="form-horizontal" asp-action="AddContent" method="post" enctype="multipart/form-data">
+             <div class="form-group">
+                <label asp-for="ContentTitle" class="control-label"></label>
+                <input asp-for="ContentTitle" class="form-control" />
+                <span asp-validation-for="ContentTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContentText" class="control-label"></label>
+                 <textarea asp-for="ContentText" cols="6" rows="20" class="form-control" ></textarea>
+                <span asp-validation-for="ContentText" class="text-danger"></span>
+            </div>
+            <div class="form-check">
+                <label asp-for="ContentType" class="control-label"></label><br/>
+                <input asp-for="ContentType" type="radio" id="serviceRB" class="form-check-input" value="خدمات" checked />
+                <label for="serviceRB">خدمات</label>
+                <input asp-for="ContentType" type="radio" id="contentRB" class="form-check-input" value="محتوا" />
+                <label for="contentRB">محتوا</label>
+                <span asp-validation-for="ContentType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContentImage" class="control-label"></label>
+                        <input asp-for="ContentImage" class="dropify" accept="image/png, image/jpeg">
+                <br /><span asp-validation-for="ContentImage" class="text-danger"></span>  
+            </div>
+           <button type="submit" class="savebtn btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">ذخیره</button>
+            <a asp-action="ShowContents" asp-route-pageid="@ViewBag.ContentsPageID" type="button" class="savebtn btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">بازگشت</a>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

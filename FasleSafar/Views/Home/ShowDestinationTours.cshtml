@@ -1,0 +1,158 @@
+﻿@model List<TourVM>
+@{
+    ViewData["Title"] = "تورهای " + ViewBag.DestinationTitle;
+}
+ <input id="sortpage" type="hidden" value="3" />
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="title-breadcrumb">
+					تور
+				</div>
+				<ul class="breadcrumb-cate">
+					<li><a  asp-controller="Home" asp-action="Index">خانه</a></li>
+					<li><a asp-controller="Home" asp-action="ShowDestinationTours">تور</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container product-detail">
+			<div class="row">
+				<aside class="col-md-3 col-sm-4 col-xs-12 content-aside left_column sidebar-offcanvas">
+					<span id="close-sidebar" class="fa fa-times"></span>
+					<div class="module-search clearfix">
+						<h3 class="modtitle">جستجوی تور</h3>
+						<form asp-controller="Home" asp-action="SearchTours" method="post" class="search-pr">
+					<div class="search-item city">
+						<input type="text" class="tour-search-input" id="city" name="city" placeholder="عنوان تور">
+					</div>
+					<div class="search-item item-select">
+						<select id="type" name="type" class="mtopt">
+							<option disabled selected>دسته بندی</option>
+							<option value="داخلی">تور داخلی (@ViewBag.IranToursCount)</option>
+							<option value="خارجی">تور خارجی (@ViewBag.WorldToursCount)</option>
+						</select>
+					</div>
+					<div class="search-item date">
+						<select id="date" name="date" class="mtopt"
+								asp-items="@(new SelectList(ViewBag.Dates, nameof(DateVM.DbDate), nameof(DateVM.ShowDate)))" class="form-control">
+							<option disabled selected>تاریخ شروع</option>
+						</select>
+					</div>
+					<div class="search-item dest">
+						<select id="dest" name="dest" class="mtopt"
+								asp-items="@(new SelectList(ViewBag.Destinations, nameof(Destination.DestinationId), nameof(Destination.DestinationName)))" class="form-control">
+							<option disabled selected>مقصد</option>
+						</select>
+					</div>
+					<div class="search-item number item-budget">
+						<input type="number" id="days" class="hotel-budget-input" name="days"
+							   placeholder="مدت (روز)">
+					</div>
+							<div class="button-submit">
+								<button type="submit" class="button">جستجوی تور <i class="fa fa-angle-left"
+										aria-hidden="true"></i></button>
+							</div>
+						</form>
+					</div>
+					@await Component.InvokeAsync("PhoneBoxComponent")
+				</aside>
+				<div id="content" class="col-md-9 col-sm-12 col-xs-12">
+					<a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i
+							class="fa fa-bars"></i>موارد بیشتر</a>
+					<div class="products-category">
+						<div class="product-filter filters-panel">
+							<div class="row">
+								<div class="col-md-2 col-sm-2 view-mode hidden-xs">
+									<div class="list-view">
+										<button class="btn btn-default grid active" data-view="grid"
+											data-toggle="tooltip" data-original-title="شبکه بندی"><i
+												class="fa fa-th-large"></i></button>
+										<button class="btn btn-default list" data-view="list" data-toggle="tooltip"
+											data-original-title="لیست"><i class="fa fa-th-list"></i></button>
+									</div>
+								</div>
+								<div class="short-by-show form-inline col-md-10 col-sm-10">
+									<div class="form-group">
+										<label class="control-label" for="input-limit">نمایش @ViewBag.StartIndex-@ViewBag.EndIndex از @ViewBag.ToursCount نتیجه</label>
+									</div>
+									<div class="form-group short-by">
+										<select id="input-sort1" class="form-control">
+											<option value="0" selected="selected">مرتب سازی بر اساس</option>
+											<option value="1">نام ( الف - ی)</option>
+											<option value="2">نام ( ی - الف)</option>
+											<option value="3">قیمت ( کم - زیاد)</option>
+											<option value="4">قیمت ( زیاد - کم)</option>
+											<option value="5">امتیاز ( بالاترین )</option>
+											<option value="6">امتیاز ( پایین ترین )</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="toursdiv1" class="section-style4 products-list grid row number-col-3 so-filter-gird">
+				@foreach (TourVM item in Model)
+				{
+								<div class="product-layout col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="product-item-container item">
+									<div class="item-block so-quickview">
+										<div class="image">
+											<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId" target="_self">
+												<img src="~/pics/tourpics/@(item.BigImage)"
+												 alt="@item.TourTitle"
+												 class="img-responsive tour1">
+											@*<img src="~/pics/tourpics/@(item.TourId)-small@(item.SmallImageExt)"
+										alt="@item.TourTitle"
+										class="img-responsive">*@
+											</a>
+										</div>
+										<div class="item-content clearfix">
+											<h3><a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId">@item.TourTitle</a>
+											</h3>
+											<div class="reviews-content">
+												<div class="star">
+													<span class="@("star" + item.AvgScore.ToString().Replace(".","-"))"></span>
+												</div>
+												<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId" class="review-link" rel="nofollow">(@item.ScoreCount رأی)</a>
+											</div>
+											<ul>
+												<li><i class="fa fa-map-marker" aria-hidden="true"></i> @item.Destination.DestinationName</li>
+												<li><i class="fa fa-clock-o" aria-hidden="true"></i> @item.DaysCount روز</li>
+												<li><i class="fa fa-user-circle" aria-hidden="true"></i> @item.Capacity نفر</li>
+											</ul>
+											<div class="des">@item.TourDescription</div>
+											<div class="item-bot clearfix">
+												<div class="price pull-left">
+													@if (@item.Price == "0")
+																	{
+																		<label>تعیین نشده</label>
+																	}
+																	else
+																	{
+																				<label>از&nbsp;</label><label>@item.Price</label><span>
+																					تومان</span>
+																	}
+												</div>
+												<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId"
+													class="book-now pull-right">مشاهده تور</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+				}
+						</div>
+						<div class="product-filter product-filter-bottom filters-panel">
+							<ul class="pagination">
+								@*<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>*@
+								@for (int i = 1; i <= (ViewBag.DestinationToursPageCount+1); i++)
+								  {
+										<li class="@(((int)ViewBag.DestinationToursPageID==i)?"active":"")"><a href="/Home/ShowDestinationTours?id=@ViewBag.DestinationId&&pageid=@i"><span>@i</span></a></li>
+								  }
+								@*<li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>*@
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- //Main Container -->

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FasleSafar.Models.Content>
+
+@{
+    ViewData["Title"] = "صفحات";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>صفحات</h2>          
+                       <a asp-action="AddContent" type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">افزودن</a><br/><br/><br/>
+@foreach (Content item in Model)
+{
+    <div class="col-lg-4 col-md-6">
+        <div class="card-box widget-user">
+            <div>
+                @if(item.HasImage){
+                    <img src="~/pics/sitepics/@(item.ContentId + item.ImageExt)" class="img-responsive img-circle" alt="@item.ContentTitle">
+                }
+                else
+                {
+                     <img src="~/pics/sitepics/DefaultContentPic@(item.ImageExt)" class="img-responsive img-circle" alt="@item.ContentTitle">
+                }
+                                        <div class="wid-u-info">
+                                            <h4 class="m-t-0 m-b-5 font-600">@item.ContentTitle</h4>
+                                            <p class="text-muted m-b-5 font-13">
+                        @{
+                                if(item.ContentText.Length<=100)
+                                {
+                                    @item.ContentText
+                                }
+                                else
+                                {
+                                    @(item.ContentText.Substring(0, 100) + "...")
+                                }
+                        }
+                                   </p>
+                                            <a asp-action="EditContent" asp-route-id="@item.ContentId" type="button" class="btn btn-info btn-rounded w-md waves-effect waves-light m-b-5">ویرایش</a>
+                                            <a asp-action="DeleteContent" asp-route-id="@item.ContentId" type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">حذف</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+}
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<div class="row text-center">
+    <nav>
+        <ul class="pagination">
+@*            <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
+*@          @for (int i = 1; i <= (ViewBag.ContentsPageCount+1); i++)
+          {
+                <li class="@(((int)ViewBag.ContentsPageID==i)?"active":"")"><a href="/Admin?pageid=@i">@i<span class="sr-only">(current)</span></a></li>
+          }
+@*            <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+*@        </ul>
+    </nav>
+</div>

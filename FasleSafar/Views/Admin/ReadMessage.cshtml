@@ -1,0 +1,46 @@
+﻿@model FasleSafar.Models.Message
+
+@{
+    ViewData["Title"] = "اطلاعات پیام ارسالی به " + @Model.User.FullName;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>اطلاعات پیام ارسالی به @Model.User.FullName</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.User.FullName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.User.FullName) <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.User.MobileNumber)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.User.MobileNumber)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.MessageText)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.MessageText)
+        </dd>
+        <dt class = "col-sm-4">
+             @Html.DisplayNameFor(model => model.SentDate) <br />
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.SentDate)<br />
+        </dd><br/>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.SentState)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.SentState) <br/>
+        </dd>
+    </dl>
+
+    <a asp-action="AddMessage" asp-route-id="@Model.UserId" type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">ارسال پیامک</a><br /><br />
+    <a asp-action="ShowMessages" asp-route-pageid="@ViewBag.MessagesPageID">بازگشت</a>
+</div>

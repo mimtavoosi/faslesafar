@@ -1,0 +1,89 @@
+﻿@model FasleSafar.Models.SitePicsVM
+
+@{
+    ViewData["Title"] = "اطلاعات پیش فرض";
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-sm-12">
+    <div class="card-box">
+<div class="row">
+    <div class="col-lg-6">
+         <h4 class="header-title m-t-0 m-b-30">تغییر تصاویر پیش فرض</h4>
+        <form  class="form-horizontal" asp-action="SetSitePics" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="LogoImage" class="control-label"></label>
+                <input asp-for="LogoImage" class="dropify"  accept="image/png">
+                <br /><span asp-validation-for="LogoImage" class="text-danger"></span>  
+            </div>
+             <div class="form-group">
+                <label asp-for="IconImage" class="control-label"></label>
+                <input asp-for="IconImage" class="dropify"  accept="icon/ico">
+                <br /><span asp-validation-for="IconImage" class="text-danger"></span>  
+            </div>
+            <div class="form-group">
+                <label asp-for="DefaultContentImage" class="control-label"></label>
+                        <input asp-for="DefaultContentImage" class="dropify" accept="image/png, image/jpeg">
+                <br /><span asp-validation-for="DefaultContentImage" class="text-danger"></span>  
+            </div>
+             <div class="form-group">
+                <label asp-for="BannerImage" class="control-label"></label>
+                        <input asp-for="BannerImage" class="dropify" accept="image/png, image/jpeg">
+                <br /><span asp-validation-for="BannerImage" class="text-danger"></span>  
+            </div>
+            @* <div class="form-group">
+                <label asp-for="ToursList" class="control-label"></label>
+                <input asp-for="ToursList" class="dropify"  accept="image/jpeg">
+                <br /><span asp-validation-for="ToursList" class="text-danger"></span>  
+            </div>*@<br/>
+            <h4 class="header-title m-t-0 m-b-30">اطلاعات پیش فرض</h4>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Slogan" class="control-label"></label>
+                 <textarea asp-for="Slogan" cols="3" rows="3" class="form-control" ></textarea>
+                <span asp-validation-for="Slogan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                 <textarea asp-for="Address" cols="3" rows="5" class="form-control" ></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IranRules" class="control-label"></label>
+                 <textarea asp-for="IranRules" cols="3" rows="5" class="form-control" ></textarea>
+                <span asp-validation-for="IranRules" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="WorldRules" class="control-label"></label>
+                 <textarea asp-for="WorldRules" cols="3" rows="5" class="form-control" ></textarea>
+                <span asp-validation-for="WorldRules" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Deposit" class="control-label"></label>
+                <input asp-for="Deposit" type="number" min="0" max="90" class="form-control" />
+                <span asp-validation-for="Deposit" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="ChildPrice" class="control-label"></label>
+                <input asp-for="ChildPrice" type="number" min="0" max="100" class="form-control" />
+                <span asp-validation-for="ChildPrice" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="BabyPrice" class="control-label"></label>
+                <input asp-for="BabyPrice" type="number" min="0" max="100" class="form-control" />
+                <span asp-validation-for="BabyPrice" class="text-danger"></span>
+            </div>
+           <button type="submit" class="savebtn btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">ذخیره</button>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+	<!-- Basic page needs
+	============================================ -->
+	<title>@ViewData["Title"] - فصل سفر</title>
+
+	<!-- Mobile specific metas
+	============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="enamad" content="337398" />
+	<!-- Favicon
+	============================================ -->
+
+	<!-- Libs CSS
+	============================================ -->
+	<link rel="stylesheet" href="~/lib/leaflet/leaflet.css">
+	<link rel="stylesheet" href="~/css/bootstrap/css/bootstrap.min.css">
+	<link href="~/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="~/css/persian-datepicker-0.4.5.min.css">
+	<link href="~/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link href="~/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+	<link href="~/css/themecss/lib.css" rel="stylesheet">
+	<link href="~/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+	<link href="~/js/minicolors/miniColors.css" rel="stylesheet">
+	
+	<!-- Theme CSS
+	============================================ -->
+	<link href="~/css/themecss/so_sociallogin.css" rel="stylesheet">
+	<link href="~/css/themecss/so_searchpro.css" rel="stylesheet">
+	<link href="~/css/themecss/so_megamenu.css" rel="stylesheet">
+	<link href="~/css/themecss/so-categories.css" rel="stylesheet">
+	<link href="~/css/themecss/so-listing-tabs.css" rel="stylesheet">
+	<link href="~/css/themecss/so-category-slider.css" rel="stylesheet">
+	<link href="~/css/themecss/so-newletter-popup.css" rel="stylesheet">
+	<link href="~/css/footer/footer1.css" rel="stylesheet">
+	<link href="~/css/header/header1.css" rel="stylesheet">
+
+	<link href="~/css/header/header2.css" rel="stylesheet">
+
+	<link id="color_scheme" href="~/css/theme.css" rel="stylesheet">
+	<link href="~/css/responsive.css" rel="stylesheet">
+	<link href="~/css/quickview/quickview.css" rel="stylesheet">
+	<link href="~/assets/css/Alert.css" rel="stylesheet">
+	<link href="~/css/MtCss.css" rel="stylesheet">
+	<link href="~/css/mh.css" rel="stylesheet">
+</head>
+
+<body class="common-home res layout-1">
+	<div id="wrapper" class="wrapper-fluid banners-effect-10">
+		<!-- Header Container  -->
+		<header id="header" class=" typeheader-1">
+			<!-- Header Top -->
+			<div class="header-bonus">
+				<div class="container">
+					@await Component.InvokeAsync("HeaderSiteInfoComponent") @*Show View Component*@ @*await because show action is async method*@
+					<ul class="bonus-social pull-left">
+						<li><a href="https://wa.me/989138374010"><i class="fa fa-whatsapp" aria-hidden="true" title="واتس اپ"></i></a></li>
+						<li><a href="https://t.me/fasle_safar"><i class="fa fa-telegram" aria-hidden="true" title="تلگرام"></i></a></li>
+						<li><a href="https://instagram.com/fasle_safar"><i class="fa fa-instagram" aria-hidden="true" title="اینستاگرام"></i></a></li>
+						<li><a href="https://www.facebook.com/profile.php?id=100088917554016&mibextid=ZbWKwL"><i class="fa fa-facebook" aria-hidden="true" title="فیسبوک"></i></a></li>
+						</ul>
+					 @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="bonus-login pull-right mtdropdown">
+						<a class="mtdropbtn" href="#"><i class="fa fa-user"
+								aria-hidden="true"></i> &nbsp;&nbsp;@User.Identity.Name</a>
+								<div class="mtdropdown-content">
+										<a asp-controller="Account" asp-action="EditInfo">ویرایش اطلاعات کاربری</a>
+										<a asp-controller="Account" asp-action="ShowUserTours">تورها</a>
+										<a asp-controller="Account" asp-action="Logout"><span class="redlink">خروج</span></a>
+									  </div>
+																			</div>
+                        }
+                        else
+                        {
+                              <div class="bonus-login pull-right mtdropdown">
+						<a class="mtdropbtn" asp-controller="Account" asp-action="Login"><i class="fa fa-user"
+								aria-hidden="true"></i> ورود / ثبت نام</a></div>
+                        }
+
+
+				</div>
+			</div>
+			<div class="header-top hidden-compact">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-xs-3 header-logo pull-left">
+							<div class="navbar-logo">
+								<a asp-controller="Home" asp-action="Index"><img src="~/pics/sitepics/LogoImage.png" alt="فصل سفر"
+										width="75" height="75" title="آژانس مسافرتی فصل سفر"></a>
+							</div>
+						</div>
+						<div class="book pull-right">
+							<a asp-controller="Home" asp-action="SendReqTrip">درخواست سفر</a>
+						</div>
+						<!-- Menuhome -->
+						<div class="header-menu pull-right">
+							<div class="megamenu-style-dev megamenu-dev">
+								<div class="responsive">
+									<nav class="navbar-default">
+										<div class="container-megamenu horizontal">
+											<div class="navbar-header">
+												<button type="button" id="show-megamenu" data-toggle="collapse"
+													class="navbar-toggle">
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+												</button>
+											</div>
+											<div class="megamenu-wrapper">
+												<span id="remove-megamenu" class="fa fa-times"></span>
+												<div class="megamenu-pattern">
+													<div class="container">
+														<ul class="megamenu" data-transition="slide"
+															data-animationtime="500">
+															<li class="menu-home with-sub-menu hover">
+																<p class="close-menu"></p>
+																<a asp-controller="Home" asp-action="Index" class="clearfix">
+																	<strong>
+																		خانه
+																	</strong>
+																</a>
+															</li>
+															<li class="style-page with-sub-menu hover">
+																<p class="close-menu"></p>
+																<a class="clearfix">
+																	<strong>
+																		تورها
+																	</strong>
+																	<span class="labelwordpress"></span>
+																</a>
+																<div class="sub-menu">
+																	<div class="content">
+																		<div class="row">
+																			<div class="col-md-12">
+																				<ul class="row-list">
+																					<li>
+																						<a class="subcategory_item"
+																						   asp-controller="Home" asp-action="ShowIranTours">تورهای داخلی</a>
+																					</li>
+																					<li>
+																						<a class="subcategory_item"
+																						   asp-controller="Home" asp-action="ShowWorldTours">تورهای خارجی</a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li class="style-page with-sub-menu hover">
+																<p class="close-menu"></p>
+																<a class="clearfix">
+																	<strong>
+																	 خدمات آژانس
+																	</strong>
+																</a>
+																@await Component.InvokeAsync("HeaderServicesComponent")
+															</li>
+															@await Component.InvokeAsync("HeaderMenuComponent")
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //Header Top -->
+		</header>
+		<!-- Main Container  -->
+		@RenderBody()
+		<!-- //Main Container -->
+		<!-- Footer Container -->
+		<footer class="footer-container typefooter-1">
+			<div class="footer-has-toggle" id="collapse-footer">
+				<div class="so-page-builder">
+					<div class="container-fluid page-builder-ltr">
+						<div class="row row_mvtd footer--center2 row-color ">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_6fdl float_none container">
+								<div class="row row_hwmc  ">
+									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col_6ps1 footer--link">
+										<div class="footer-logo">
+											<a asp-controller="Home" asp-action="Index"><img src="~/pics/sitepics/LogoImage.png" alt="فصل سفر"
+													width="120" height="120" title="آژانس مسافرتی فصل سفر"></a>
+										</div>
+										@await Component.InvokeAsync("SloganComponent")<br /><br />
+										<a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=309304&amp;Code=HIPTC9F1e9OZSvnnzWDV"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=309304&amp;Code=HIPTC9F1e9OZSvnnzWDV" alt="" style="cursor:pointer" id="HIPTC9F1e9OZSvnnzWDV"></a>
+									</div>
+									@await Component.InvokeAsync("FooterSiteInfoComponent")
+									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col_6ps1 footer--link">
+										<h3 class="title-footer">
+											خدمات آژانس
+										</h3>
+										<ul class="links">
+											@await Component.InvokeAsync("FooterServicesComponent")
+										</ul>
+									</div>
+									@await Component.InvokeAsync("FooterMenuComponent")
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-toggle hidden-lg hidden-md">
+				<a class="showmore collapsed" data-toggle="collapse" href="#collapse-footer" aria-expanded="false"
+					aria-controls="collapse-footer">
+					<span class="toggle-more"><i class="fa fa-angle-double-down"></i>نمایش بیشتر</span>
+					<span class="toggle-less"><i class="fa fa-angle-double-up"></i>نمایش کمتر</span>
+				</a>
+			</div>
+			<div class="footer-bottom ">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 copyright">
+							Copyright © 2023، تمام حقوق این سایت نزد آژانس مسافرتی فصل سفر اصفهان محغوظ می باشد <a asp-controller="Home" asp-action="Index"></a>
+						</div>
+						<div class=" col-md-6 col-sm-6 social">
+								<h3>دنبال کردن ما</h3>
+								<ul>
+									<li><a href="https://www.facebook.com/profile.php?id=100088917554016&mibextid=ZbWKwL" title="فیسبوک"><span
+												class="fa fa-facebook"></span></a></li>
+									<li><a href="https://wa.me/989138374010" title="واتس اپ"><span
+												class="fa fa-whatsapp"></span></a></li>
+									<li><a href="https://t.me/fasle_safar" title="تلگرام"><span
+												class="fa fa-telegram"></span></a></li>
+									<li><a href="https://instagram.com/fasle_safar" title="اینستاگرام"><span
+												class="fa fa-instagram"></span></a></li>
+								</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- //end Footer Container -->
+	</div>
+	@await Component.InvokeAsync("WhatsAppIconComponent")
+	<div class="back-to-top"><i class="fa fa-angle-up"></i></div>
+	<!-- End Color Scheme
+		============================================ -->
+	<!-- Include Libs & Plugins
+		============================================ -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="~/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="~/lib/leaflet/leaflet.js"></script>
+	@*<script type="text/javascript" src="~/lib/leaflet/leaflet-src.js"></script>*@
+	<script type="text/javascript" src="~/lib/leaflet/myLeaflet.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+	<script type="text/javascript" src="~/js/themejs/so_megamenu.js"></script>
+	<script type="text/javascript" src="~/js/owl-carousel/owl.carousel.js"></script>
+	<script type="text/javascript" src="~/js/slick-slider/slick.js"></script>
+	<script type="text/javascript" src="~/js/themejs/libs.js"></script>
+	<script type="text/javascript" src="~/js/unveil/jquery.unveil.js"></script>
+	<script type="text/javascript" src="~/js/countdown/jquery.countdown.min.js"></script>
+	<script type="text/javascript" src="~/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+	<script type="text/javascript" src="~/js/datetimepicker/moment.js"></script>
+	<script type="text/javascript" src="~/js/persian-date-0.1.8.min.js"></script>
+	<script type="text/javascript" src="~/js/persian-datepicker-0.4.5.min.js"></script>
+	<script type="text/javascript" src="~/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="~/js/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="~/js/modernizr/modernizr-2.6.2.min.js"></script>
+	<script type="text/javascript" src="~/js/minicolors/jquery.miniColors.min.js"></script>
+	<script type="text/javascript" src="~/js/jquery.nav.js"></script>
+	<script type="text/javascript" src="~/js/quickview/jquery.magnific-popup.min.js"></script>
+	<!-- Theme files
+		============================================ -->
+	<script type="text/javascript" src="~/js/themejs/application.js"></script>
+	<script type="text/javascript" src="~/js/themejs/homepage.js"></script>
+	<script type="text/javascript" src="~/js/themejs/custom_h1.js"></script>
+	<script type="text/javascript" src="~/js/themejs/addtostick.js"></script>
+	<script type="text/javascript" src="~/js/themejs/nouislider.js"></script>
+	<script src="~/js/Alert.js"></script>
+	<script src="~/js/JustNumber.js"></script>
+	<script src="~/js/LiveSort1.js"></script>
+	<script src="~/js/Momayez.js"></script>
+	<script src="~/js/UpdatePrice.js"></script>
+	<script src="~/js/UpdateFactor.js"></script>
+	<script src="~/js/Rating.js"></script>
+	<script src="~/js/Share.js"></script>
+	<script src="~/js/dynamicTbl.js"></script>
+</body>
+
+</html>

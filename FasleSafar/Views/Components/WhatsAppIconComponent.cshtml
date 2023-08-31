@@ -1,0 +1,8 @@
+﻿@model Content 
+<div class="whatsapp-icon">
+	@if (Model.ContentText.StartsWith("0"))
+	{
+		Model.ContentText = Model.ContentText.Remove(0, 1);
+	}
+	<a href=@($"https://api.whatsapp.com/send/?phone=%2B98{Model.ContentText}&text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C+%D9%88%D9%82%D8%AA+%D8%A8%D8%AE%DB%8C%D8%B1&type=phone_number&app_absent=0")><img src="~/pics/sitepics/whatsapp.png" alt="whatsapp" /></a>
+</div>

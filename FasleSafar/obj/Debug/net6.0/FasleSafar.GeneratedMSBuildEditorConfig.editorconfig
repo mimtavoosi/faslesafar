@@ -1,0 +1,345 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = FasleSafar
+build_property.RootNamespace = FasleSafar
+build_property.ProjectDir = E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Account/EditInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0SW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Account/ShowUserTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaG93VXNlclRvdXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Account/Signup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWdudXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/AddAttraction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQXR0cmFjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/AddContent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/AddDestination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkRGVzdGluYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/AddMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkTWVzc2FnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/AddTour.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVG91ci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/AddUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/DeleteAttraction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlQXR0cmFjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/DeleteContent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/DeleteDestination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlRGVzdGluYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/DeleteMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlTWVzc2FnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/DeleteOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/DeleteReqTrip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlUmVxVHJpcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/DeleteTour.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlVG91ci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/DeleteUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/EditAttraction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEF0dHJhY3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/EditContent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdENvbnRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/EditDestination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdERlc3RpbmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/EditState.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFN0YXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/EditTour.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFRvdXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/MakeMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFrZU1lc3NhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ReadMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVhZE1lc3NhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ReadOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVhZE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ReadReqTrip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVhZFJlcVRyaXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/SetSitePics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2V0U2l0ZVBpY3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowAttractions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd0F0dHJhY3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowContents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd0NvbnRlbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowDestinationAttractions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd0Rlc3RpbmF0aW9uQXR0cmFjdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowDestinations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd0Rlc3RpbmF0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowDestinationTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd0Rlc3RpbmF0aW9uVG91cnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowMessages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd01lc3NhZ2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd09yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowReqTrips.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1JlcVRyaXBzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1RvdXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowTourUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1RvdXJVc2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowUserMessages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1VzZXJNZXNzYWdlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowUserOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1VzZXJPcmRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowUserReqTrips.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1VzZXJSZXFUcmlwcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1VzZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Admin/ShowUserTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2hvd1VzZXJUb3Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Card/FinishBuy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZFxGaW5pc2hCdXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Card/ViewCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZFxWaWV3Q2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/DestinationsComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xEZXN0aW5hdGlvbnNDb21wb25lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/FavoriteToursComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xGYXZvcml0ZVRvdXJzQ29tcG9uZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/FooterAboutUsComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xGb290ZXJBYm91dFVzQ29tcG9uZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/FooterMenuComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xGb290ZXJNZW51Q29tcG9uZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/FooterServicesComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xGb290ZXJTZXJ2aWNlc0NvbXBvbmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/FooterSiteInfoComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xGb290ZXJTaXRlSW5mb0NvbXBvbmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/HeaderMenuComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xIZWFkZXJNZW51Q29tcG9uZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/HeaderServicesComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xIZWFkZXJTZXJ2aWNlc0NvbXBvbmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/HeaderSiteInfoComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xIZWFkZXJTaXRlSW5mb0NvbXBvbmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/NewToursComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xOZXdUb3Vyc0NvbXBvbmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/PhoneBoxComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xQaG9uZUJveENvbXBvbmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/SloganComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xTbG9nYW5Db21wb25lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Components/WhatsAppIconComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xXaGF0c0FwcEljb25Db21wb25lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/SearchTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2hUb3Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/SendReqTrip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZW5kUmVxVHJpcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ShowDestinationTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93RGVzdGluYXRpb25Ub3Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ShowFavoriteTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93RmF2b3JpdGVUb3Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ShowIranTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93SXJhblRvdXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ShowNewTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93TmV3VG91cnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ShowWorldTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93V29ybGRUb3Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ViewAttraction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3QXR0cmFjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ViewContent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3Q29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ViewDestination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3RGVzdGluYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Home/ViewTour.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3VG91ci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Shared/_CalendarScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DYWxlbmRhclNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Shared/_DestAttractions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EZXN0QXR0cmFjdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Shared/_DestTours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EZXN0VG91cnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Education/Programing/Laboratory/Current Projects/FasleSafar/FasleSafar/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-jil0244d94

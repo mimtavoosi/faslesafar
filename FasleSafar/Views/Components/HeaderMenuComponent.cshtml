@@ -1,0 +1,13 @@
+﻿@model List<Content> 
+@foreach (Content item in Model)
+{
+     <li class="style-page with-sub-menu hover">
+																<p class="close-menu"></p>
+																<a asp-controller="Home" asp-action="ViewContent" asp-route-id="@item.ContentId" class="clearfix">
+																	<strong>
+																		@item.ContentTitle
+																	</strong>
+																	<span class="labelwordpress"></span>
+																</a>
+															</li>
+}

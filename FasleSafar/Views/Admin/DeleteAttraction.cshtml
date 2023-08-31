@@ -1,0 +1,43 @@
+﻿@model FasleSafar.Models.Attraction
+
+@{
+    ViewData["Title"] = "حذف جاذبه گردشگری " + @Model.AttractionName;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>آیا از حذف جاذبه گردشگری @Model.AttractionName اطمینان دارید؟</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.AttractionName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.AttractionName) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.DestinationId)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Destination.DestinationName) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.GeoCoordinates)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GeoCoordinates) <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.AttractionDescription)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.AttractionDescription)<br/>
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteAttraction" >
+        <input type="hidden" asp-for="AttractionId" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="ShowAttractions" asp-route-pageid="@ViewBag.AttractionsPageID">بازگشت</a>
+    </form>
+</div>

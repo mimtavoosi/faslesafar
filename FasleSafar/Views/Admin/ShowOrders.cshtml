@@ -1,0 +1,107 @@
+﻿@model IEnumerable<FasleSafar.Models.Order>
+
+@{
+    ViewData["Title"] = "خرید ها";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+ <input id="searchtype" type="hidden" value="7" />
+<div class="table-responsive">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-xs">
+                            <div class="app-search">
+                                <input type="text" id="searchtext" placeholder="به دنبال چه می گردی ؟؟؟"
+                                       class="form-control">
+                                <a href=""><i class="fa fa-search"></i></a>
+                           </div>
+                        </li>
+                    </ul>
+                    <h4 class="header-title m-t-0 m-b-30">فهرست خرید ها</h4>
+    <a asp-action="ExportToExcel" type="button" class="btn btn-info btn-rounded w-md waves-effect waves-light m-b-5">دانلود اطلاعات</a>
+ <table class="table">
+
+
+    <thead>
+        <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tour.TourTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.AdultCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildCount)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.BabyCount)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.IsFinaly)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tbdata">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+           <td>
+                @Html.DisplayFor(modelItem => item.Tour.TourTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdultCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BabyCount)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.IsFinaly)
+            </td>
+            <td>
+               <a asp-action="ReadOrder" asp-route-id="@item.OrderId" type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5">نمایش</a>
+               <a asp-action="EditState" asp-route-id="@item.OrderId" type="button" class="btn btn-warning btn-rounded w-md waves-effect waves-light m-b-5">تغییر وضعیت</a>
+               <a asp-action="DeleteOrder" asp-route-id="@item.OrderId" type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">حذف</a>
+           </td> 
+        </tr>
+}
+    </tbody>
+</table>
+ </div>
+
+<div class="row text-center">
+    <nav>
+        <ul class="pagination">
+@*            <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
+*@          @for (int i = 1; i <= (ViewBag.OrdersPageCount+1); i++)
+          {
+                <li class="@(((int)ViewBag.OrdersPageID==i)?"active":"")"><a href="/Admin/ShowOrders?pageid=@i">@i<span class="sr-only">(current)</span></a></li>
+          }
+@*            <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+*@        </ul>
+    </nav>
+</div>

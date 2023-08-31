@@ -1,0 +1,70 @@
+﻿@model FasleSafar.Models.Order
+
+@{
+    ViewData["Title"] = "رسید خرید " + @Model.Tour.TourTitle;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>رسید خرید @Model.Tour.TourTitle متعلق به @Model.User.FullName</h3>
+<div>
+    <hr />
+    <a asp-action="ExportToExcel" asp-route-orderId="@Model.OrderId" type="button" class="btn btn-info btn-rounded w-md waves-effect waves-light m-b-5">دانلود اطلاعات</a>
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.OrderId)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.OrderId) <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Tour.TourTitle)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Tour.TourTitle) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Price) <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.AdultCount)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.AdultCount) <br />
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.ChildCount)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.ChildCount) <br />
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.BabyCount)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.BabyCount) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.User.FullName) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.CreateDate) <br />
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.IsFinaly)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.IsFinaly) <br />
+        </dd>
+    </dl>
+    <a asp-action="AddMessage" asp-route-id="@Model.UserId" type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">ارسال پیامک</a><br/><br/>
+    <a asp-action="ShowOrders" asp-route-pageid="@ViewBag.OrdersPageID">بازگشت</a>
+</div>

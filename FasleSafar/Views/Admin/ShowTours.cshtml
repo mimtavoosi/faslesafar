@@ -1,0 +1,144 @@
+﻿@model IEnumerable<FasleSafar.Models.TourVM>
+
+@{
+    ViewData["Title"] = "تور ها";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+ <input id="searchtype" type="hidden" value="2" />
+<div class="table-responsive">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-xs">
+                            <div class="app-search">
+                                <input type="text" id="searchtext" placeholder="به دنبال چه می گردی ؟؟؟"
+                                       class="form-control">
+                                <a href=""><i class="fa fa-search"></i></a>
+                           </div>
+                        </li>
+                    </ul>
+                    <h4 class="header-title m-t-0 m-b-30">فهرست تورها</h4>           
+                        <a asp-action="AddTour" type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">افزودن</a>
+ <table class="table">
+
+
+    <thead>
+        <tr>
+            <th>
+                تصویر
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourType)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.TransportType)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Destination.DestinationName)
+            </th>
+              <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.DaysCount)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Vehicle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsLeasing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvgScore)
+            </th>
+              <th>
+                @Html.DisplayNameFor(model => model.OpenState)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tbdata">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/pics/tourpics/@(item.BigImage)" class="dest0" />
+            </td>
+           <td>
+                @Html.DisplayFor(modelItem => item.TourTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TourType)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.TransportType)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Destination.DestinationName)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.DaysCount)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Vehicle)
+            </td>
+            <td>
+                @if (item.IsLeasing)
+                {
+                    <span>&#9989</span>
+                }
+                else
+                {
+                   <span>&#10060</span>      
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvgScore)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.OpenState)
+            </td>
+            <td>
+                <a asp-action="ShowTourUsers" asp-route-id="@item.TourId" type="button" class="btn btn-info btn-rounded w-md waves-effect waves-light m-b-5">خریداران</a>
+               <a asp-action="EditTour" asp-route-id="@item.TourId" type="button" class="btn btn-warning btn-rounded w-md waves-effect waves-light m-b-5">ویرایش</a>
+               <a asp-action="DeleteTour" asp-route-id="@item.TourId" type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">حذف</a>
+           </td> 
+        </tr>
+}
+    </tbody>
+</table>
+ </div>
+
+<div class="row text-center">
+    <nav>
+        <ul class="pagination">
+@*            <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
+*@          @for (int i = 1; i <= (ViewBag.ToursPageCount+1); i++)
+          {
+                <li class="@(((int)ViewBag.ToursPageID==i)?"active":"")"><a href="/Admin/ShowTours?pageid=@i">@i<span class="sr-only">(current)</span></a></li>
+          }
+@*            <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+*@        </ul>
+    </nav>
+</div>

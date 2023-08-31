@@ -1,0 +1,460 @@
+﻿.dest1 {
+    min-width: 270px;
+    min-height: 380px;
+    max-height: 270px;
+    max-width: 380px;
+}
+.dest0 {
+    max-width: 50px;
+    max-height: 50px;
+    border: 1px solid gray;
+    padding: 3px;
+}
+.tour3 {
+    min-height: 247px;
+    max-height: 247px;
+}
+.depositlbl{
+    margin-right:10px;
+    font-size:14px;
+    font-weight:bolder;
+}
+.mtopt {
+    text-align: right !important;
+}
+.mtopt option {
+        text-align: right !important;
+    }
+/*.tour2 {
+    min-width: 1920px;
+    min-height: 600px;
+    max-height: 600px;
+    max-width: 1920px;
+}*/
+.mttitle{
+   padding-top:10px;
+}
+.tour1 {
+    min-width: 134px;
+    min-height: 247px;
+    max-height: 220px;
+    max-width: 247px;
+}
+.regbtn {
+    float: left;
+}
+/* Dropdown Button */
+.mtdropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.mtdropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.mtdropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1d3456;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .mtdropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .mtdropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+/* Show the dropdown menu on hover */
+.mtdropdown:hover .mtdropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.mtlink {
+    color:#2db2ff;
+}
+.mtlbl {
+    color: #2db2ff;
+    font-size:18px;
+    font-weight:bolder;
+}
+.redlink{
+    color:red;
+}
+.descview {
+    white-space: pre-line;
+}
+.tour-single.sticky .sticky-content {
+    position: sticky;
+    transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    top: 70px;
+    background:#fff;
+    width: 100%;
+    padding: 35px 0 0 0;
+    z-index: 9;
+}
+
+.naghshe {
+    width: 900px;
+    height: 500px;
+/*    max-height: 500px;
+    overflow-y: auto;
+*/    border: 0;
+      z-index:1;
+    /*background-color:blueviolet;*/
+}
+
+.paybtn {
+    float: left;
+    margin-top:5px;
+    margin-left:15px;
+    height:40px;
+    padding:10px 10px 10px 10px;
+    width:100px;
+    font-weight:bolder;
+    margin-bottom:15px;
+    cursor:pointer;
+}
+.backbtn {
+    float: left;
+    margin-top: 5px;
+    margin-left: 15px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    width: 110px;
+    text-align:center;
+    font-weight: bolder;
+    margin-bottom: 15px;
+}
+
+.wicon {
+    color: #fff;
+}
+
+.social-share-icon {
+    color: #fff;
+    position: absolute;
+    -webkit-filter: url(#goo);
+    filter: url(#goo);
+    width: 254px;
+    height: 100px;
+    margin-top: -34px;
+    margin-right: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 25px 20px 20px 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+    .social-share-icon a.a {
+        z-index: 123;
+    }
+
+    .social-share-icon a {
+        text-decoration: none;
+        color: #212121;
+        height: 45px;
+        width: 45px;
+        border-radius: 100px;
+        display: inline-block;
+        background-color: #2db2ff;
+        line-height: 45px;
+        text-align: center;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2)
+    }
+
+        .social-share-icon a:hover {
+            background-color: #1d3456;
+        }
+
+        .social-share-icon a i {
+            line-height: inherit;
+        }
+
+        .social-share-icon a.a1 {
+            transform: translateX(245px);
+            transition: all ease-in-out 200ms;
+            opacity: 0;
+        }
+
+        .social-share-icon a.a2 {
+            transform: translateX(196px);
+            transition: all ease-in-out 300ms;
+            opacity: 0;
+        }
+
+        .social-share-icon a.a3 {
+            transform: translateX(147px);
+            transition: all ease-in-out 400ms;
+            opacity: 0;
+        }
+
+        .social-share-icon a.a4 {
+            transform: translateX(98px);
+            transition: all ease-in-out 500ms;
+            opacity: 0;
+        }
+
+        .social-share-icon a.a5 {
+            transform: translateX(49px);
+            transition: all ease-in-out 600ms;
+            opacity: 0;
+        }
+
+    .social-share-icon:hover a.a1 {
+        transform: translateX(0);
+        transition: all ease-in-out 600ms;
+        opacity: 1;
+    }
+
+    .social-share-icon:hover a.a2 {
+        transform: translateX(0);
+        transition: all ease-in-out 500ms;
+        opacity: 1;
+    }
+
+    .social-share-icon:hover a.a3 {
+        transform: translateX(0);
+        transition: all ease-in-out 400ms;
+        opacity: 1;
+    }
+
+    .social-share-icon:hover a.a4 {
+        transform: translateX(0);
+        transition: all ease-in-out 300ms;
+        opacity: 1;
+    }
+
+    .social-share-icon:hover a.a5 {
+        transform: translateX(0);
+        transition: all ease-in-out 200ms;
+        opacity: 1;
+    }
+    .mtlist{
+        margin-right:50px;
+        margin-bottom:50px;
+    }
+.star0-5 {
+    width: 15px;
+}
+.star0-6 {
+    width: 15px;
+}
+.star0-7 {
+    width: 15px;
+}
+.star0-8 {
+    width: 15px;
+}
+.star0-9 {
+    width: 15px;
+}
+.star1 {
+    width: 15px;
+}
+star1-0 {
+    width: 15px;
+}
+.star1-1 {
+    width: 15px;
+}
+.star1-2 {
+    width: 15px;
+}
+.star1-3 {
+    width: 15px;
+}
+.star1-4 {
+    width: 15px;
+}
+.star1-5 {
+    width: 30px;
+}
+.star1-6 {
+    width: 30px;
+}
+.star1-7 {
+    width: 30px;
+}
+.star1-8 {
+    width: 30px;
+}
+.star1-9 {
+    width: 30px;
+}
+.star2 {
+    width: 30px;
+}
+.star2-0 {
+    width: 30px;
+}
+.star2-1 {
+    width: 30px;
+}
+.star2-2 {
+    width: 30px;
+}
+.star2-3 {
+    width: 30px;
+}
+.star2-4 {
+    width: 30px;
+}
+.star2-5 {
+    width: 45px;
+}
+.star2-6 {
+    width: 45px;
+}
+.star2-7 {
+    width: 45px;
+}
+.star2-8 {
+    width: 45px;
+}
+.star2-9 {
+    width: 45px;
+}
+.star3 {
+    width: 45px;
+}
+.star3-0 {
+    width: 45px;
+}
+.star3-1 {
+    width: 45px;
+}
+.star3-2 {
+    width: 45px;
+}
+.star3-3 {
+    width: 45px;
+}
+.star3-4 {
+    width: 45px;
+}
+.star3-5 {
+    width: 60px;
+}
+.star3-6 {
+    width: 60px;
+}
+.star3-7 {
+    width: 60px;
+}
+.star3-8 {
+    width: 60px;
+}
+.star3-9 {
+    width: 60px;
+}
+.star4 {
+    width: 60px;
+}
+.star4-0 {
+    width: 60px;
+}
+.star4-1 {
+    width: 60px;
+}
+.star4-2 {
+    width: 60px;
+}
+.star4-3 {
+    width: 60px;
+}
+.star4-4 {
+    width: 60px;
+}
+.star4-5 {
+    width: 75px;
+}
+.star4-6 {
+    width: 75px;
+}
+.star4-7 {
+    width: 75px;
+}
+.star4-8 {
+    width: 75px;
+}
+.star4-9 {
+    width: 75px;
+}
+.star5 {
+    width: 75px;
+}
+.star5-0 {
+    width: 75px;
+}
+
+.required-field {
+    color: red;
+    font-size: 16px;
+    margin-left: 2px;
+}
+.paybtn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+/* کلاس مربوط به کنتینر جدول */
+.dyntable-container {
+    overflow-x: auto;
+}
+/*.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+}*/
+
+.responsive-table th,
+.responsive-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .responsive-table th,
+    .responsive-table td {
+        display: flex;
+        width: 50%;
+        box-sizing: border-box;
+    }
+    /* افزایش اندازه دکمه */
+    .open-sidebar.hidden-lg.hidden-md {
+        font-size: 20px;
+    }
+
+    /* تغییر رنگ پس زمینه دکمه به #2db2ff */
+    .open-sidebar.hidden-lg.hidden-md {
+        background-color: #2db2ff;
+    }
+
+    /* تغییر رنگ متن دکمه به سفید */
+    .open-sidebar.hidden-lg.hidden-md {
+        color: white;
+    }
+
+    .tblErr {
+        color: red;
+        display: none;
+    }

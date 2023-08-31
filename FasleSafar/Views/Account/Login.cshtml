@@ -1,0 +1,72 @@
+﻿@model FasleSafar.Models.LoginVM
+@{
+    ViewData["Title"] = "ورود";
+}
+
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="title-breadcrumb">
+					ورود
+				</div>
+				<ul class="breadcrumb-cate">
+					<li><a  asp-controller="Home" asp-action="Index">خانه</a></li>
+					<li><a asp-controller="Account" asp-action="Login">ورود</a></li>
+				</ul>
+			</div>
+		</div>
+				<div class="main-container container main-require">
+			<div class="row">
+				<div id="content" class="col-md-9">
+					@if (User.Identity.IsAuthenticated)
+        {
+            <div class="redalert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            شما به بخش مدیریت دسترسی ندارید</div>
+        }
+					<form asp-action="Login" method="post" class="form-infomation clearfix">
+														 <fieldset
+														class="tour-infomation clearfix">
+														<h3>ورود</h3>
+														<div class="form-item item1 required">
+								<label asp-for="Email" class="control-label" for="input-email"></label>
+								<input asp-for="Email"  placeholder="" id="input-email">
+								<span asp-validation-for="Email" class="text-danger"></span>
+							</div>
+														<div class="form-item item2 required">
+								<label asp-for="Password" class="control-label" for="input-password"></label>
+								<input asp-for="Password" type="password" placeholder="" id="input-password">
+								<span asp-validation-for="Password" class="text-danger"></span><br/><br/>
+							</div>
+							@* <div>
+                     <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RememberMe" /> 
+						</label>
+						</div>*@
+
+					<div class="checkbox-wrapper-15">
+						<input asp-for="RememberMe" class="inp-cbx" id="remember" type="checkbox" style="display: none;" />
+						<label class="cbx" for="remember">
+							<span>
+								<svg width="12px" height="9px" viewbox="0 0 12 9">
+									<polyline points="1 5 4 8 11 1"> </polyline>
+								</svg>
+							</span>
+							<span class="lbl-gh">@Html.DisplayNameFor(model => model.RememberMe)</span>
+						</label>
+					</div>
+							<div class="buttons clearfix">
+							<input type="submit" value="ورود" class="btn btn-primary regbtn">
+						</div>
+						</fieldset>
+					</form>
+			        <p>کلمه عبور خود را فراموش کرده اید؟ <a asp-controller="Account" asp-action="ForgotPassword"><span class="mtlink">فراموشی کلمه عبور</span></a></p>
+					<p>عضو خانواده فصل سفر نیستید؟ همین حالا <a asp-controller="Account" asp-action="Signup"><span class="mtlink">ثبت نام</span></a> کنید</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- //Main Container -->
+
+		@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

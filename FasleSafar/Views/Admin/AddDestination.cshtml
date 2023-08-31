@@ -1,0 +1,72 @@
+﻿@model FasleSafar.Models.AddDestinationVM
+
+@{
+    ViewData["Title"] = "افزودن مقصد";
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-sm-12">
+    <div class="card-box">
+<div class="row">
+    <div class="col-lg-6">
+         <h4 class="header-title m-t-0 m-b-30">افزودن مقصد</h4>
+        <form  class="form-horizontal" asp-action="AddDestination" method="post" enctype="multipart/form-data">
+             <div class="form-group">
+                <label asp-for="DestinationName" class="control-label"></label>
+                <input asp-for="DestinationName" class="form-control" />
+                <span asp-validation-for="DestinationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Province" class="control-label"></label>
+                <input asp-for="Province" class="form-control" />
+                <span asp-validation-for="Province" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationDescription" class="control-label"></label>
+                <textarea asp-for="DestinationDescription" cols="6" rows="10" class="form-control"></textarea>
+                <span asp-validation-for="DestinationDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GeoCoordinates" class="control-label"></label>
+                <input asp-for="GeoCoordinates" class="form-control" />
+                <span asp-validation-for="GeoCoordinates" class="text-danger"></span>
+            </div>
+            <div class="form-check">
+                <label asp-for="IsAttraction" class="form-check-label"></label>
+                <input asp-for="IsAttraction" class="form-check-input" />
+            </div>
+            <div class="form-check">
+                <label asp-for="OnVitrin" class="form-check-label"></label>
+                <input asp-for="OnVitrin" class="form-check-input"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="BigImage" class="control-label"></label>
+                <input asp-for="BigImage" class="dropify" accept="image/png, image/jpeg">
+                <br /><span asp-validation-for="BigImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumImages" class="control-label"></label>
+                <input asp-for="AlbumImages" class="dropify" accept="image/png, image/jpeg" multiple>
+                <br /><span asp-validation-for="AlbumImages" class="text-danger"></span>
+            </div>
+           <button type="submit" class="savebtn btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">ذخیره</button>
+            <a asp-action="ShowDestinations" asp-route-pageid="@ViewBag.DestinationsPageID" type="button" class="savebtn btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">بازگشت</a>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

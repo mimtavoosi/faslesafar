@@ -1,0 +1,33 @@
+﻿@model EditStateVM
+@{
+    ViewData["Title"] = "تغییر وضعیت فاکتور متعلق به " + @Model.UserName;
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-sm-12">
+    <div class="card-box">
+<div class="row">
+    <div class="col-lg-6">
+         <h4 class="header-title m-t-0 m-b-30">تغییر وضعیت فاکتور متعلق به @Model.UserName</h4>
+        <form  class="form-horizontal" asp-controller="Admin" asp-action="EditState" method="post">
+            <input type="hidden" asp-for="OrderId" />
+             <div class="form-group">
+                <label asp-for="PayState" class="control-label"></label>
+                <select asp-for="PayState" class ="form-control">
+                   <option value="پرداخت اقساطی">پرداخت اقساطی</option>
+                   <option value="پرداخت نقدی">پرداخت نقدی</option>
+                   <option value="لغو شده">لغو شده</option>
+                </select>
+                <span asp-validation-for="PayState" class="text-danger"></span>  
+            </div>
+           <button type="submit" class="savebtn btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">ذخیره</button>
+            <a asp-action="ShowOrders" asp-route-pageid="@ViewBag.OrdersPageID" type="button" class="savebtn btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">بازگشت</a>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

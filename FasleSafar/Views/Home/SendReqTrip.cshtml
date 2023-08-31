@@ -1,0 +1,74 @@
+﻿@model FasleSafar.Models.SendReqTripVM
+@{
+    ViewData["Title"] = "درخواست سفر";
+}
+
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="title-breadcrumb">
+					درخواست سفر
+				</div>
+				<ul class="breadcrumb-cate">
+					<li><a  asp-controller="Home" asp-action="Index">خانه</a></li>
+					<li><a asp-controller="Home" asp-action="SendReqTrip">درخواست سفر</a></li>
+				</ul>
+			</div>
+		</div>
+				<div class="main-container container main-require">
+			<div class="row">
+				<div id="content" class="col-md-9">
+					<form asp-controller="Home" asp-action="SendReqTrip" method="post" class="form-infomation clearfix">
+														 <fieldset
+														class="tour-infomation clearfix">
+														<h3>درخواست سفر</h3>
+								<div class="form-item item1 required">
+								<label asp-for="DestinationName" class="control-label"></label>
+								<input asp-for="DestinationName" type="text">
+								<span asp-validation-for="DestinationName" class="text-danger"></span>
+							</div>
+							<div class="form-item item2 required">
+								<label asp-for="TransportType" class="control-label"></label>
+								<select asp-for="TransportType" class="form-control">
+									<option value="زمینی">زمینی</option>
+									<option value="هوایی">هوایی</option>
+								</select>
+								<span asp-validation-for="TransportType" class="text-danger"></span>
+							</div>
+							<div class="form-item item1 search-item date required">
+								<label asp-for="StartDate" class="control-label"></label>
+								<input asp-for="StartDate" type="text" class="tour-search-input tarikh datepicker hasDatepicker"
+									id="startdate" placeholder="تاریخ رفت>
+								<span asp-validation-for="StartDate" class="text-danger"></span>
+							</div>
+								<div class="form-item item2 search-item date required">
+								<label asp-for="EndDate" class="control-label"></label>
+								<input asp-for="EndDate" type="text" class="tour-search-input tarikh datepicker hasDatepicker"
+									id="startdate" placeholder="تاریخ برگشت">
+								<span asp-validation-for="EndDate" class="text-danger"></span>
+							</div>
+							<div class="form-item item1 number required">
+								<label asp-for="PassengersCount" class="control-label" for="input-adult"></label>
+								<input asp-for="PassengersCount" type="number" value="1" min="1" id="input-adult">
+						        <span asp-validation-for="PassengersCount" class="text-danger"></span>
+							</div>
+							<div class="form-item item3 required">
+								<label asp-for="ReqTripDescription" class="control-label"></label>
+								<textarea asp-for="ReqTripDescription" cols="6" rows="9" ></textarea>
+								<span asp-validation-for="ReqTripDescription" class="text-danger"></span>
+							</div>
+							<div class="buttons clearfix">
+
+							<input type="submit" value="درخواست سفر" class="btn btn-primary regbtn">
+					</div>
+						</fieldset>
+					</form>
+					<br/><br/>
+				</div>
+			</div>
+		</div>
+
+		<!-- //Main Container -->
+
+		@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

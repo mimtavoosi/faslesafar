@@ -1,0 +1,61 @@
+﻿@model List<DestinationVM> 
+<section class="section-style5">
+					<div class="container page-builder-ltr">
+						<div class="row row-style row_a1">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_a1c">
+								<div class="module so-deals-1tr home1_deals so-deals">
+									<div class="head-title clearfix">
+										<div class="block-title pull-left">
+											<h3><span>مقصد خود را انتخاب کنید</span></h3>
+										</div>
+									</div>
+									<div class="modcontent">
+										<div
+											class="so-deal modcontent products-list grid clearfix clearfix preset00-3 preset01-3 preset02-2 preset03-2 preset04-1  button-type1  style2">
+											<div class="category-slider-inner products-list yt-content-slider"
+												data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4"
+												data-speed="0.6" data-margin="30" data-items_column00="4"
+												data-items_column0="4" data-items_column1="4" data-items_column2="2"
+												data-items_column3="2" data-items_column4="1" data-arrows="no"
+												data-pagination="no" data-lazyload="yes" data-loop="yes"
+												data-hoverpause="yes">
+												@foreach (DestinationVM item in Model)
+												{
+										        <div class="item">
+													<div class="transition product-layout">
+														<div class="product-item-container ">
+															<div class="item-block so-quickview">
+																<div class="image">
+																	<a asp-controller="Home" asp-action="ShowDestinationTours" asp-route-id="@item.DestinationId" target="_self">
+																		<img src="~/pics/destpics/@(item.BigImage)"
+																			alt="@item.DestinationName" class="img-responsive dest1">
+																	</a>
+																</div>
+																<div class="item-content">
+																	<div class="item-title clearfix">
+																		<h3 class="pull-left"><a
+																				href="destination-detail.html"><i
+																					class="fa fa-map-marker"
+																					aria-hidden="true"></i> @item.DestinationName</a>
+																		</h3>
+																		<span class="pull-right">@item.ToursCount تور</span>
+																	</div>
+																	<div class="view-all"><a
+																			asp-controller="Home" asp-action="ShowDestinationTours" asp-route-id="@item.DestinationId">مشاهده همه تور
+																			ها
+																			<i class="fa fa-angle-double-left"
+																				aria-hidden="true"></i></a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>

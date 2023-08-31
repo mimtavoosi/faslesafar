@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "خانه";
+}
+
+<div id="content">
+			<div class="so-page-builder">
+				<div class="page-builder-ltr">
+					<div class="row row_a90w row-style">
+						<img class="responsive" src="~/pics/sitepics/BannerImage@(ViewBag.Ext)"
+													alt="فصل سفر">
+									</div>
+								</div>
+							</div>
+						</div>
+				<div class="travel-search-content2">
+					<div class="container page-builder-ltr">
+						<div class="row">
+							<form asp-controller="Home" asp-action="SearchTours" method="post" class="travl-search-advanced clearfix">
+				<div class="search-item city pull-left">
+					<p>عنوان تور</p>
+					<input type="text" class="tour-search-input" id="city" name="city" placeholder="مقصد مورد نظر را وارد کنید...">
+				</div>
+				<div class="search-item item-select pull-left typeselect">
+					<select id="type" name="type" class="mtopt">
+						<option disabled selected >دسته بندی</option>
+						<option value="داخلی">تور داخلی (@ViewBag.IranToursCount)</option>
+						<option value="خارجی">تور خارجی (@ViewBag.WorldToursCount)</option>
+					</select>
+				</div>
+				<div class="search-item item-select pull-left dateselect">
+					<select id="date" name="date" class="mtopt"
+						asp-items="@(new SelectList(ViewBag.Dates, nameof(DateVM.DbDate), nameof(DateVM.ShowDate)))" class="form-control">
+						<option disabled selected>تاریخ</option>
+					</select>
+				</div>
+				<div class="search-item item-select pull-left locselect">
+					<select id="dest" name="dest" class="mtopt"
+						asp-items="@(new SelectList(ViewBag.Destinations, nameof(Destination.DestinationId), nameof(Destination.DestinationName)))" class="form-control">
+						<option disabled selected>مقصد</option>
+					</select>
+				</div>
+				
+				<div class="search-item item-budget number pull-left">
+					<input type="number" id="days" class="hotel-budget-input" name="days"
+						   placeholder="مدت (روز)">
+				</div>
+				<div class="button-submit pull-left">
+					<button type="submit" class="button">
+						<i class="fa fa-search"
+						   aria-hidden="true"></i>
+					</button>
+					</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				@await Component.InvokeAsync("NewToursComponent")
+				@await Component.InvokeAsync("FavoriteToursComponent")
+				@await Component.InvokeAsync("DestinationsComponent")

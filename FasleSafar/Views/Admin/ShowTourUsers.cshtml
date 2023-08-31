@@ -1,0 +1,87 @@
+﻿@model IEnumerable<FasleSafar.Models.User>
+
+@{
+    ViewData["Title"] = "خریداران تور " + ViewBag.TourTitle;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+ <input id="searchtype" type="hidden" value="5" />
+<div class="table-responsive">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-xs">
+                            <div class="app-search">
+                                <input type="text" id="searchtext" placeholder="به دنبال چه می گردی ؟؟؟"
+                                       class="form-control">
+                                <a href=""><i class="fa fa-search"></i></a>
+                           </div>
+                        </li>
+                    </ul>
+                    <h4 class="header-title m-t-0 m-b-30">فهرست خریداران تور @ViewBag.TourTitle</h4>
+    <a asp-action="ExportToExcel" asp-route-tourId="@ViewBag.TourId" type="button" class="btn btn-info btn-rounded w-md waves-effect waves-light m-b-5">دانلود اطلاعات</a>
+ <table class="table">
+
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tbdata">
+@foreach (var item in Model) {
+        <tr>
+           <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                <a asp-action="AddMessage" asp-route-id="@item.UserId" type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">ارسال پیامک</a>
+                <a asp-action="ShowUserTours" asp-route-id="@item.UserId" type="button" class="btn btn-info btn-rounded w-md waves-effect waves-light m-b-5">تورها</a>
+                <a asp-action="ShowUserOrders" asp-route-id="@item.UserId" type="button" class="btn btn-pink btn-rounded w-md waves-effect waves-light m-b-5">خرید ها</a>
+                 <a asp-action="ShowUserReqTrips" asp-route-id="@item.UserId" type="button" class="btn btn-custom btn-rounded w-md waves-effect waves-light m-b-5">درخواست های سفر</a>
+                <a asp-action="ShowUserMessages" asp-route-id="@item.UserId" type="button" class="btn btn-inverse btn-rounded w-md waves-effect waves-light m-b-5">پیامک ها</a>
+                <a asp-action="EditUser" asp-route-id="@item.UserId" type="button" class="btn btn-warning btn-rounded w-md waves-effect waves-light m-b-5">ویرایش</a>
+                <a asp-action="DeleteUser" asp-route-id="@item.UserId" type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">حذف</a>
+           </td> 
+        </tr>
+}
+    </tbody>
+</table>
+ </div>
+
+<div class="row text-center">
+    <nav>
+        <ul class="pagination">
+@*            <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
+*@          @for (int i = 1; i <= (ViewBag.TourUsersPageCount+1); i++)
+          {
+                <li class="@(((int)ViewBag.TourUsersPageID==i)?"active":"")"><a href="/Admin/ShowTourUsers?id=@ViewBag.TourId&&pageid=@i">@i<span class="sr-only">(current)</span></a></li>
+          }
+@*            <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+*@        </ul>
+    </nav>
+</div>

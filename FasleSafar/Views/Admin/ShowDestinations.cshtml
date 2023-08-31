@@ -1,0 +1,92 @@
+﻿@model IEnumerable<FasleSafar.Models.Destination>
+
+@{
+    ViewData["Title"] = "مقاصد";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+ <input id="searchtype" type="hidden" value="1" />
+<div class="table-responsive">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-xs">
+                            <div class="app-search">
+                                <input type="text" id="searchtext" placeholder="به دنبال چه می گردی ؟؟؟"
+                                       class="form-control">
+                                <a href=""><i class="fa fa-search"></i></a>
+                           </div>
+                        </li>
+                    </ul>
+                    <h4 class="header-title m-t-0 m-b-30">فهرست مقاصد</h4>           
+                        <a asp-action="AddDestination" type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">افزودن</a>
+ <table class="table">
+
+
+    <thead>
+        <tr>
+            <th>
+                تصویر
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationName)
+            </th>
+              <th>
+                @Html.DisplayNameFor(model => model.IsAttraction)
+            </th>
+              <th>
+                @Html.DisplayNameFor(model => model.OnVitrin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tbdata">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/pics/destpics/@(item.BigImage)" class="dest0" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationName)
+            </td>
+             <td>
+                @if (item.IsAttraction)
+                {
+                    <span>&#9989</span>
+                }
+                else
+                {
+                   <span>&#10060</span>      
+                }
+            </td>
+            <td>
+                @if (item.OnVitrin)
+                {
+                    <span>&#9989</span>
+                }
+                else
+                {
+                   <span>&#10060</span>      
+                }
+            </td>
+            <td>
+                <a asp-action="ShowDestinationAttractions" asp-route-id="@item.DestinationId" type="button" class="btn btn-pink btn-rounded w-md waves-effect waves-light m-b-5">جاذبه های گردشگری</a>
+               <a asp-action="ShowDestinationTours" asp-route-id="@item.DestinationId" type="button" class="btn btn-info btn-rounded w-md waves-effect waves-light m-b-5">تورها</a>
+               <a asp-action="EditDestination" asp-route-id="@item.DestinationId" type="button" class="btn btn-warning btn-rounded w-md waves-effect waves-light m-b-5">ویرایش</a>
+               <a asp-action="DeleteDestination" asp-route-id="@item.DestinationId" type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">حذف</a>
+           </td> 
+        </tr>
+}
+    </tbody>
+</table>
+ </div>
+
+<div class="row text-center">
+    <nav>
+        <ul class="pagination">
+@*            <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
+*@          @for (int i = 1; i <= (ViewBag.DestinationsPageCount+1); i++)
+          {
+                <li class="@(((int)ViewBag.DestinationsPageID==i)?"active":"")"><a href="/Admin/ShowDestinations?pageid=@i">@i<span class="sr-only">(current)</span></a></li>
+          }
+@*            <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+*@        </ul>
+    </nav>
+</div>

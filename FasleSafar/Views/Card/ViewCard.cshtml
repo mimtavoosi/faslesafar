@@ -1,0 +1,154 @@
+﻿@model FactorPricesVM
+@{
+    ViewData["Title"] = "تایید سفارش";
+}
+<!-- Main Container  -->
+		<form asp-controller="Card" asp-action="BuyTour" method="post" class="form-bookingstep clearfix">
+			<div id="wizard">
+				<section class="clearfix">
+					<div class="conten-left pull-left">
+						<div class="item">
+							<div class="item-block clearfix">
+								<div class="image">
+									<a href="#" target="_self">
+								<img src="~/pics/tourpics/@(ViewBag.Tour.BigImage)" alt="@ViewBag.Tour.TourTitle"
+											class="img-responsive tour3">
+									</a>
+									<span class="price">@ViewBag.Tour.Price تومان</span>
+								</div>
+								<div class="item-content">
+									<h3><a asp-controller="Home" asp-action="ViewTour" asp-route-id="@ViewBag.Tour.TourId">@ViewBag.Tour.TourTitle</a></h3>
+									<input asp-for="TourId" type="hidden" value="@ViewBag.Tour.TourId" />
+									<input asp-for="PriceId" type="hidden" id="priceId" value="@ViewBag.PriceId" />
+									<input type="hidden" id="leasingval" value="@ViewBag.Leasing" />
+									<div class="reviews-content">
+										<div class="star">
+											<span class="@("star" + ViewBag.Tour.AvgScore.ToString().Replace(".","-"))"></span>
+										</div>
+									</div>
+									<div class="des"><i class="fa fa-clock-o" aria-hidden="true"></i>@ViewBag.Tour.DaysCount روز</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="conten-right pull-left">
+						<div class="choose-top clearfix">
+							<h4>@ViewBag.Tour.TourTitle</h4>
+							<div class="form-item item1 item-date date required">
+								<label class="control-label" for="input-number">تاریخ رفت</label>
+								<input type="text" class="tour-search-input datepicker-booking" id="date_arrival"
+									placeholder="DD/MM/YY" value="@ViewBag.Tour.StartDate" readonly>
+							</div>
+							<div class="form-item item-date date required">
+								<label class="control-label" for="input-number">تاریخ برگشت</label>
+								<input type="text" class="tour-search-input datepicker-booking" id="date_departure"
+									placeholder="DD/MM/YY" value="@ViewBag.Tour.EndDate" readonly>
+							</div>
+							<div class="form-item item1 number required">
+								<label class="control-label" for="input-adult">بزرگسال</label>
+						<input asp-for="AdultCount" type="number" value="1" min="1" id="input-adult" onchange="UpdatePrice(this),updateForm()">
+							</div>
+							<div class="form-item number">
+								<label class="control-label" for="input-childrens">کودک زیر 12 سال (@(100 - ViewBag.ChildPer)%-)</label>
+								<input asp-for="ChildCount" type="number" value="0" min="0"
+									id="input-childrens" onchange="UpdatePrice(this),updateForm()">
+							</div>
+							<div class="form-item number">
+								<label class="control-label" for="input-babies">کودک زیر 2 سال (@(100 - ViewBag.BabyPer)%-)</label>
+								<input asp-for="BabyCount" type="number" value="0" min="0"
+									id="input-babies" onchange="UpdatePrice(this),updateForm()">
+						
+							</div>
+						</div>
+
+				<span asp-validation-for="AdultCount" class="text-danger"></span><br/>
+
+				<hr>
+				<div class="dyntable-container">
+					<table class="table table-bordered" id="dynamic-table">
+						<thead>
+							<tr>
+								<th>رده سنی</th>
+								<th>نام<span class="required-field">★</span></th>
+								<th>نام خانوادگی<span class="required-field">★</span></th>
+								<th>کد ملی<span class="required-field">★</span></th>
+								<th>شماره تلفن<span class="required-field">★</span></th>
+								<th>تاریخ تولد<span class="required-field">★</span></th>
+								<th>میزان تحصیلات</th>
+								<th>شغل</th>
+								<th>سابقه بیماری خاص</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Default row with adult age group -->
+							<tr id="row-0" data-age-group="بزرگسال">
+								<td>بزرگسال</td>
+								<td><input class="form-control" type="text" placeholder="نام" required></td>
+								<td><input class="form-control" type="text" placeholder="نام خانوادگی" required></td>
+								<td><input class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="کد ملی" required></td>
+								<td><input class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="شماره تلفن" required></td>
+								<td><input class="form-control tour-search-input tarikh datepicker hasDatepicker" type="text" placeholder="تاریخ تولد" required></td>
+								<td><input class="form-control" type="text" placeholder="میزان تحصیلات"></td>
+								<td><input class="form-control" type="text" placeholder="شغل"></td>
+								<td><input class="form-control" type="text" placeholder="سابقه بیماری خاص"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div id="error-message" class="tblErr">لطفاً تمامی فیلدهای اجباری را پر کنید.</div>
+				</div>
+
+				<ul class="total clearfix">
+							<li>
+								<span id="count">1 بزرگسال</span>
+								<label id="oneprice">@ViewBag.Tour.Price تومان</label>
+							</li>
+							@if (ViewBag.Leasing == "on")
+							{
+								<li>
+								<span>مبلغ بیعانه (@ViewBag.DepositPer% از کل مبلغ)</span>
+								<label id="depositlbl">@ViewBag.FinPrice تومان</label>
+							    </li>
+							}
+							<li>
+								<span>مالیات بر ارزش افزوده (9%)</span>
+								<label id="maliat">@ViewBag.Maliat تومان</label>
+							</li>
+							<li>
+								<span>مبلغ کل</span>
+								<label id="totalprice">@ViewBag.TotalPrice تومان</label>
+							</li>
+						</ul>
+				<div class="table-responsive">
+					<textarea class="area-ghavanin" readonly>@ViewBag.Rules</textarea>
+		<br />
+
+
+		
+					<div class="checkbox-wrapper-15" >
+						<input class="inp-cbx" id="agree" type="checkbox" style="display: none;" />
+						<label class="cbx" for="agree">
+					<span >
+					<svg width="12px" height="9px" viewbox="0 0 12 9" >
+					<polyline points="1 5 4 8 11 1" > </polyline >
+					</svg >
+					</span >
+							<span class="lbl-gh">همه ی قوانین را میپذیرم</span>
+					</label >
+					</div >
+				
+				</div>
+					
+		
+					</div>
+			<input type="hidden" id="data-json" name="data">
+			<button type="submit" class="button paybtn" id="acceptbtn">پرداخت</button>
+				</section>
+				
+			</div>
+	
+		</form>
+		<!-- //Main Container -->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

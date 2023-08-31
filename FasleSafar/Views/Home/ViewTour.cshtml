@@ -1,0 +1,315 @@
+﻿@model TourVM
+@{
+    ViewData["Title"] = Model.TourTitle;
+}
+
+<div class="page-builder-ltr">
+	<div class="row row_a90w row-style">
+		<!--- SLider right-->
+		<div class="module sohomepage-slider so-homeslider-ltr">
+			<div class="modcontent">
+				<div id="sohomepage-slider1" class="slider-home1">
+					<div class="so-homeslider sohomeslider-inner-1">
+						<div class="item">
+							<img class="responsive" src="~/pics/tourpics/@(Model.BigImage)"
+								 alt="@Model.TourTitle">
+						</div>
+						@if (Model.ImagesAlbum != null && Model.ImagesAlbum !="")
+						{
+							@foreach (string item in Model.ImagesAlbum.Split(','))
+						{
+							<div class="item">
+								<img class="responsive"
+									 src="~/pics/tourpics/@(item)" alt="@Model.TourTitle">
+							</div>
+						}
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Main Container  -->
+		<div class="container product-detail tour-single">
+			<div class="row">
+				<div id="content" class="col-md-9 col-sm-12 col-xs-12">
+			<a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md">
+				<i class="fa fa-shopping-cart"></i>&nbsp; رزرو تور</a>
+					<div class="detail-content">
+						<!-- <div class="view-top">
+							<a href="#"><i class="fa fa-camera-retro" aria-hidden="true"></i>مشاهده تصاویر</a>
+							<a href="#"><i class="fa fa-play" aria-hidden="true"></i>مشاهده پیش نمایش</a>
+						</div> -->
+						<div class="sticky-content">
+							<h1 class="mttitle">@Model.TourTitle</h1>
+							<ul class="box-meta">
+								<li>
+									<div class="star"><span class="@("star" + Model.AvgScore.ToString().Replace(".","-"))"></span></div><label>@Model.AvgScore</label>
+								</li>
+								<li><i class="fa fa-clock-o" aria-hidden="true"></i>@Model.DaysCount روز</li>
+								<li><i class="fa fa-users" aria-hidden="true"></i>@Model.Capacity نفر</li>
+							</ul>
+							<div class="top-tab" id="nav">
+								<ul class="nav nav-tabs">
+									<li><a href="#home">مرور</a></li>
+							@if (Model.Facilities != "" && Model.Facilities?.Split('\n').Length > 0)
+							{
+								<li><a href="#menu3">خدمات تور</a></li>
+							}
+							<li><a href="#menu2">نقشه</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="content-tabs">
+							<div class="tab-content">
+								<p class="descview" id="home">@Model.TourDescription </p>
+						<ul class="location-wee clearfix">
+							<li>
+								<label>موقعیت مکانی</label>
+								<div class="item"><a asp-controller="Home" asp-action="ShowDestinationTours" asp-route-id="@Model.DestinationId">@Model.Destination.DestinationName</a></div>
+							</li>
+							<li>
+								<label>@Html.DisplayNameFor(model => model.DaysCount)</label>
+								<div class="item">@Model.DaysCount روز</div>
+							</li>
+							<li>
+								<label>@Html.DisplayNameFor(model => model.TourType)</label>
+								<div class="item">@Model.TourType</div>
+							</li>
+							<li>
+								<label>@Html.DisplayNameFor(model => model.TransportType)</label>
+								<div class="item">@Model.TransportType</div>
+							</li>
+							@if (Model.Vehicle!="")
+							{
+								<li>
+									<label>@Html.DisplayNameFor(model => model.Vehicle)</label>
+									<div class="item">@Model.Vehicle</div>
+								</li>
+							}
+							<li>
+								<label>@Html.DisplayNameFor(model => model.StartDate)</label>
+								<div class="item">@Model.StartDate</div>
+							</li>
+							@if (Model.ReachTime != "")
+							{
+								<li>
+									<label>@Html.DisplayNameFor(model => model.ReachTime)</label>
+									<div class="item">@Model.ReachTime</div>
+								</li>
+							}
+							<li>
+								<label>@Html.DisplayNameFor(model => model.EndDate)</label>
+								<div class="item">@Model.EndDate</div>
+							</li>
+							@if (Model.ReturnTime != "")
+							{
+								<li>
+									<label>@Html.DisplayNameFor(model => model.ReturnTime)</label>
+									<div class="item">@Model.ReturnTime</div>
+								</li>
+							}
+							<li>
+								<label>@Html.DisplayNameFor(model => model.Capacity)</label>
+								<div class="item">@Model.Capacity نفر</div>
+							</li>
+							<li>
+								<label>@Html.DisplayNameFor(model => model.Price)</label>
+								<div class="item">@Model.Price تومان</div>
+							</li>
+							<li>
+								<label>@Html.DisplayNameFor(model => model.IsLeasing)</label>
+								<div class="item">
+									@if (Model.IsLeasing)
+									{
+										<span>&#9989</span>
+									}
+									else
+									{
+										<span>&#10060</span>
+									}
+								</div>
+							</li>
+							@if (Model.Attractions!="" && Model.Attractions?.Split('\n').Length > 0)
+							{
+								<li>
+									<label>@Html.DisplayNameFor(model => model.Attractions)</label>
+									<div class="item">
+										@foreach (string item in Model.Attractions.Split('\n'))
+										{
+											if(item!="")
+											{
+												<div class="info">
+													<i aria-hidden="true"></i>@item
+												</div>
+											}
+										}
+									</div>
+								</li>
+							}
+							@if (Model.IncludeCosts != "" && Model.IncludeCosts?.Split('\n').Length > 0)
+							{
+								<li>
+									<label>@Html.DisplayNameFor(model => model.IncludeCosts)</label>
+									<div class="item">
+										@foreach (string item in Model.IncludeCosts.Split('\n'))
+										{
+											if (item!="")
+											{
+											<div class="info">
+												<i class="fa fa-check" aria-hidden="true"></i>@item
+											</div>
+											}
+										}
+									</div>
+								</li>
+							}
+							@if (Model.ExcludeCosts != "" &&  Model.ExcludeCosts?.Split('\n').Length > 0)
+							{
+								<li>
+									<label>@Html.DisplayNameFor(model => model.ExcludeCosts)</label>
+									<div class="item">
+										@foreach (string item in Model.ExcludeCosts.Split('\n'))
+										{
+											if(item!="")
+											{
+												<div class="info2">
+													<i class="fa fa-times" aria-hidden="true"></i>@item
+												</div>
+											}
+										}
+									</div>
+								</li>
+							}
+						</ul>
+						@if (Model.Facilities!="" && Model.Facilities?.Split('\n').Length > 0)
+						{
+							<div id="menu3" class="tour-amen clearfix">
+								<h3>@Html.DisplayNameFor(model => model.Facilities)</h3>
+								<ul>
+									@foreach (string item in Model.Facilities.Split('\n'))
+									{
+										if(item!="")
+										{
+											<li><i aria-hidden="true"></i>@item</li>
+										}
+									}
+								</ul>
+							</div>
+						}
+						<div id="menu2" class="tour-map">
+							<h3>نقشه موقعیت مکانی</h3>
+							<input id="geo" type="hidden" value="@Model.GeoCoordinates" />
+							<div id="map" class="naghshe">
+							</div>
+						</div>
+					</div>
+						</div>
+					</div>
+				</div>
+				<aside class="col-md-3 col-sm-4 col-xs-12 content-aside right_column sidebar-offcanvas">
+					<span id="close-sidebar" class="fa fa-times"></span>
+					<div class="module-search2 clearfix">
+						<h3 class="modtitle">
+							@if (Model.Price == "0")
+							{
+						<label>قیمت تعیین نشده</label>
+					}
+					else
+					{
+						<label>@Model.Price</label><span> تومان</span>
+					}
+				</h3>
+						<form asp-controller="Card" asp-action="ViewCard" method="post" class="search-pr">
+							<input type="hidden" name="tourId" id="tourId" value="@Model.TourId" />
+							<div class="search-item date">
+								<input type="text" value="@Model.StartDate" readonly>
+							</div>
+@*							<div class="item-avai">بلیط در دسترس : <span>@Model.Capacity</span></div>
+*@
+													@if (Model.Price!="0")
+													{
+														<div class="search-item item-select">
+								<h4>انتخاب اقامتگاه</h4>
+								<select id="price" name="priceId" class="mtopt"
+	                            asp-items="@(new SelectList(ViewBag.Prices, nameof(HotelStaring.StaringId), nameof(HotelStaring.Title)))"> 
+	                        </select>
+							</div>
+														<ul>
+													<li><span>قیمت : </span><label id="realprice">@Model.Price
+															تومان</label>
+													</li>
+													</ul>
+													if (ViewBag.DepositOn == "on")
+													{
+
+														@*<input type="checkbox" name="leasing" class="form-check-input" />
+
+														<label class="depositlbl" for="Leasing">خرید اقساطی</label>*@
+
+							<div class="checkbox-wrapper-15">
+								<input class="inp-cbx" id="leasing" name="leasing" type="checkbox" style="display: none;" />
+								<label class="cbx" for="leasing">
+									<span>
+										<svg width="12px" height="9px" viewbox="0 0 12 9">
+											<polyline points="1 5 4 8 11 1"> </polyline>
+										</svg>
+									</span>
+									<span class="lbl-gh">خرید اقساطی</span>
+								</label>
+							</div>
+													}
+
+													}
+													<div class="button-submit">
+														@if (Model.Price == "0")
+							{
+						<label class="mtlbl">جهت رزرو تور تماس بگیرید</label>
+					}
+					else
+					{
+						<button type="submit" class="button">رزرو تور</button>
+					}
+														
+													</div>
+						</form>
+					</div>
+					 @if (User.Identity.IsAuthenticated && ViewBag.Rate!="Exist")
+                        {
+							<div id="ratebox" class="mtrating clearfix">
+							<input type="radio" name="rating" value="5" id="rating5"><label for="rating5">☆</label>
+							<input type="radio" name="rating" value="4" id="rating4"><label for="rating4">☆</label>
+							<input type="radio" name="rating" value="3" id="rating3"><label for="rating3">☆</label>
+							<input type="radio" name="rating" value="2" id="rating2"><label for="rating2">☆</label>
+							<input type="radio" name="rating" value="1" id="rating1"><label for="rating1">☆</label>
+						</div>
+						<p class="result" id="result">
+								امتیاز شما ثبت شد
+						</p>
+						}
+
+						<div class="social-share-icon wicon">
+		<a class="option a1 color-facebook waves-effect waves-light" id="copy"><i class="fa fa-copy wicon"></i></a>
+		<a href="https://twitter.com/intent/tweet?url=https://faslesafar.com/Home/ViewTour/@Model.TourId" class="option a2 color-twitter waves-effect waves-light" id="twitter"><i class="fa fa-twitter wicon"></i></a>
+		<a href="https://www.facebook.com/sharer/sharer.php?u=https://faslesafar.com/Home/ViewTour/@Model.TourId" class="option a3 color-google-plus waves-effect waves-light" id="facebook"><i class="fa fa-facebook wicon"></i></a>
+		<a href="https://t.me/share/url?url=https://faslesafar.com/Home/ViewTour/@Model.TourId" class="option a4 color-pinterest waves-effect waves-light" id="telegram"><i class="fa fa-telegram wicon"></i></a>
+		<a href="https://api.whatsapp.com/send?text=https://faslesafar.com/Home/ViewTour/@Model.TourId" class="option a5 color-whatsapp waves-effect waves-light" id="whatsapp"><i class="fa fa-whatsapp wicon"></i></a>
+		<a class="option a color-facebook waves-effect waves-light"><i class="fa fa-share-alt wicon"></i></a>
+	</div>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+		<defs>
+			<filter id="goo">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+				<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 15 -5" result="goo" />
+				<feBlend in="SourceGraphic" in2="goo" />
+			</filter>
+		</defs>
+	</svg>
+					@await Component.InvokeAsync("PhoneBoxComponent")
+						
+				</aside>
+			</div>
+		</div>
+
+		<!-- //Main Container -->

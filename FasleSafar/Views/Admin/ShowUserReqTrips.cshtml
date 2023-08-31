@@ -1,0 +1,93 @@
+﻿@model IEnumerable<FasleSafar.Models.ReqTrip>
+
+@{
+    ViewData["Title"] = "درخواست های سفر " + ViewBag.FullName;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+ <input id="searchtype" type="hidden" value="10" />
+<div class="table-responsive">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-xs">
+                            <div class="app-search">
+                                <input type="text" id="searchtext" placeholder="به دنبال چه می گردی ؟؟؟"
+                                       class="form-control">
+                                <a href=""><i class="fa fa-search"></i></a>
+                           </div>
+                        </li>
+                    </ul>
+                    <h4 class="header-title m-t-0 m-b-30">فهرست خرید ها</h4>           
+ <table class="table">
+
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationName)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.PassengersCount)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.TransportType)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tbdata">
+@foreach (var item in Model) {
+        <tr>
+           <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.PassengersCount)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.TransportType)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+               <a asp-action="ReadReqTrip" asp-route-id="@item.ReqTripId" type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5">نمایش</a>
+               <a asp-action="DeleteReqTrip" asp-route-id="@item.ReqTripId" type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">حذف</a>
+           </td> 
+        </tr>
+}
+    </tbody>
+</table>
+ </div>
+
+<div class="row text-center">
+    <nav>
+        <ul class="pagination">
+@*            <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
+*@          @for (int i = 1; i <= (ViewBag.UserReqTripsPageCount+1); i++)
+          {
+                <li class="@(((int)ViewBag.UserReqTripsPageID==i)?"active":"")"><a href="/Admin/ShowUserReqTrips?id=@ViewBag.UserId&&pageid=@i">@i<span class="sr-only">(current)</span></a></li>
+          }
+@*            <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+*@        </ul>
+    </nav>
+</div>
