@@ -113,13 +113,10 @@
 }
 
 .naghshe {
-    width: 900px;
+    width: 850px;
     height: 500px;
-/*    max-height: 500px;
-    overflow-y: auto;
-*/    border: 0;
-      z-index:1;
-    /*background-color:blueviolet;*/
+    border: 0;
+    z-index:1;
 }
 
 .paybtn {
