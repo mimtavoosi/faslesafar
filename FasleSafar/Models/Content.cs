@@ -27,5 +27,8 @@ namespace FasleSafar.Models
         [Display(Name = "پسوند تصویر")]
         [MaxLength(6)]
         public string? ImageExt { get; set; }
+
+        [Display(Name = "مختصات جغرافیایی")]
+        public string? GeoCoordinates { get; set; }
     }
 }

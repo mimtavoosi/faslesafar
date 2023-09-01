@@ -616,7 +616,8 @@ namespace FasleSafar.Controllers
 					ContentType = content.ContentType,
 					ContentText = content.ContentText,
 					HasImage = (content.ContentImage?.Length > 0) ? true : false,
-					ImageExt = (content.ContentImage?.Length > 0) ? Path.GetExtension(content.ContentImage.FileName) : _contentRep.GetContentById(1019).ContentText
+					ImageExt = (content.ContentImage?.Length > 0) ? Path.GetExtension(content.ContentImage.FileName) : _contentRep.GetContentById(1019).ContentText,
+					GeoCoordinates = content.GeoCoordinates
 				};
 				_contentRep.AddContent(theContent);
 
@@ -659,7 +660,8 @@ namespace FasleSafar.Controllers
 				ContentTitle = s.ContentTitle,
 				ContentType = s.ContentType,
 				ContentText = s.ContentText,
-				HasImage = s.HasImage
+				HasImage = s.HasImage,
+				GeoCoordinates = s.GeoCoordinates
 			}).FirstOrDefault();
 			if (contentVM == null)
 			{
@@ -687,7 +689,8 @@ namespace FasleSafar.Controllers
 					ContentTitle = content.ContentTitle,
 					ContentType = content.ContentType,
 					ContentText = content.ContentText,
-					HasImage = (content.ContentImage?.Length > 0) ? true : _contentRep.GetContentById(content.ContentId).HasImage
+					HasImage = (content.ContentImage?.Length > 0) ? true : _contentRep.GetContentById(content.ContentId).HasImage,
+					GeoCoordinates = content.GeoCoordinates
 					,
 					ImageExt = (content.ContentImage?.Length > 0) ? await ChangeImageExt(1, content.ContentId, Path.GetExtension(content.ContentImage.FileName)) : _contentRep.GetContentById(content.ContentId).ImageExt
 				};

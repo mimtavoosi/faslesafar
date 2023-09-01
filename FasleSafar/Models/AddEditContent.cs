@@ -25,6 +25,9 @@ namespace FasleSafar.Models
         [Display(Name = "تصویر")]
         public bool? HasImage { get; set; }
 
+        [Display(Name = "مختصات جغرافیایی")]
+        public string? GeoCoordinates { get; set; }
+
         [Display(Name = "تصویر (600 * 1920)")]
         public IFormFile? ContentImage { get; set; }
     }
