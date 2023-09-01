@@ -9576,7 +9576,18 @@ span.fa-stack .fa-star.fa-stack-2x:before {
 }
 
 .tour-map {
-  /*padding-top: 200px;*/
+  padding-top: 200px;
+  margin-bottom: -140px;
+}
+
+.tour-map h3 {
+  font-size: 24px;
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #191919;
+  margin: 0 0 20px 0;
+}
+.content-map {
   margin-bottom: -140px;
 }
 
