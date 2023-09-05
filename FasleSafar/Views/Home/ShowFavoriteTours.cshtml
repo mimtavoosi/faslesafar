@@ -93,49 +93,7 @@
 				{
 								<div class="product-layout col-lg-6 col-md-6 col-sm-6 col-xs-6">
 								<div class="product-item-container item">
-									<div class="item-block so-quickview">
-										<div class="image">
-											<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId" target="_self">
-											<img src="~/pics/tourpics/@(item.BigImage)"
-											 alt="@item.TourTitle"
-											 class="img-responsive tour1">
-											@*<img src="~/pics/tourpics/@(item.TourId)-small@(item.SmallImageExt)"
-										alt="@item.TourTitle"
-										class="img-responsive">*@
-											</a>
-										</div>
-										<div class="item-content clearfix">
-											<h3><a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId">@item.TourTitle</a>
-											</h3>
-											<div class="reviews-content">
-												<div class="star">
-													<span class="@("star" + item.AvgScore.ToString().Replace(".","-"))"></span>
-												</div>
-												<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId" class="review-link" rel="nofollow">(@item.ScoreCount رأی)</a>
-											</div>
-											<ul>
-												<li><i class="fa fa-map-marker" aria-hidden="true"></i> @item.Destination.DestinationName</li>
-												<li><i class="fa fa-clock-o" aria-hidden="true"></i> @item.DaysCount روز</li>
-												<li><i class="fa fa-user-circle" aria-hidden="true"></i> @item.Capacity نفر</li>
-											</ul>
-											<div class="des">@item.TourDescription</div>
-											<div class="item-bot clearfix">
-												<div class="price pull-left">
-													@if (@item.Price == "0")
-																	{
-																		<label>تعیین نشده</label>
-																	}
-																	else
-																	{
-																				<label>از&nbsp;</label><label>@item.Price</label><span>
-																					تومان</span>
-																	}
-												</div>
-												<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@item.TourId"
-													class="book-now pull-right">مشاهده تور</a>
-											</div>
-										</div>
-									</div>
+								<partial name="_TourBox" model="item" />
 								</div>
 							</div>
 				}

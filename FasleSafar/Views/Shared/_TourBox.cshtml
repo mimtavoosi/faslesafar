@@ -1,0 +1,58 @@
+﻿@model TourVM
+<div class="item-block so-quickview">
+	<div class="image">
+		<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@Model.TourId" target="_self">
+			<img src="~/pics/tourpics/@(Model.BigImage)"
+				 alt="@Model.TourTitle"
+				 class="img-responsive tour1">
+		</a>
+
+	</div>
+	<div class="item-content clearfix">
+		<h3 class="h3-tour"><a asp-controller="Home" asp-action="ViewTour" asp-route-id="@Model.TourId">@Model.TourTitle</a></h3>
+		<div class="reviews-content">
+			<div class="star">
+				<span class="@("star" + Model.AvgScore.ToString().Replace(".","-"))"></span>
+			</div>
+			<a href="#" class="review-link"
+			   rel="nofollow">(@Model.ScoreCount بررسی)</a>
+		</div>
+		<ul class="ul-style">
+			<li>
+				<i class="fa fa-clock-o"
+				   aria-hidden="true"></i> @Model.DaysCount روز
+			</li>
+			<li>
+				<i class="fa fa-user-circle"
+				   aria-hidden="true"></i> @Model.Capacity نفر
+			</li>
+			<li>
+				<i class="fa fa-calendar"
+				   aria-hidden="true"></i> @Model.StartDate
+			</li>
+		</ul>
+		<div class="item-bot clearfix">
+			<div class="price pull-left">
+				@if (@Model.Price == "0")
+				{
+					<label>تعیین نشده</label>
+				}
+				else
+				{
+					<label>از&nbsp;</label>
+
+					<label>@Model.Price</label>
+
+					<span>
+						تومان
+					</span>
+				}
+			</div>
+			<a asp-controller="Home" asp-action="ViewTour" asp-route-id="@Model.TourId"
+			   class="book-now pull-right">
+				مشاهده
+				تور
+			</a>
+		</div>
+	</div>
+</div>
