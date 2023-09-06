@@ -132,7 +132,7 @@
 }
 
 .img-responsive {
-    height: 161px;
+    min-height: 161px;
 }
 
 .fa-map-marker, fa-clock-o, clearfix, fa-user-circle {
