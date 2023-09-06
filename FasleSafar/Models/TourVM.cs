@@ -113,5 +113,7 @@ namespace FasleSafar.Models
         public Destination? Destination { get; set; }
 
         public List<HotelStaring>? HotelStarings { get; set; }
+
+        public int? FrameCase { get; set; } = 2;
     }
 }

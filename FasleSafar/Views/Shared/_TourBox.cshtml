@@ -28,9 +28,13 @@
 			</li>
 			<li>
 				<i class="fa fa-calendar"
-				   aria-hidden="true"></i> @Model.StartDate
+				   aria-hidden="true"></i>&nbsp;&nbsp; @Model.StartDate
 			</li>
 		</ul>
+		@if (Model.FrameCase != 1)
+		{
+			<div class="des">@Model.TourDescription</div>
+		}
 		<div class="item-bot clearfix">
 			<div class="price pull-left">
 				@if (@Model.Price == "0")
