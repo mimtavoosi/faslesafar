@@ -47,7 +47,8 @@ namespace RefereeManager.Components
                 ReturnTime = t.ReturnTime,
                 Attractions = t.Attractions,
                 GeoCoordinates = t.GeoCoordinates,
-            }).ToList();
+				FrameCase = 1,
+			}).ToList();
             return View("/Views/Components/FavoriteToursComponent.cshtml", tourVMs);
         }
     }
