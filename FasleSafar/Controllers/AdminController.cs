@@ -2586,19 +2586,6 @@ namespace FasleSafar.Controllers
 
 		#region ManageCookies
 
-		//public void SetCookie(string key, string value, bool isPersistant = false)
-		//{
-		//	CookieOptions options = new CookieOptions() { IsEssential = true, HttpOnly = true };
-		//	if (isPersistant) options.Expires = DateTime.Now.AddMinutes(20);
-		//	Response.Cookies.Delete(key);
-		//	Response.Cookies.Append(key, value, options);
-		//}
-
-		//public string GetCookie(string key)
-		//{
-		//	return Request.Cookies[key].ToString();
-		//}
-
 		public void SetCookie(string key, string value, bool isPersistant = false)
 		{
 			var tokenHandler = new JwtSecurityTokenHandler();
