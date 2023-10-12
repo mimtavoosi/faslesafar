@@ -15,7 +15,7 @@ namespace FasleSafar.Data.Repositories
         public Order GetCurrentOrderByUserId(int userId);
         public Order GetOrderById(int orderId);
         public void AddOrder(Order order);
-        public void EditOrder(Order order);
+        public void EditOrder(Order order,bool detach = false);
         public void RemoveOrder(Order order);
         public void RemoveOrder(int orderId);
         public bool ExistOrder(int orderId);
