@@ -22,7 +22,7 @@ namespace FasleSafar.Data.Services
         public void EditOrder(Order order)
         {
             _context.Orders.Update(order);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
 			_context.Entry(order).State = EntityState.Detached;
 		}
 

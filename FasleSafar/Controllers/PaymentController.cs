@@ -106,6 +106,7 @@ namespace FasleSafar.Controllers
 				if (verifyResult.Status == PaymentVerifyResultStatus.Succeed)
 				{
 					order.IsFinaly = order.IsFinaly.Contains("اقساطی") ? "پرداخت اقساطی" : "پرداخت نقدی";
+					
 					order.Tour.Capacity -= (order.AdultCount + order.ChildCount + order.BabyCount);
 					if (order.Tour.Capacity <= 0) order.Tour.OpenState = "پایان یافته";
 					_tourRep.EditTour(order.Tour);
