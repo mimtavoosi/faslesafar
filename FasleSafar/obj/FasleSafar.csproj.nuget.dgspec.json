@@ -85,6 +85,10 @@
               "target": "Package",
               "version": "[1.3.0, )"
             },
+            "Parbad.Gateway.ZarinPal": {
+              "target": "Package",
+              "version": "[1.4.1, )"
+            },
             "Parbad.Storage.Cache": {
               "target": "Package",
               "version": "[1.3.0, )"

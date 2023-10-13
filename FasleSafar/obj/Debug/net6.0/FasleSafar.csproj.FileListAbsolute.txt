@@ -331,3 +331,16 @@ E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\obj\De
 E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\obj\Debug\net6.0\FasleSafar.pdb
 E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\obj\Debug\net6.0\FasleSafar.genruntimeconfig.cache
 E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\obj\Debug\net6.0\ref\FasleSafar.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.AspNetCore.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.Formatting.Compact.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Serilog.Sinks.File.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Debug\net6.0\Parbad.Gateway.ZarinPal.dll

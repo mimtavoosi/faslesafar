@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gU05dozSU1xt5wohWrkqCjfCz8CdXfhfg971CCFd8O4=",
+  "Hash": "UXCZk5Qw/QeiA2LEJS//sTWlrPmHj2xQhAdBvmSSz14=",
   "Source": "FasleSafar",
   "BasePath": "_content/FasleSafar",
   "Mode": "Default",
@@ -33335,6 +33335,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\sass\\utilities\\_utilities.scss"
+    },
+    {
+      "Identity": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\serilog.txt",
+      "SourceId": "FasleSafar",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\",
+      "BasePath": "_content/FasleSafar",
+      "RelativePath": "serilog.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\serilog.txt"
     }
   ]
 }

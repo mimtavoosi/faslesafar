@@ -10,6 +10,9 @@
     border: 1px solid gray;
     padding: 3px;
 }
+.tblErr{
+    color:maroon;
+}
 .tour3 {
     min-height: 247px;
     max-height: 247px;

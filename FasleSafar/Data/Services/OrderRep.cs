@@ -19,16 +19,14 @@ namespace FasleSafar.Data.Services
             _context.Entry(order).State = EntityState.Detached;
         }
 
-        public void EditOrder(Order order, bool detach = false)
+        public void EditOrder(Order order)
         {
             _context.Orders.Update(order);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
+			_context.Entry(order).State = EntityState.Detached;
+		}
 
-            if(detach)
-                _context.Entry(order).State = EntityState.Detached;
-        }
-
-        public bool ExistOrder(int orderId)
+		public bool ExistOrder(int orderId)
         {
             return _context.Orders.Any(o => o.OrderId == orderId);
         }

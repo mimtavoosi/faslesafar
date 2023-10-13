@@ -331,3 +331,16 @@ E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Re
 E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\EPPlus.Interfaces.dll
 E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\EPPlus.System.Drawing.dll
 E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.AspNetCore.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.Extensions.Hosting.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.Extensions.Logging.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.Formatting.Compact.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.Settings.Configuration.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.Sinks.Console.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.Sinks.Debug.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Serilog.Sinks.File.dll
+E:\Education\Programing\Laboratory\Current Projects\FasleSafar\FasleSafar\bin\Release\net6.0\Parbad.Gateway.ZarinPal.dll

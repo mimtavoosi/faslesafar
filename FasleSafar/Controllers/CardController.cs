@@ -161,7 +161,7 @@ namespace FasleSafar.Controllers
         }
 
 
-        public IActionResult FinishBuy(int id,string message="",long refId = 0)
+        public IActionResult FinishBuy(int id,string message="",string refId = "0")
         {
           var order = _orderRep.GetOrderById(id);
           var user = _userRep.GetUserById((int)order.UserId);
@@ -178,7 +178,7 @@ namespace FasleSafar.Controllers
           ViewBag.MobileNumber = user.MobileNumber;
           ViewBag.PayMode = order.IsFinaly;
           ViewBag.Deposit = order.IsFinaly.Contains("اقساطی");
-            if (refId != 0)
+            if (refId != "0")
             {
                 ViewBag.RefId = refId;
                 ViewBag.Status = "موفق";

@@ -1,14 +1,18 @@
 ﻿using FasleSafar.Data;
 using FasleSafar.Data.Repositories;
 using FasleSafar.Data.Services;
+using FasleSafar.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using NuGet.Configuration;
 using Parbad.Builder;
 using Parbad.Gateway.Mellat;
 using Parbad.Gateway.Melli;
 using Parbad.Gateway.ParbadVirtual;
 using Parbad.Gateway.Saman;
+using Parbad.Gateway.ZarinPal;
 using Serilog;
 using System.Net;
 using System.Security.Claims;
@@ -21,11 +25,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+var settings = builder.Configuration.GetSection("Settings").Get<ConfigSettings>();
+
 #region Db Context
 //intro dbcontext to Core service for work with database
 builder.Services.AddDbContext<FasleSafarContext>(options =>
 {
-    options.UseSqlServer(@"Server=.;Initial Catalog=faslesa1_FaslesafarDb;User ID=faslesa1_user;Password=139P?9mee;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+	options.UseSqlServer(settings.ConnectioString);
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
@@ -68,7 +74,22 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddParbad()
         .ConfigureGateways(gateways =>
         {
-            gateways
+			gateways
+			  .AddZarinPal()
+			  .WithAccounts(accounts =>
+			  {
+				  accounts.AddInMemory(account =>
+				  {
+					  account.MerchantId = "f024bc76-f262-456e-8e9b-d59d32e12cd5";
+					  account.IsSandbox = true;
+				  });
+			  });
+
+			gateways
+				.AddParbadVirtual()
+				.WithOptions(options => options.GatewayPath = "/MyVirtualGateway");
+
+			gateways
                  .AddMelli()
                  .WithAccounts(source =>
                  {
@@ -113,6 +134,9 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseParbadVirtualGateway();
+
 
 // If Request is For Admin Part & The user is not Logined or The user is not Admin Go to Page /Account/Login
 app.Use(async (context, next) =>

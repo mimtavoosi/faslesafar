@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aLEXuLJtO711EgqP4LnrfqOIYgP4FPzQzMINWBxU8N6prsUaMkR28y73dS6bDkp7RksH0uRWnqKoJS3Qt6IQBw==",
+  "dgSpecHash": "oAY+gYCPfvO9SUOmuWR9JEbyh6veRYQPMXRfIfoSkZBF5YGevBS4D9AKg08sLNK7Qli7poIKULrXSmYrvFgrfA==",
   "success": true,
   "projectFilePath": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\FasleSafar.csproj",
   "expectedPackageFiles": [
@@ -101,6 +101,7 @@
     "C:\\Users\\Mohammad Tavoosi\\.nuget\\packages\\nuget.versioning\\6.3.1\\nuget.versioning.6.3.1.nupkg.sha512",
     "C:\\Users\\Mohammad Tavoosi\\.nuget\\packages\\parbad\\3.9.0\\parbad.3.9.0.nupkg.sha512",
     "C:\\Users\\Mohammad Tavoosi\\.nuget\\packages\\parbad.aspnetcore\\1.3.0\\parbad.aspnetcore.1.3.0.nupkg.sha512",
+    "C:\\Users\\Mohammad Tavoosi\\.nuget\\packages\\parbad.gateway.zarinpal\\1.4.1\\parbad.gateway.zarinpal.1.4.1.nupkg.sha512",
     "C:\\Users\\Mohammad Tavoosi\\.nuget\\packages\\parbad.storage.abstractions\\1.1.0\\parbad.storage.abstractions.1.1.0.nupkg.sha512",
     "C:\\Users\\Mohammad Tavoosi\\.nuget\\packages\\parbad.storage.cache\\1.3.0\\parbad.storage.cache.1.3.0.nupkg.sha512",
     "C:\\Users\\Mohammad Tavoosi\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

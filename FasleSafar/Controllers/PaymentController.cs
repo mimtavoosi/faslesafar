@@ -17,13 +17,16 @@ namespace FasleSafar.Controllers
 		public ITourRep _tourRep;
 		public IOrderRep _orderRep;
         public IUserRep _userRep;
-        private readonly IOnlinePayment _onlinePayment;
+		private readonly IConfiguration _configuration;
+		private readonly IOnlinePayment _onlinePayment;
 
-        public PaymentController(ITourRep tourRep, IOrderRep orderRep,IUserRep userRep,IOnlinePayment onlinePayment)
+        public PaymentController(ITourRep tourRep, IOrderRep orderRep,IUserRep userRep,IOnlinePayment onlinePayment,IConfiguration configuration)
         {
 			_tourRep = tourRep;
 			_orderRep = orderRep;
             _userRep = userRep;
+
+			_configuration = configuration;
 
             _onlinePayment = onlinePayment;
         }
@@ -43,9 +46,11 @@ namespace FasleSafar.Controllers
 
 			var result = await _onlinePayment.RequestAsync(invoice =>
             {
-                invoice.SetCallbackUrl(callbackUrl)
+				var settings = _configuration.GetSection("Settings").Get<ConfigSettings>();
+
+				invoice.SetCallbackUrl(callbackUrl)
                        .SetAmount(RetreivePrice(order.Price + "0"?? "0"))
-                       .SetGateway("Melli");
+                       .SetGateway(settings.PayGateWay);
 
                 invoice.UseAutoIncrementTrackingNumber();
                 
@@ -64,6 +69,7 @@ namespace FasleSafar.Controllers
         public async Task<IActionResult> Verify(string paymentToken="",int fsorderId = 0)
         {
 			Order order = new Order();
+			string redirectUrl = "";
 			try
 			{
 				order = _orderRep.GetOrderById(fsorderId);
@@ -76,8 +82,9 @@ namespace FasleSafar.Controllers
 					// You can also see if the invoice is already verified before.
 					var isAlreadyVerified = invoice.IsAlreadyVerified;
 					order.IsFinaly = "لغو شده";
+					redirectUrl = "/Card/FinishBuy?id=" + order.OrderId;
 					_orderRep.EditOrder(order);
-					return Redirect("/Card/FinishBuy?id=" + order.OrderId);
+					return Redirect(redirectUrl);
 				}
 
 				// This is an example of cancelling an invoice when you think that the payment process must be stopped.
@@ -86,8 +93,10 @@ namespace FasleSafar.Controllers
 					var cancelResult = await _onlinePayment.CancelAsync(invoice, cancellationReason: "Sorry, We have no more capacity to sell.");
 
 					order.IsFinaly = "لغو شده";
+					redirectUrl = "/Card/FinishBuy?id=" + order.OrderId + "&message=" + $"متاسفانه ظرفیت تور مورد نظر کمتر از تعداد بلیط درخواستی است \n در صورت کسر وجه مبلغ پرداختی طی 48 ساعت آینده عودت داده می شود.";
 					_orderRep.EditOrder(order);
-					return Redirect("/Card/FinishBuy?id=" + order.OrderId + "&message=" + $"متاسفانه ظرفیت تور مورد نظر کمتر از تعداد بلیط درخواستی است \n در صورت کسر وجه مبلغ پرداختی طی 48 ساعت آینده عودت داده می شود.");
+					return Redirect(redirectUrl);
+
 				}
 
 				var verifyResult = await _onlinePayment.VerifyAsync(invoice);
@@ -97,29 +106,28 @@ namespace FasleSafar.Controllers
 				if (verifyResult.Status == PaymentVerifyResultStatus.Succeed)
 				{
 					order.IsFinaly = order.IsFinaly.Contains("اقساطی") ? "پرداخت اقساطی" : "پرداخت نقدی";
-					_orderRep.EditOrder(order,true);
 					order.Tour.Capacity -= (order.AdultCount + order.ChildCount + order.BabyCount);
 					if (order.Tour.Capacity <= 0) order.Tour.OpenState = "پایان یافته";
 					_tourRep.EditTour(order.Tour);
-					return Redirect("/Card/FinishBuy?id=" + order.OrderId + "&refId=" + verifyResult.TransactionCode);
+					redirectUrl = "/Card/FinishBuy?id=" + order.OrderId + "&refId=" + verifyResult.TransactionCode;
+					_orderRep.EditOrder(order);
+					return Redirect(redirectUrl);
 				}
 
 				else
 
 				{
 					order.IsFinaly = "لغو شده";
+					redirectUrl = "/Card/FinishBuy?id=" + order.OrderId;
 					_orderRep.EditOrder(order);
-					return Redirect("/Card/FinishBuy?id=" + order.OrderId);
+					return Redirect(redirectUrl);
 				}
 			}
             catch (Exception ex)
             {
-
+				ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message);	
             }
-			order.IsFinaly = "لغو شده";
-			_orderRep.EditOrder(order);
-			return Redirect("/Card/FinishBuy?id=" + order.OrderId);
-
+			return Redirect(redirectUrl);
 		}
 
         //[HttpGet]
