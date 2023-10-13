@@ -1,5 +1,5 @@
 ﻿.area-ghavanin {
-    width: 100%;
+    width: 923px;
     height: 150px;
     background-color: whitesmoke;
     border: 1px dotted #2db2ff;
@@ -121,7 +121,31 @@
 .checkbox-wrapper-15 .cbx:hover span:first-child {
     border-color: #3c53c7;
 }
+@keyframes check-15 {
+    50% {
+        transform: scale(1.2);
+    }
+}
 
+.reviews-content {
+    text-align: center;
+}
+
+.img-responsive {
+    min-height: 161px;
+}
+
+.fa-map-marker, fa-clock-o, clearfix, fa-user-circle {
+    text-align: center;
+}
+
+.ul-style {
+    text-align: center;
+}
+
+.h3-tour {
+    text-align: center;
+}
 @media screen and (max-width:568px) {
     .form-control {
         width: 120px;
@@ -172,12 +196,4 @@
         transform: scaleX(1);
         transition: all 0.3s ease;
     }
-
-@keyframes check-15 {
-    50% {
-        transform: scale(1.2);
-    }
-}
-
-
 

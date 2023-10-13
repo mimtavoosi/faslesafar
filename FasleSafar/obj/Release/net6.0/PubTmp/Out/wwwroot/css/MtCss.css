@@ -34,12 +34,12 @@
 .mttitle{
    padding-top:10px;
 }
-.tour1 {
+/*.tour1 {
     min-width: 134px;
     min-height: 247px;
     max-height: 220px;
     max-width: 247px;
-}
+}*/
 .regbtn {
     float: left;
 }
@@ -113,13 +113,10 @@
 }
 
 .naghshe {
-    width: 900px;
+    width: 100%;
     height: 500px;
-/*    max-height: 500px;
-    overflow-y: auto;
-*/    border: 0;
-      z-index:1;
-    /*background-color:blueviolet;*/
+    border: 0;
+    z-index:1;
 }
 
 .paybtn {
@@ -148,7 +145,9 @@
 .wicon {
     color: #fff;
 }
-
+.bonus-login{
+    z-index:999;
+}
 .social-share-icon {
     color: #fff;
     position: absolute;
@@ -458,3 +457,129 @@ star1-0 {
         color: red;
         display: none;
     }
+}
+
+
+
+
+.mybox {
+    border-radius: 4px;
+}
+
+.checked {
+    color: orange;
+}
+
+.spanbox {
+    font-size: 13px;
+    color: #797878;
+}
+
+.iconbox {
+    width: 19px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.titles {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.imgbox {
+    /* width: 100%; */
+    transition: transform 0.3s ease;
+}
+
+.mybox:hover .imgbox {
+    transform: translateY(-10px);
+}
+
+.mybox {
+    display: inline-block;
+    margin: 15px;
+    border: 1px solid #fff;
+    width: 350px;
+    border: 1px solid #fff;
+    transition: box-shadow 0.3s ease;
+}
+
+    .mybox:hover {
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
+    }
+
+.calMaghale {
+    margin-top: -25px;
+    text-align: left;
+    margin-left: 10px;
+    color: #2DB2FF;
+}
+
+.locationP {
+    font-size: 20px;
+    font-weight: 25px;
+    color: #000;
+    transition: color 0.5s ease;
+    margin-top: -28px;
+    text-align: center;
+}
+
+    .locationP:hover {
+        color: #2DB2FF;
+    }
+
+.star {
+    text-align: center;
+}
+
+.imgtour {
+    width: 100%;
+    height: 25%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+.seeTour {
+    float: left;
+    border: none;
+    width: 135px;
+    background: #e6e6e6;
+    border-radius: 4px;
+    transition: background-color 0.7s ease;
+    margin-top: -40px;
+    margin-left: 5px;
+}
+
+    .seeTour:hover {
+        background-color: #2DB2FF;
+        color: #ffffff;
+        border-radius: 4px;
+        padding: 2px 15px;
+    }
+
+.hrBox {
+    width: 35px;
+    color: #2DB2FF;
+}
+
+.priceBox {
+    font-weight: bold;
+    color: #2DB2FF;
+    font-size: 17px;
+    margin-top: -13px;
+    margin-right: 10px;
+}
+
+.gheymat {
+    color: #D30441;
+}
+
+.icons {
+    text-align: center;
+}
+
+.hrBox1 {
+    color: #2DB2FF;
+}

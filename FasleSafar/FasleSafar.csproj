@@ -35,6 +35,10 @@
     <PackageReference Include="Parbad" Version="3.9.0" />
     <PackageReference Include="Parbad.AspNetCore" Version="1.3.0" />
     <PackageReference Include="Parbad.Storage.Cache" Version="1.3.0" />
+    <PackageReference Include="Serilog" Version="3.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
     <PackageReference Include="System.ServiceModel.Http" Version="6.0.0" />
     <PackageReference Include="System.ServiceModel.Security" Version="6.0.0" />

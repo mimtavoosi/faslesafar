@@ -9587,6 +9587,16 @@ span.fa-stack .fa-star.fa-stack-2x:before {
   color: #191919;
   margin: 0 0 20px 0;
 }
+.content-map {
+}
+
+.content-map h3 {
+  font-size: 24px;
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #191919;
+  margin: 0 0 20px 0;
+}
 
 .tour-amen {
   padding-top: 220px;

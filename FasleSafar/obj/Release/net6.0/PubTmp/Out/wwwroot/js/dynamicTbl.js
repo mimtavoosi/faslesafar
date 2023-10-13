@@ -52,8 +52,8 @@ function updateRows(count, currentState, ageGroup) {
           <td><input class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="کد ملی" required></td>
           <td><input class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="شماره تلفن" required></td>
           <td><input class="form-control datepicker" type="text" placeholder="تاریخ تولد" required></td>
-          <td><input class="form-control" type="text" placeholder="میزان تحصیلات" required></td>
-          <td><input class="form-control" type="text" placeholder="شغل" required></td>
+          <td><input class="form-control" type="text" placeholder="میزان تحصیلات"></td>
+          <td><input class="form-control" type="text" placeholder="شغل"></td>
           <td><input class="form-control" type="text" placeholder="سابقه بیماری خاص"></td>
         </tr>`;
             

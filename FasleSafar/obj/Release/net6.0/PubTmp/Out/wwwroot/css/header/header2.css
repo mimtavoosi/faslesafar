@@ -43,10 +43,10 @@
 
             .travel-search-content2 .travl-search-advanced .search-item.city input {
                 border-color: #fff;
-                font-size: 20px;
+                font-size: 14px;
                 color: #191919;
                 text-transform: capitalize;
-                font-weight: 600;
+                /*font-weight: 600;*/
                 padding: 0;
                 border-bottom: 1px #2db2ff solid;
                 border-radius: 0;

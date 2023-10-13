@@ -1206,13 +1206,13 @@
   padding-right: 5px;
 }
 
-.section-style4 .item .item-block .item-content .price span:before {
+/*.section-style4 .item .item-block .item-content .price span:before {
   content: "/";
   position: absolute;
   right: 0;
   top: -4px;
   font-size: 18px;
-}
+}*/
 
 .section-style4 .item .item-block .item-content .book-now {
   font-size: 14px;

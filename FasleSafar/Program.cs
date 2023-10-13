@@ -2,15 +2,19 @@
 using FasleSafar.Data.Repositories;
 using FasleSafar.Data.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 using Parbad.Builder;
 using Parbad.Gateway.Mellat;
 using Parbad.Gateway.Melli;
 using Parbad.Gateway.ParbadVirtual;
 using Parbad.Gateway.Saman;
+using Serilog;
+using System.Net;
 using System.Security.Claims;
 using System.Text.Json.Serialization;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,8 +25,7 @@ builder.Services.AddControllersWithViews();
 //intro dbcontext to Core service for work with database
 builder.Services.AddDbContext<FasleSafarContext>(options =>
 {
-    //options.UseSqlServer("Data Source =.;Initial Catalog=FasleSafarDB;Integrated Security=true;TrustServerCertificate=True;");
-    options.UseSqlServer(@"Server=faslesafar.com;Initial Catalog=faslesa1_FaslesafarDb;User ID=faslesa1_user;Password=139P?9mee;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+    options.UseSqlServer(@"Server=.;Initial Catalog=faslesa1_FaslesafarDb;User ID=faslesa1_user;Password=139P?9mee;MultipleActiveResultSets=true;TrustServerCertificate=True;");
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
@@ -82,6 +85,14 @@ builder.Services.AddParbad()
 
 #endregion
 
+string logPath = Path.Combine(Directory.GetCurrentDirectory(),
+					  "wwwroot",
+					  "serilog.txt");
+
+builder.Host.UseSerilog((hostContext, services, configuration) => {
+	configuration.WriteTo.File(logPath);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -94,6 +105,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSerilogRequestLogging();
 
 app.UseRouting();
 
@@ -123,4 +136,24 @@ app.Use(async (context, next) =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseExceptionHandler(errorApp =>
+{
+	errorApp.Run(async context =>
+	{
+		context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+		context.Response.ContentType = "text/html";
+
+		var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+
+        // ثبت خطا در Serilog
+        Log.Error(exceptionHandlerPathFeature.Error, "یک خطای داخلی رخ داد: {ErrorMessage}", exceptionHandlerPathFeature.Error.Message + '\n' + exceptionHandlerPathFeature.Error.StackTrace + '\n' + exceptionHandlerPathFeature.Error.Source + '\n' + exceptionHandlerPathFeature.Error.TargetSite + '\n'
+            + exceptionHandlerPathFeature.Error.InnerException?.Message +'\n' + exceptionHandlerPathFeature.Error.InnerException?.StackTrace + '\n' + exceptionHandlerPathFeature.Error.InnerException?.Source + '\n' + exceptionHandlerPathFeature.Error.InnerException?.TargetSite + '\n');
+
+
+
+        // ...
+    });
+
+});
 app.Run();

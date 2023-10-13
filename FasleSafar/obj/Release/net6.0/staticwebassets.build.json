@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fOqWoHyzklGLXlHu5KP9S3pRZqZGYtWJwSy+QjcFINU=",
+  "Hash": "zWTwI228KZ1UqyehIE6uwNSCeBTsPB9UvRlD9r3QsZs=",
   "Source": "FasleSafar",
   "BasePath": "_content/FasleSafar",
   "Mode": "Default",
@@ -30768,40 +30768,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\log.txt"
-    },
-    {
-      "Identity": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\Orders Document-1402-05-28 - 23_37.xlsx",
-      "SourceId": "FasleSafar",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\",
-      "BasePath": "_content/FasleSafar",
-      "RelativePath": "Orders Document-1402-05-28 - 23_37.xlsx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Orders Document-1402-05-28 - 23_37.xlsx"
-    },
-    {
-      "Identity": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\Orders Document-1402-05-28 - 23_39.xlsx",
-      "SourceId": "FasleSafar",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\",
-      "BasePath": "_content/FasleSafar",
-      "RelativePath": "Orders Document-1402-05-28 - 23_39.xlsx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Orders Document-1402-05-28 - 23_39.xlsx"
     },
     {
       "Identity": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\attrpics\\a1-.jpg",
