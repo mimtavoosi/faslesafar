@@ -43,6 +43,8 @@ namespace FasleSafar.Models
         [ForeignKey("TourId")] //the under rel is for ProductId FK - this declare brcause ProductId FK is not the same name with Product PK (id)
         public Tour? Tour { get; set; } //one order detail include one order
 
-		public List<Passenger>? Passengers { get; set; }
+		[InverseProperty("Order")]
+		public ICollection<Passenger> Passengers { get; set; }
+
 	}
 }

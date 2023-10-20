@@ -49,8 +49,8 @@ function updateRows(count, currentState, ageGroup) {
           <td>${ageGroup}</td>
           <td><input class="form-control" type="text" placeholder="نام" required></td>
           <td><input class="form-control" type="text" placeholder="نام خانوادگی" required></td>
-          <td><input class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="کد ملی" required></td>
-          <td><input class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="شماره تلفن" required></td>
+          <td><input class="form-control mellicode" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="کد ملی" required></td>
+          <td><input class="form-control phonenum" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="شماره تلفن" required></td>
           <td><input class="form-control datepicker" type="text" placeholder="تاریخ تولد" required></td>
           <td><input class="form-control" type="text" placeholder="میزان تحصیلات"></td>
           <td><input class="form-control" type="text" placeholder="شغل"></td>
@@ -77,29 +77,83 @@ function updateRows(count, currentState, ageGroup) {
     }
 }
 
+
 function validateForm() {
     const requiredFields = document.querySelectorAll("#dynamic-table [required]");
+    const nationalIDFields = document.querySelectorAll(".mellicode");
+    const phoneNumberFields = document.querySelectorAll(".phonenum");
     let isValid = true;
+    var goOn1 = true;
+    var goOn2 = true;
+    var goOn3 = true;
 
-  requiredFields.forEach(function (field) {
+
+
+    requiredFields.forEach(function (field) {
         if (field.value.trim() === '') {
           field.style.borderColor = 'red';
-          isValid = false;
+            if (goOn1 == true) {
+                goOn1 = false;
+            }
         } else {
-          field.style.borderColor = '';
+            field.style.borderColor = '';
         }
-      });
+  });
+
+    nationalIDFields.forEach(function (field) {
+        if (field.value.length !== 10) {
+            field.style.borderColor = 'red';
+            if (goOn2 == true) {
+                goOn2 = false;
+            }
+        } else {
+            field.style.borderColor = '';
+        }
+    });
+
+    phoneNumberFields.forEach(function (field) {
+        if (field.value.length !== 11) {
+            field.style.borderColor = 'red';
+            if (goOn3 == true) {
+                goOn3 = false;
+            }
+        } else {
+            field.style.borderColor = '';
+        }
+    });
+
+    isValid = writeErrors(goOn1, goOn2, goOn3);
 
     if (isValid) {
-        document.getElementById("error-message").style.display = "none";
+        //document.getElementById("error-message").style.display = "none";
         document.getElementById("acceptbtn").removeAttribute("disabled");
         const tableData = getTableData();
         document.getElementById('data-json').value = JSON.stringify(tableData);
     } else {
-        document.getElementById("error-message").style.display = "block";
+        /* document.getElementById("error-message").style.display = "block";*/
         document.getElementById("acceptbtn").setAttribute("disabled", "disabled");
         checkbox.checked = false;
     }
+}
+
+function writeErrors(goOn1, goOn2, goOn3) {
+    var isValid = true;
+    var errText = '';
+    var errLbl = document.getElementById("error-message");
+    if (!goOn1) {
+        isValid = false;
+        errText += 'لطفاً تمامی فیلدهای اجباری را پر کنید\n';
+    }
+    if (!goOn2) {
+        isValid = false;
+        errText += 'طول کد ملی باید دقیقاً 10 کاراکتر باشد\n';
+    }
+    if (!goOn3) {
+        isValid = false;
+        errText += 'طول شماره تلفن باید دقیقاً 11 کاراکتر باشد\n';
+    }
+    errLbl.innerText = errText;
+    return isValid;
 }
 
 function applyDatepickerToNewRows() {

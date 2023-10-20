@@ -17,15 +17,16 @@ namespace FasleSafar.Controllers
 		public ITourRep _tourRep;
 		public IOrderRep _orderRep;
         public IUserRep _userRep;
+        public IPassengerRep _passengerRep;
 		private readonly IConfiguration _configuration;
 		private readonly IOnlinePayment _onlinePayment;
 
-        public PaymentController(ITourRep tourRep, IOrderRep orderRep,IUserRep userRep,IOnlinePayment onlinePayment,IConfiguration configuration)
+        public PaymentController(ITourRep tourRep, IOrderRep orderRep,IUserRep userRep,IOnlinePayment onlinePayment,IConfiguration configuration,IPassengerRep passengerRep)
         {
 			_tourRep = tourRep;
 			_orderRep = orderRep;
             _userRep = userRep;
-
+			_passengerRep = passengerRep;
 			_configuration = configuration;
 
             _onlinePayment = onlinePayment;
@@ -112,6 +113,8 @@ namespace FasleSafar.Controllers
 					_tourRep.EditTour(order.Tour);
 					redirectUrl = "/Card/FinishBuy?id=" + order.OrderId + "&refId=" + verifyResult.TransactionCode;
 					_orderRep.EditOrder(order);
+					string passengersLog = $"اتمام پرداخت: تعداد مسافران سفارش شماره {order.OrderId} {_passengerRep.GetPassengersOfOrder(order.OrderId).Count} می باشد \n log 10";
+					ToolBox.SaveLog(passengersLog);
 					return Redirect(redirectUrl);
 				}
 
@@ -126,8 +129,8 @@ namespace FasleSafar.Controllers
 			}
             catch (Exception ex)
             {
-				ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message);	
-            }
+				ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 11");
+			}
 			return Redirect(redirectUrl);
 		}
 

@@ -638,7 +638,7 @@ namespace FasleSafar.Controllers
 					catch (Exception ex)
 					{
 
-						ToolBox.SaveLog(ex.Message);
+						ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 2");
 					}
 
 				}
@@ -714,7 +714,7 @@ namespace FasleSafar.Controllers
 					catch (Exception ex)
 					{
 
-						ToolBox.SaveLog(ex.Message);
+						ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 3");
 					}
 				}
 				return Redirect("/Admin?pageid=" + GetCookie("ContentsPageNumber"));
@@ -1073,7 +1073,7 @@ namespace FasleSafar.Controllers
 					catch (Exception ex)
 					{
 
-						ToolBox.SaveLog(ex.Message);
+						ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 4");
 					}
 
 					_destinationRep.EditDestination(theDestination);
@@ -1185,7 +1185,7 @@ namespace FasleSafar.Controllers
 					catch (Exception ex)
 					{
 
-						ToolBox.SaveLog(ex.Message);
+						ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 5");
 					}
 				}
 				_destinationRep.EditDestination(theDestination);
@@ -1370,7 +1370,7 @@ namespace FasleSafar.Controllers
 					catch (Exception ex)
 					{
 
-						ToolBox.SaveLog(ex.Message);
+						ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 1");
 					}
 
 					_attractionRep.EditAttraction(theAttraction);
@@ -1475,7 +1475,7 @@ namespace FasleSafar.Controllers
 					catch (Exception ex)
 					{
 
-						ToolBox.SaveLog(ex.Message);
+						ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 6");
 					}
 				}
 				_attractionRep.EditAttraction(theAttraction);
@@ -1784,7 +1784,7 @@ namespace FasleSafar.Controllers
 					catch (Exception ex)
 					{
 
-						ToolBox.SaveLog(ex.Message);
+						ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 7");
 					}
 					_tourRep.EditTour(theTour);
 				}
@@ -1967,7 +1967,7 @@ namespace FasleSafar.Controllers
 					catch (Exception ex)
 					{
 
-						ToolBox.SaveLog(ex.Message);
+						ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 8");
 					}
 				}
 				//if (tour.SmallTourImage?.Length > 0)

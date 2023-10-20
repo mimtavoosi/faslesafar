@@ -112,7 +112,7 @@ namespace FasleSafar.Utilities
 			}
 			catch (Exception ex)
 			{
-				SaveLog(ex.Message);
+				ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 12");
 				send = false;
 			}
 			return send;

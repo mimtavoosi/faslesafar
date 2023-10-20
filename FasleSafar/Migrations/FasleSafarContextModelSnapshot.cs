@@ -276,7 +276,7 @@ namespace FasleSafar.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int?>("OrderId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
@@ -588,7 +588,9 @@ namespace FasleSafar.Migrations
                 {
                     b.HasOne("FasleSafar.Models.Order", "Order")
                         .WithMany("Passengers")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Order");
                 });

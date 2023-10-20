@@ -1,6 +1,8 @@
 ﻿using FasleSafar.Data.Repositories;
 using FasleSafar.Models;
+using FasleSafar.Utilities;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml.Style;
 
 namespace FasleSafar.Data.Services
 {
@@ -12,19 +14,14 @@ namespace FasleSafar.Data.Services
             _context = context;
         }
 
-		public void AddPassenger(Passenger passenger)
-		{
-			_context.Passengers.Add(passenger);
-			_context.SaveChanges();
-			_context.Entry(passenger).State = EntityState.Detached;
-		}
-
 		public void AddPassengersForOrder(List<Passenger> passengers)
 		{
-			foreach (Passenger passenger in passengers)
+			foreach (var passenger in passengers)
 			{
-				AddPassenger(passenger);
+				_context.Passengers.Add(passenger);
 			}
+			_context.SaveChanges();
+			
 		}
 
 		public List<Passenger> GetPassengersOfOrder(int orderId)
@@ -36,7 +33,7 @@ namespace FasleSafar.Data.Services
 		{
 			_context.Passengers.Remove(passenger);
 			_context.SaveChanges();
-			_context.Entry(passenger).State = EntityState.Detached;
+			//_context.Entry(passenger).State = EntityState.Detached;
 		}
 
 		public void RemovePassengersOfOrder(int orderId)

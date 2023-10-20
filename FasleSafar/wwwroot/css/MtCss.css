@@ -11,7 +11,8 @@
     padding: 3px;
 }
 .tblErr{
-    color:maroon;
+    color:red;
+    display:block;
 }
 .tour3 {
     min-height: 247px;
@@ -454,11 +455,6 @@ star1-0 {
     /* تغییر رنگ متن دکمه به سفید */
     .open-sidebar.hidden-lg.hidden-md {
         color: white;
-    }
-
-    .tblErr {
-        color: red;
-        display: none;
     }
 }
 

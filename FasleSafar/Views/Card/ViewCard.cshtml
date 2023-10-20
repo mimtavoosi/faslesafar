@@ -85,8 +85,8 @@
 								<td>بزرگسال</td>
 								<td><input class="form-control" type="text" placeholder="نام" required></td>
 								<td><input class="form-control" type="text" placeholder="نام خانوادگی" required></td>
-								<td><input class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="کد ملی" required></td>
-								<td><input class="form-control" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="شماره تلفن" required></td>
+								<td><input class="form-control mellicode" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="کد ملی" required></td>
+								<td><input class="form-control phonenum" type="tel" onkeypress="return isNumber(event);" pattern="\d+" placeholder="شماره تلفن" required></td>
 								<td><input class="form-control tour-search-input tarikh datepicker hasDatepicker" type="text" placeholder="تاریخ تولد" required></td>
 								<td><input class="form-control" type="text" placeholder="میزان تحصیلات"></td>
 								<td><input class="form-control" type="text" placeholder="شغل"></td>
@@ -94,9 +94,9 @@
 							</tr>
 						</tbody>
 					</table>
-					<div id="error-message" class="tblErr">لطفاً تمامی فیلدهای اجباری را پر کنید.</div>
+				
 				</div>
-
+				<div id="error-message" class="tblErr"></div>
 				<ul class="total clearfix">
 							<li>
 								<span id="count">1 بزرگسال</span>

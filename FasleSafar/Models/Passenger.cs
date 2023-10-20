@@ -27,9 +27,9 @@ namespace FasleSafar.Models
 		public string? Job { get; set; }
 		[MaxLength(200)]
 		public string? SpecialDisease { get; set; }
-		public int? OrderId { get; set; }
+		public int  OrderId { get; set; }
 
 		[ForeignKey("OrderId")]
-		public Order? Order { get; set; }
+		public Order Order { get; set; }
 	}
 }

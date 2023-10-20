@@ -106,7 +106,9 @@ namespace FasleSafar.Controllers
         [HttpPost]
         public IActionResult BuyTour(FactorPricesVM factor, string data)
         {
-			List<Passenger> passengers = JsonConvert.DeserializeObject<List<Passenger>>(data);
+			try
+			{
+				List<Passenger> passengers = JsonConvert.DeserializeObject<List<Passenger>>(data);
 			decimal finprice = 0;
 			HotelStaring staring = _tourRep.GetHotelStaringById(factor.PriceId);
 
@@ -114,8 +116,7 @@ namespace FasleSafar.Controllers
 			var babyPrc = Convert.ToDecimal((int.Parse(_contentRep.GetContentById(1027).ContentText) / 100d));
 			var maliatPrc = Convert.ToDecimal((9d / 100));
 
-            try
-            {
+          
 				if (!bool.Parse(GetCookie("Leasing")))
 				{
 					finprice = (staring.Price.Value);
@@ -143,9 +144,16 @@ namespace FasleSafar.Controllers
 					Price = factor.TotalPrice
 				};
 				_orderRep.AddOrder(order);
+
+				string passengersLog = $"ثبت سفارش: تعداد مسافران سفارش شماره {order.OrderId} {passengers.Count} می باشد \n log 9";
+				ToolBox.SaveLog(passengersLog);
+
+
 				foreach (Passenger item in passengers)
 				{
 					item.SpecialDisease = item.SpecialDisease ?? "";
+					item.EducationLevel = item.EducationLevel ?? "";
+					item.Job = item.Job ?? "";
 					item.OrderId = order.OrderId;
 					item.BirthDate = item.BirthDate.FixDateToSave();
 				}
@@ -154,7 +162,7 @@ namespace FasleSafar.Controllers
             catch (Exception ex)
             {
 
-                ToolBox.SaveLog(ex.Message);
+                ToolBox.SaveLog(ex.Message + '\n' + ex.InnerException?.Message + "\n log 13");
             }
 		
             return Redirect("/Payment/Pay");
