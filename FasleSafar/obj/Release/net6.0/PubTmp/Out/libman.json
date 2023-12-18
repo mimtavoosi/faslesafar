@@ -5,6 +5,10 @@
     {
       "library": "leaflet@1.9.3",
       "destination": "wwwroot/lib/leaflet/"
+    },
+    {
+      "library": "sweetalert2@11.10.1",
+      "destination": "wwwroot/lib/sweetalert2/"
     }
   ]
 }

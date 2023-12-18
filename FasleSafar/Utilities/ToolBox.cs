@@ -21,6 +21,15 @@ namespace FasleSafar.Utilities
         {
             return value.ToString("#,0");
         }
+
+        public static decimal RetreivePrice(this string finalPrice)
+        {
+            for (int i = 0; i < finalPrice.Length; i++)
+            {
+                if (finalPrice[i] == ',') finalPrice.Remove(i, 1);
+            }
+            return decimal.Parse(finalPrice);
+        }
         public static string ToHash(this string value)
         {
 			if (string.IsNullOrEmpty(value)) return "";

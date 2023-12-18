@@ -10,7 +10,7 @@
     <div class="col-lg-6">
          <h4 class="header-title m-t-0 m-b-30">ویرایش تور @Model.TourTitle</h4>
         <form  class="form-horizontal" asp-action="EditTour" method="post" enctype="multipart/form-data">
-            <input type="hidden" asp-for="TourId" />
+            <input id="tourId" type="hidden" asp-for="TourId" />
             <input type="hidden" asp-for="BigImage" />
             <input type="hidden" asp-for="SmallImage" />
             <input type="hidden" asp-for="ImagesAlbum" />
@@ -77,36 +77,6 @@
                         <input asp-for="ReturnTime" class="form-control" />
                         <span asp-validation-for="ReturnTime" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Price1Title" class="control-label"></label>
-                        <input asp-for="Price1Title" class="form-control" />
-                        <span asp-validation-for="Price1Title" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ThreeStarPrice" class="control-label"></label>
-                        <input asp-for="ThreeStarPrice" placeholder="قیمت (به تومان)" onkeypress="return isNumber(event);" onkeyup="moneyCommaSep(this);" class="form-control" pattern="\d\,+" />
-                        <span asp-validation-for="ThreeStarPrice" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Price2Title" class="control-label"></label>
-                        <input asp-for="Price2Title" class="form-control" />
-                        <span asp-validation-for="Price2Title" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="FourStarPrice" class="control-label"></label>
-                        <input asp-for="FourStarPrice" placeholder="قیمت (به تومان)" onkeypress="return isNumber(event);" onkeyup="moneyCommaSep(this);" class="form-control" pattern="\d\,+" />
-                        <span asp-validation-for="FourStarPrice" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Price3Title" class="control-label"></label>
-                        <input asp-for="Price3Title" class="form-control" />
-                        <span asp-validation-for="Price3Title" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="FiveStarPrice" class="control-label"></label>
-                        <input asp-for="FiveStarPrice" placeholder="قیمت (به تومان)" onkeypress="return isNumber(event);" onkeyup="moneyCommaSep(this);" class="form-control" pattern="\d\,+" />
-                        <span asp-validation-for="FiveStarPrice" class="text-danger"></span>
-                    </div>
                     <div class="form-check">
                         <input asp-for="IsLeasing" type="checkbox" id="LeasingCB" class="form-check-input" />
                         <label for="LeasingCB">فروش اقساطی</label>
@@ -152,6 +122,11 @@
                 <input asp-for="AlbumImages" class="dropify" accept="image/png, image/jpeg" multiple>
                 <br /><span asp-validation-for="AlbumImages" class="text-danger"></span>  
             </div>
+            <div class="form-check">
+                <input asp-for="AvaliableOnlinePay" type="checkbox" id="AvaliableOnlinePayCB" class="form-check-input" />
+                <label for="AvaliableOnlinePayCB">امکان پرداحت آنلاین</label>
+                <span asp-validation-for="AvaliableOnlinePay" class="text-danger"></span>
+            </div>
             @* <div class="form-group">
                 <label asp-for="SmallTourImage" class="control-label"></label>
                     <input asp-for="SmallTourImage" class="dropify"  accept="image/png, image/jpeg">
@@ -167,7 +142,40 @@
                 <label for="cancelRB">لغو شده</label>
                 <span asp-validation-for="OpenState" class="text-danger"></span>
             </div>
-           <button type="submit" class="savebtn btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">ذخیره</button>
+
+                    <br /><div class="table-responsive">
+                        <a class="btn mtgridbtn" onclick="addRow()" type="button">
+                            <i class="fa fa-plus"></i> افزودن
+                        </a>
+
+                        <table class="table" id="dynamicTable2">
+                            <input type="hidden" id="data-json" name="data">
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        عنوان قیمت <span class="required-field">★</span>
+                                    </th>
+                                    <th>
+                                        قیمت بزرگسال
+                                    </th>
+                                    <th>
+                                        قیمت کودک زیر 12 سال
+                                    </th>
+                                    <th>
+                                        قیمت کودک زیر 2 سال
+                                    </th>
+                                    <th>حذف</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div id="error-message" class="tblErr"></div>
+                        <a type="button" id="validatebtn" class="btn btn-purple postbtn btn-rounded w-md waves-effect waves-light m-b-5" onclick="validateForm()" >ذخیره قیمت ها</a>
+                    </div><br />
+
+           <button type="submit" id="acceptbtn" class="savebtn btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" >ذخیره</button>
             <a asp-action="ShowTours" asp-route-pageid="@ViewBag.ToursPageID" type="button" class="savebtn btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5">بازگشت</a>
         </form>
     </div>
@@ -177,5 +185,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    <script src="~/js/dynamicTbl2.js"></script>
 }
 }

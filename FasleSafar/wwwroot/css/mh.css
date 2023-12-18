@@ -11,7 +11,12 @@
     color: black;
 }
 
-
+.lbl-gh {
+    padding: 10px;
+    font-weight: normal;
+    font-size: 14px;
+    color: black;
+}
 
 .whatsapp-icon {
     position: fixed;

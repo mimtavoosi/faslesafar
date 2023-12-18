@@ -34,10 +34,11 @@ namespace FasleSafar.Controllers
         }
 
         [HttpPost]
-        public IActionResult ViewCard(int tourId, int priceId,string leasing,FactorPricesVM factor)
+        public IActionResult ViewCard(int tourId, int priceId,string leasing,string factorreq)
         {
             decimal maliat = 0;
             decimal total = 0;
+            decimal PriceForPay = 0;
             SetCookie("CurTourId", tourId.ToString());
             Tour tour = _tourRep.GetTourById(tourId);
             HotelStaring staring = _tourRep.GetHotelStaringById(priceId);
@@ -50,18 +51,35 @@ namespace FasleSafar.Controllers
                 SetCookie("Leasing",true.ToString());
                 int deposit = int.Parse(_contentRep.GetContentById(1018).ContentText);
                 ViewBag.DepositPer= deposit;
-                decimal finprice = (staring.Price.Value * deposit) / 100;
-                ViewBag.FinPrice = finprice.FixPrice();
-                maliat = (finprice * 9) / 100;
-                total = maliat + finprice;
+                decimal finprice = (staring.AdultPrice.RetreivePrice() * deposit) / 100;
+				PriceForPay= finprice;
+				ViewBag.FinPrice = finprice.FixPrice();
             }
             else
             {
                 SetCookie("Leasing", false.ToString());
-                maliat = (staring.Price.Value * 9) / 100;
-                total = maliat + staring.Price.Value;
+                PriceForPay = staring.AdultPrice.RetreivePrice();
             }
-            TourVM tourVM = new TourVM()
+
+
+			ViewBag.FactorReq = factorreq ?? "off";
+
+			if (ViewBag.FactorReq == "on")
+			{
+				SetCookie("FactorReq", true.ToString());
+				int maliatPercent = int.Parse(_contentRep.GetContentById(1023).ContentText);
+				ViewBag.MaliatPer = maliatPercent;
+				maliat = (staring.AdultPrice.RetreivePrice() * maliatPercent) / 100;
+			}
+
+			else
+			{
+				SetCookie("FactorReq", false.ToString());
+			}
+
+			total = maliat + PriceForPay;
+
+			TourVM tourVM = new TourVM()
             {
                 AvgScore = tour.AvgScore,
                 Capacity = tour.Capacity,
@@ -69,7 +87,7 @@ namespace FasleSafar.Controllers
                 DestinationId = tour.DestinationId,
                 EndDate = tour.EndDate,
                 OpenState = tour.OpenState,
-                Price = staring.Price.Value.FixPrice(),
+                Price = staring.AdultPrice,
                 ScoreCount = tour.ScoreCount,
                 StartDate = tour.StartDate,
                 TotalScore = tour.TotalScore,
@@ -96,8 +114,6 @@ namespace FasleSafar.Controllers
             ViewBag.Maliat = maliat.FixPrice();
             ViewBag.TotalPrice = total.FixPrice();
             ViewBag.Tour = tourVM;
-            ViewBag.ChildPer = int.Parse(_contentRep.GetContentById(1023).ContentText);
-            ViewBag.BabyPer = int.Parse(_contentRep.GetContentById(1027).ContentText);
             int ruleType = tourVM.TourType.Contains("خارجی") ? 1029 : 1028;
             ViewBag.Rules = _contentRep.GetContentById(ruleType).ContentText;
 			return View();
@@ -109,34 +125,37 @@ namespace FasleSafar.Controllers
 			try
 			{
 				List<Passenger> passengers = JsonConvert.DeserializeObject<List<Passenger>>(data);
-			decimal finprice = 0;
-			HotelStaring staring = _tourRep.GetHotelStaringById(factor.PriceId);
-
-			var childPrc = Convert.ToDecimal((int.Parse(_contentRep.GetContentById(1023).ContentText) / 100d));
-			var babyPrc = Convert.ToDecimal((int.Parse(_contentRep.GetContentById(1027).ContentText) / 100d));
-			var maliatPrc = Convert.ToDecimal((9d / 100));
+				decimal adultfinprice = 0, childfinprice = 0, babyfinprice;
+				HotelStaring staring = _tourRep.GetHotelStaringById(factor.PriceId);
+            decimal maliatval = decimal.Parse(_contentRep.GetContentById(1023).ContentText);
+			var maliatPrc = Convert.ToDecimal((maliatval / 100));
 
           
 				if (!bool.Parse(GetCookie("Leasing")))
 				{
-					finprice = (staring.Price.Value);
+					adultfinprice = (staring.AdultPrice.RetreivePrice());
+					childfinprice = (staring.ChildPrice.RetreivePrice());
+					babyfinprice = (staring.BabyPrice.RetreivePrice());
 				}
 				else
 				{
 					int deposit = int.Parse(_contentRep.GetContentById(1018).ContentText);
-					finprice = (staring.Price.Value * deposit) / 100;
+					adultfinprice = (staring.AdultPrice.RetreivePrice() * deposit) / 100;
+					childfinprice = (staring.ChildPrice.RetreivePrice() * deposit) / 100;
+					babyfinprice = (staring.BabyPrice.RetreivePrice() * deposit) / 100;
 				}
 
-				factor.OnePrice = ((factor.AdultCount * staring.Price.Value) + (factor.ChildCount * (childPrc * staring.Price.Value)) + (factor.BabyCount * (babyPrc * staring.Price.Value))).FixPrice();
-				factor.FinPrice = ((factor.AdultCount * finprice) + (factor.ChildCount * (childPrc * finprice)) + (factor.BabyCount * (babyPrc * finprice))).FixPrice();
-				factor.Maliat = (RetreivePrice(factor.FinPrice) * maliatPrc).FixPrice();
-				factor.TotalPrice = (RetreivePrice(factor.FinPrice) + RetreivePrice(factor.Maliat)).FixPrice();
+				factor.OnePrice = ((factor.AdultCount * staring.AdultPrice.RetreivePrice()) + (factor.ChildCount * staring.ChildPrice.RetreivePrice()) + (factor.BabyCount * staring.BabyPrice.RetreivePrice())).FixPrice();
+				factor.FinPrice = ((factor.AdultCount * adultfinprice) + (factor.ChildCount * childfinprice) + (factor.BabyCount * babyfinprice)).FixPrice();
+				factor.Maliat = bool.Parse(GetCookie("FactorReq")) ? (factor.FinPrice.RetreivePrice() * maliatPrc).FixPrice() : "0";
+				factor.TotalPrice = (factor.FinPrice.RetreivePrice() + factor.Maliat.RetreivePrice()).FixPrice();
 
 				Order order = new Order()
 				{
 					CreateDate = DateTime.Now.ToString("yyyy/MM/dd - HH:mm").ToShamsi(),
 					IsFinaly = bool.Parse(GetCookie("Leasing")) ? "منتظر پرداخت اقساطی" : "منتظر پرداخت نقدی",
 					UserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                    FactorRequest = bool.Parse(GetCookie("FactorReq")),
 					AdultCount = factor.AdultCount,
 					TourId = factor.TourId,
 					ChildCount = factor.ChildCount,
@@ -186,6 +205,7 @@ namespace FasleSafar.Controllers
           ViewBag.MobileNumber = user.MobileNumber;
           ViewBag.PayMode = order.IsFinaly;
           ViewBag.Deposit = order.IsFinaly.Contains("اقساطی");
+          ViewBag.FactorRequest = order.FactorRequest.ToString();
             if (refId != "0")
             {
                 ViewBag.RefId = refId;
@@ -195,19 +215,12 @@ namespace FasleSafar.Controllers
             return View();
         }
 
-        private decimal RetreivePrice(string finalPrice)
-        {
-            for (int i = 0; i < finalPrice.Length; i++)
-            {
-                if (finalPrice[i] == ',') finalPrice.Remove(i, 1);
-            }
-            return decimal.Parse(finalPrice);
-        }
+       
 
         [HttpPost]
         public async Task<FactorPricesVM> ChangePrice(int adult, int child,int baby,int priceId)
         {
-            decimal finprice = 0;
+            decimal adultfinprice = 0, childfinprice=0, babyfinprice;
 			if (adult == 0) return null;
             FactorPricesVM factor = new FactorPricesVM() {
                 AdultCount = adult,
@@ -215,22 +228,26 @@ namespace FasleSafar.Controllers
 			    ChildCount = child
             };
             HotelStaring tour = _tourRep.GetHotelStaringById(priceId);
-            var childPrc = Convert.ToDecimal((int.Parse(_contentRep.GetContentById(1023).ContentText) / 100d));
-			var babyPrc = Convert.ToDecimal((int.Parse(_contentRep.GetContentById(1027).ContentText) / 100d));
-            var maliatPrc = Convert.ToDecimal((9d / 100));
+			decimal maliatval = decimal.Parse(_contentRep.GetContentById(1023).ContentText);
+			var maliatPrc = Convert.ToDecimal((maliatval / 100));
+
 			if (!bool.Parse(GetCookie("Leasing")))
             {
-                finprice = (tour.Price.Value);
+                adultfinprice = (tour.AdultPrice.RetreivePrice());
+                childfinprice = (tour.ChildPrice.RetreivePrice());
+                babyfinprice = (tour.BabyPrice.RetreivePrice());
 			}
 			else
             {
                 int deposit = int.Parse(_contentRep.GetContentById(1018).ContentText);
-				finprice = (tour.Price.Value * deposit) / 100;
+				adultfinprice = (tour.AdultPrice.RetreivePrice() * deposit) / 100;
+				childfinprice = (tour.ChildPrice.RetreivePrice() * deposit) / 100;
+				babyfinprice = (tour.BabyPrice.RetreivePrice() * deposit) / 100;
 			}
-            factor.OnePrice = ((adult * tour.Price.Value) + (child * (childPrc * tour.Price.Value)) + (baby * (babyPrc * tour.Price.Value))).FixPrice();
-            factor.FinPrice = ((adult * finprice) + (child * (childPrc * finprice)) + (baby * (babyPrc * finprice))).FixPrice();
-            factor.Maliat = (RetreivePrice(factor.FinPrice) * maliatPrc).FixPrice();
-            factor.TotalPrice = (RetreivePrice(factor.FinPrice) + RetreivePrice(factor.Maliat)).FixPrice();
+            factor.OnePrice = ((adult * tour.AdultPrice.RetreivePrice()) + (child * tour.ChildPrice.RetreivePrice()) + (baby * tour.BabyPrice.RetreivePrice())).FixPrice();
+            factor.FinPrice = ((adult * adultfinprice) + (child * childfinprice) + (baby *babyfinprice)).FixPrice();
+			factor.Maliat = bool.Parse(GetCookie("FactorReq")) ? (factor.FinPrice.RetreivePrice() * maliatPrc).FixPrice() : "0";
+			factor.TotalPrice = (factor.FinPrice.RetreivePrice() + factor.Maliat.RetreivePrice()).FixPrice();
 			return factor;
         }
 
@@ -245,19 +262,6 @@ namespace FasleSafar.Controllers
         }
 
 		#region ManageCookies
-
-		//public void SetCookie(string key, string value, bool isPersistant = false)
-		//{
-		//    CookieOptions options = new CookieOptions() { IsEssential = true, HttpOnly = true };
-		//    if (isPersistant) options.Expires = DateTime.Now.AddMinutes(20);
-		//    Response.Cookies.Delete(key);
-		//    Response.Cookies.Append(key, value, options);
-		//}
-
-		//public string GetCookie(string key)
-		//{
-		//    return Request.Cookies[key].ToString();
-		//}
 
 		public void SetCookie(string key, string value, bool isPersistant = false)
 		{

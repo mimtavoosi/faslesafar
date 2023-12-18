@@ -1,8 +1,8 @@
 ﻿const checkbox = document.getElementById("agree");
-
+const acceptBtn = document.getElementById("acceptbtn");
 checkbox.addEventListener("change", function () {
     if (this.checked == false) {
-        document.getElementById("acceptbtn").setAttribute("disabled", "disabled");
+        acceptBtn.setAttribute("disabled", "disabled");
     }
     else {
         validateForm();
@@ -10,6 +10,10 @@ checkbox.addEventListener("change", function () {
 
 });
 
+acceptBtn.addEventListener("click", function () {
+    validateForm();
+
+});
 const state = {
     adultCount: 1,
     childrenCount: 0,

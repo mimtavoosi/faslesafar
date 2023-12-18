@@ -12,6 +12,7 @@
 }
 .tblErr{
     color:red;
+    display:block;
 }
 .tour3 {
     min-height: 247px;
@@ -96,6 +97,10 @@
     color: #2db2ff;
     font-size:18px;
     font-weight:bolder;
+}
+.postbtn{
+    float:left;
+    display:none;
 }
 .redlink{
     color:red;
@@ -454,11 +459,6 @@ star1-0 {
     /* تغییر رنگ متن دکمه به سفید */
     .open-sidebar.hidden-lg.hidden-md {
         color: white;
-    }
-
-    .tblErr {
-        color: red;
-        display: none;
     }
 }
 

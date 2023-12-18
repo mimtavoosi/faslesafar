@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace FasleSafar.Controllers
 {
@@ -87,7 +88,7 @@ namespace FasleSafar.Controllers
 							|| (!string.IsNullOrEmpty(t.DaysCount.ToString()) && t.DaysCount.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.StartDate.ToString()) && t.StartDate.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.EndDate.ToString()) && t.EndDate.ToString().Contains(searchtext))
-							|| (!string.IsNullOrEmpty(t.Price.ToString()) && t.Price.ToString().Contains(searchtext))
+							|| (!string.IsNullOrEmpty(_tourRep.GetFirstPriceOfTour(t.TourId).ToString()) && _tourRep.GetFirstPriceOfTour(t.TourId).ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.Vehicle.ToString()) && t.Vehicle.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.AvgScore.ToString()) && t.AvgScore.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.TotalScore.ToString()) && t.TotalScore.ToString().Contains(searchtext))
@@ -102,8 +103,8 @@ namespace FasleSafar.Controllers
 								DestinationId = t.DestinationId,
 								EndDate = t.EndDate,
 								OpenState = t.OpenState,
-								Price = t.Price.Value.FixPrice(),
-								ScoreCount = t.ScoreCount,
+                                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                ScoreCount = t.ScoreCount,
 								StartDate = t.StartDate,
 								TotalScore = t.TotalScore,
 								TourId = t.TourId,
@@ -142,8 +143,8 @@ namespace FasleSafar.Controllers
 								DestinationId = t.DestinationId,
 								EndDate = t.EndDate,
 								OpenState = t.OpenState,
-								Price = t.Price.Value.FixPrice(),
-								ScoreCount = t.ScoreCount,
+                                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                ScoreCount = t.ScoreCount,
 								StartDate = t.StartDate,
 								TotalScore = t.TotalScore,
 								TourId = t.TourId,
@@ -182,7 +183,7 @@ namespace FasleSafar.Controllers
 							|| (!string.IsNullOrEmpty(t.DaysCount.ToString()) && t.DaysCount.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.StartDate.ToString()) && t.StartDate.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.EndDate.ToString()) && t.EndDate.ToString().Contains(searchtext))
-							|| (!string.IsNullOrEmpty(t.Price.ToString()) && t.Price.ToString().Contains(searchtext))
+							|| (!string.IsNullOrEmpty(_tourRep.GetFirstPriceOfTour(t.TourId).ToString()) && _tourRep.GetFirstPriceOfTour(t.TourId).ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.Vehicle.ToString()) && t.Vehicle.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.AvgScore.ToString()) && t.AvgScore.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.TotalScore.ToString()) && t.TotalScore.ToString().Contains(searchtext))
@@ -197,8 +198,8 @@ namespace FasleSafar.Controllers
 								DestinationId = t.DestinationId,
 								EndDate = t.EndDate,
 								OpenState = t.OpenState,
-								Price = t.Price.Value.FixPrice(),
-								ScoreCount = t.ScoreCount,
+                                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                ScoreCount = t.ScoreCount,
 								StartDate = t.StartDate,
 								TotalScore = t.TotalScore,
 								TourId = t.TourId,
@@ -237,8 +238,8 @@ namespace FasleSafar.Controllers
 								DestinationId = t.DestinationId,
 								EndDate = t.EndDate,
 								OpenState = t.OpenState,
-								Price = t.Price.Value.FixPrice(),
-								ScoreCount = t.ScoreCount,
+                                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                ScoreCount = t.ScoreCount,
 								StartDate = t.StartDate,
 								TotalScore = t.TotalScore,
 								TourId = t.TourId,
@@ -321,7 +322,7 @@ namespace FasleSafar.Controllers
 							|| (!string.IsNullOrEmpty(t.DaysCount.ToString()) && t.DaysCount.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.StartDate.ToString()) && t.StartDate.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.EndDate.ToString()) && t.EndDate.ToString().Contains(searchtext))
-							|| (!string.IsNullOrEmpty(t.Price.ToString()) && t.Price.ToString().Contains(searchtext))
+							|| (!string.IsNullOrEmpty(_tourRep.GetFirstPriceOfTour(t.TourId).ToString()) && _tourRep.GetFirstPriceOfTour(t.TourId).ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.Vehicle.ToString()) && t.Vehicle.ToString().Contains(searchtext))
 							 || (!string.IsNullOrEmpty(t.AvgScore.ToString()) && t.AvgScore.ToString().Contains(searchtext))
 							|| (!string.IsNullOrEmpty(t.TotalScore.ToString()) && t.TotalScore.ToString().Contains(searchtext))
@@ -336,8 +337,8 @@ namespace FasleSafar.Controllers
 								DestinationId = t.DestinationId,
 								EndDate = t.EndDate,
 								OpenState = t.OpenState,
-								Price = t.Price.Value.FixPrice(),
-								ScoreCount = t.ScoreCount,
+                                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                ScoreCount = t.ScoreCount,
 								StartDate = t.StartDate,
 								TotalScore = t.TotalScore,
 								TourId = t.TourId,
@@ -376,7 +377,7 @@ namespace FasleSafar.Controllers
 								DestinationId = t.DestinationId,
 								EndDate = t.EndDate,
 								OpenState = t.OpenState,
-								Price = t.Price.Value.FixPrice(),
+								Price = _tourRep.GetFirstPriceOfTour(t.TourId),
 								ScoreCount = t.ScoreCount,
 								StartDate = t.StartDate,
 								TotalScore = t.TotalScore,
@@ -807,8 +808,7 @@ namespace FasleSafar.Controllers
 				PhoneNumber = _contentRep.GetContentById(16).ContentText,
 				Address = _contentRep.GetContentById(17).ContentText,
 				Deposit = int.Parse(_contentRep.GetContentById(1018).ContentText),
-				ChildPrice = int.Parse(_contentRep.GetContentById(1023).ContentText),
-				BabyPrice = int.Parse(_contentRep.GetContentById(1027).ContentText),
+				Maliat = int.Parse(_contentRep.GetContentById(1023).ContentText),
 				IranRules = _contentRep.GetContentById(1028).ContentText,
 				WorldRules = _contentRep.GetContentById(1029).ContentText,
 				Slogan = _contentRep.GetContentById(1030).ContentText,
@@ -871,7 +871,7 @@ namespace FasleSafar.Controllers
 				Content deposit = new Content()
 				{
 					ContentId = 1018,
-					ContentTitle = "بیعانه",
+					ContentTitle = "درصد بیعانه",
 					ContentType = "اطلاعات",
 					ContentText = string.IsNullOrEmpty(pics.Deposit.ToString()) ? "0" : pics.Deposit.ToString(),
 					HasImage = false
@@ -880,21 +880,12 @@ namespace FasleSafar.Controllers
 				Content child = new Content()
 				{
 					ContentId = 1023,
-					ContentTitle = "درصد قیمت برای کودکان زیر 12 سال",
+					ContentTitle = "درصد مالیات",
 					ContentType = "اطلاعات",
-					ContentText = string.IsNullOrEmpty(pics.ChildPrice.ToString()) ? "0" : pics.ChildPrice.ToString(),
+					ContentText = string.IsNullOrEmpty(pics.Maliat.ToString()) ? "0" : pics.Maliat.ToString(),
 					HasImage = false
 				};
 				_contentRep.EditContent(child);
-				Content baby = new Content()
-				{
-					ContentId = 1027,
-					ContentTitle = "درصد قیمت برای کودکان زیر 2 سال",
-					ContentType = "اطلاعات",
-					ContentText = string.IsNullOrEmpty(pics.BabyPrice.ToString()) ? "0" : pics.BabyPrice.ToString(),
-					HasImage = false
-				};
-				_contentRep.EditContent(baby);
 			}
 			if (pics.LogoImage?.Length > 0)
 			{
@@ -1580,8 +1571,8 @@ namespace FasleSafar.Controllers
 				DestinationId = t.DestinationId,
 				EndDate = t.EndDate,
 				OpenState = t.OpenState,
-				Price = t.Price.Value.FixPrice(),
-				ScoreCount = t.ScoreCount,
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                ScoreCount = t.ScoreCount,
 				StartDate = t.StartDate,
 				TotalScore = t.TotalScore,
 				TourId = t.TourId,
@@ -1624,7 +1615,7 @@ namespace FasleSafar.Controllers
 				DestinationId = t.DestinationId,
 				EndDate = t.EndDate,
 				OpenState = t.OpenState,
-				Price = t.Price.Value.FixPrice(),
+				Price = _tourRep.GetFirstPriceOfTour(t.TourId),
 				ScoreCount = t.ScoreCount,
 				StartDate = t.StartDate,
 				TotalScore = t.TotalScore,
@@ -1668,8 +1659,8 @@ namespace FasleSafar.Controllers
 				DestinationId = t.DestinationId,
 				EndDate = t.EndDate,
 				OpenState = t.OpenState,
-				Price = t.Price.Value.FixPrice(),
-				ScoreCount = t.ScoreCount,
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                ScoreCount = t.ScoreCount,
 				StartDate = t.StartDate,
 				TotalScore = t.TotalScore,
 				TourId = t.TourId,
@@ -1703,7 +1694,7 @@ namespace FasleSafar.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> AddTour(AddTourVM tour)
+		public async Task<IActionResult> AddTour(AddTourVM tour, string data = "")
 		{
 			ViewBag.ToursPageID = GetCookie("ToursPageNumber");
 			ViewBag.Destinations = _destinationRep.GetAllDestinations();
@@ -1717,7 +1708,7 @@ namespace FasleSafar.Controllers
 					DestinationId = tour.DestinationId,
 					EndDate = tour.EndDate,
 					OpenState = "فعال",
-					Price = GetPrice(tour.ThreeStarPrice, tour.FourStarPrice, tour.FiveStarPrice),
+					//Price = GetPrice(tour.ThreeStarPrice, tour.FourStarPrice, tour.FiveStarPrice),
 					AvgScore = 0,
 					ScoreCount = 0,
 					TotalScore = 0,
@@ -1736,11 +1727,16 @@ namespace FasleSafar.Controllers
 					Facilities = tour.Facilities ?? "",
 					IncludeCosts = tour.IncludeCosts ?? "",
 					ReachTime = tour.ReachTime ?? "",
-					GeoCoordinates = tour.GeoCoordinates.Trim()
+					GeoCoordinates = tour.GeoCoordinates.Trim(),
+					AvaliableOnlinePay = tour.AvaliableOnlinePay,
 				};
 				_tourRep.AddTour(theTour);
-				_tourRep.PutPricesOfTour(theTour.TourId, tour.Price1Title, tour.Price2Title, tour.Price3Title, tour.ThreeStarPrice, tour.FourStarPrice, tour.FiveStarPrice);
-				if (tour.BigTourImage?.Length > 0 || tour.AlbumImages?.Count > 0)
+				if (!string.IsNullOrEmpty(data))
+                {
+                    List<HotelStaring> starings = JsonConvert.DeserializeObject<List<HotelStaring>>(data);
+                    _tourRep.PutPricesOfTour(theTour.TourId, starings ?? new List<HotelStaring>());
+                }
+                if (tour.BigTourImage?.Length > 0 || tour.AlbumImages?.Count > 0)
 				{
 					try
 					{
@@ -1836,7 +1832,6 @@ namespace FasleSafar.Controllers
 			{
 				return NotFound();
 			}
-			var arr = _tourRep.GetHotelStaringsOfTour(id);
 			EditTourVM TourVM = _tourRep.GetAllTours().Where(c => c.TourId == id).Select(s => new EditTourVM()
 			{
 				TourId = s.TourId,
@@ -1846,12 +1841,6 @@ namespace FasleSafar.Controllers
 				DestinationId = (int)s.DestinationId,
 				EndDate = s.EndDate,
 				OpenState = s.OpenState,
-				ThreeStarPrice = arr[0].Price,
-				FourStarPrice = arr[1].Price,
-				FiveStarPrice = arr[2].Price,
-				Price1Title = arr[0].Title,
-				Price2Title = arr[1].Title,
-				Price3Title = arr[2].Title,
 				StartDate = s.StartDate,
 				TourDescription = s.TourDescription,
 				TourType = s.TourType,
@@ -1867,8 +1856,9 @@ namespace FasleSafar.Controllers
 				ImagesAlbum = s.ImagesAlbum,
 				BigImage = s.BigImage,
 				SmallImage = s.SmallImage,
-				GeoCoordinates = s.GeoCoordinates ?? ""
-			}).FirstOrDefault();
+				GeoCoordinates = s.GeoCoordinates ?? "",
+                AvaliableOnlinePay = s.AvaliableOnlinePay,
+            }).FirstOrDefault();
 			if (TourVM == null)
 			{
 				return NotFound();
@@ -1880,7 +1870,7 @@ namespace FasleSafar.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> EditTour(int id, EditTourVM tour)
+		public async Task<IActionResult> EditTour(int id, EditTourVM tour, string data = "")
 		{
 			ViewBag.ToursPageID = GetCookie("ToursPageNumber");
 			ViewBag.Destinations = _destinationRep.GetAllDestinations();
@@ -1900,7 +1890,7 @@ namespace FasleSafar.Controllers
 					DestinationId = tour.DestinationId,
 					EndDate = tour.EndDate,
 					OpenState = (tour.Capacity < 1) ? "پایان یافته" : tour.OpenState,
-					Price = GetPrice(tour.ThreeStarPrice, tour.FourStarPrice, tour.FiveStarPrice),
+					//Price = GetPrice(tour.ThreeStarPrice, tour.FourStarPrice, tour.FiveStarPrice),
 					AvgScore = _tourRep.GetTourById(tour.TourId).AvgScore,
 					TotalScore = _tourRep.GetTourById(tour.TourId).TotalScore,
 					ScoreCount = _tourRep.GetTourById(tour.TourId).ScoreCount,
@@ -1919,8 +1909,9 @@ namespace FasleSafar.Controllers
 					ReachTime = tour.ReachTime ?? "",
 					GeoCoordinates = tour.GeoCoordinates.Trim(),
 					BigImage = tour.BigImage,
-					ImagesAlbum = tour.ImagesAlbum ?? ""
-				};
+					ImagesAlbum = tour.ImagesAlbum ?? "",
+                    AvaliableOnlinePay = tour.AvaliableOnlinePay,
+                };
 				if (tour.BigTourImage?.Length > 0 || tour.AlbumImages?.Count > 0)
 				{
 					try
@@ -1984,8 +1975,12 @@ namespace FasleSafar.Controllers
 				//}
 
 				_tourRep.EditTour(theTour);
-				_tourRep.PutPricesOfTour(theTour.TourId, tour.Price1Title, tour.Price2Title, tour.Price3Title, tour.ThreeStarPrice, tour.FourStarPrice, tour.FiveStarPrice);
-				if (theTour.OpenState == "لغو شده")
+                if (!string.IsNullOrEmpty(data))
+                {
+                    List<HotelStaring> starings = JsonConvert.DeserializeObject<List<HotelStaring>>(data);
+                    _tourRep.PutPricesOfTour(theTour.TourId, starings ?? new List<HotelStaring>());
+                }
+                if (theTour.OpenState == "لغو شده")
 				{
 					SendCanceledTourMessage(theTour);
 				}
@@ -2028,13 +2023,7 @@ namespace FasleSafar.Controllers
 			{
 				return NotFound();
 			}
-			var arr = _tourRep.GetHotelStaringsOfTour(id);
-			ViewBag.Price3 = arr[0].Price;
-			ViewBag.Price4 = arr[1].Price;
-			ViewBag.Price5 = arr[2].Price;
-			ViewBag.Title3 = arr[0].Title;
-			ViewBag.Title4 = arr[1].Title;
-			ViewBag.Title5 = arr[2].Title;
+			ViewBag.FirstPice = _tourRep.GetFirstPriceOfTour(tour.TourId);
 			ViewBag.ToursPageID = GetCookie("ToursPageNumber");
 			return View(tour);
 		}
@@ -2100,11 +2089,17 @@ namespace FasleSafar.Controllers
 			return ResultUrls;
 		}
 
-		#endregion
+        public IActionResult GetPricesOfTour(int tourId)
+        {
+            var existingData = _tourRep.GetHotelStaringsListOfTour(tourId);
+            return Ok(existingData);
+        }
 
-		#region Users
+        #endregion
 
-		public async Task<IActionResult> ShowUsers(int pageid = 1)
+        #region Users
+
+        public async Task<IActionResult> ShowUsers(int pageid = 1)
 		{
 			SetDefaultPageNumbers(4, pageid);
 			int skip = (pageid - 1) * 20;
@@ -2122,7 +2117,8 @@ namespace FasleSafar.Controllers
 			int Count = _userRep.GetUsersOfTour(id).Count();
 			ViewBag.TourUsersPageID = pageid;
 			ViewBag.TourUsersPageCount = Count / 20;
-			return View(_userRep.GetUsersOfTourForPages(id, skip));
+			var tourUsers = _userRep.GetUsersOfTourForPages(id, skip);
+			return View(tourUsers);
 		}
 
 		public IActionResult AddUser()

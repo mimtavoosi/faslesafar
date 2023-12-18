@@ -32,8 +32,8 @@ namespace FasleSafar.Models
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int Capacity { get; set; }
 
-        [Display(Name = "شروع قیمت")]
-        public decimal? Price { get; set; }
+        //[Display(Name = "شروع قیمت")]
+        //public string? Price { get; set; }
 
         [Display(Name = "وسیله نقلیه")]
         [MaxLength(60)]
@@ -55,6 +55,9 @@ namespace FasleSafar.Models
 
         [Display(Name = "فروش اقساطی")]
         public bool IsLeasing { get; set; }
+
+        [Display(Name = "امکان پرداخت آنلاین")]
+        public bool AvaliableOnlinePay { get; set; }
 
         [Display(Name = "امتیاز")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
@@ -110,6 +113,7 @@ namespace FasleSafar.Models
 
         [ForeignKey("DestinationId")]
         public Destination? Destination { get; set; }
+        public List<HotelStaring> HotelStarings { get; set; }
 
     }
 }

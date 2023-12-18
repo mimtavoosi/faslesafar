@@ -146,12 +146,17 @@ namespace FasleSafar.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StaringId"));
 
-                    b.Property<decimal?>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("AdultPrice")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BabyPrice")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ChildPrice")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("TourId")
                         .IsRequired()
@@ -216,6 +221,9 @@ namespace FasleSafar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("FactorRequest")
+                        .HasColumnType("bit");
+
                     b.Property<string>("IsFinaly")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -249,43 +257,34 @@ namespace FasleSafar.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PassengerId"));
 
                     b.Property<string>("AgeGroup")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BirthDate")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EducationLevel")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .HasMaxLength(70)
-                        .HasColumnType("nvarchar(70)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Job")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NationalCode")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpecialDisease")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PassengerId");
 
@@ -403,6 +402,9 @@ namespace FasleSafar.Migrations
                     b.Property<string>("Attractions")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("AvaliableOnlinePay")
+                        .HasColumnType("bit");
+
                     b.Property<float>("AvgScore")
                         .HasColumnType("real");
 
@@ -445,9 +447,6 @@ namespace FasleSafar.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
-
-                    b.Property<decimal?>("Price")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ReachTime")
                         .HasColumnType("nvarchar(max)");
@@ -548,7 +547,7 @@ namespace FasleSafar.Migrations
             modelBuilder.Entity("FasleSafar.Models.HotelStaring", b =>
                 {
                     b.HasOne("FasleSafar.Models.Tour", "Tour")
-                        .WithMany()
+                        .WithMany("HotelStarings")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -623,6 +622,11 @@ namespace FasleSafar.Migrations
             modelBuilder.Entity("FasleSafar.Models.Order", b =>
                 {
                     b.Navigation("Passengers");
+                });
+
+            modelBuilder.Entity("FasleSafar.Models.Tour", b =>
+                {
+                    b.Navigation("HotelStarings");
                 });
 
             modelBuilder.Entity("FasleSafar.Models.User", b =>

@@ -71,6 +71,9 @@ namespace FasleSafar.Models
         [Display(Name = "فروش اقساطی")]
         public bool IsLeasing { get; set; }
 
+        [Display(Name = "امکان پرداخت آنلاین")]
+        public bool AvaliableOnlinePay { get; set; }
+
         [Display(Name = "مقصد")]
         public int? DestinationId { get; set; }
 

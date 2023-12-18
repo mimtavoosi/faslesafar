@@ -59,6 +59,17 @@ namespace FasleSafar.Data.Services
             return _context.Tours.AsNoTracking().Include(d => d.Destination).Where(t => t.OpenState == "فعال").OrderByDescending(t => t.AvgScore).Skip(skip).Take(20).ToList();
         }
 
+        public string GetFirstPriceOfTour(int tourId)
+        {
+            string firstPrice = "0";
+            var prices = GetHotelStaringsListOfTour(tourId);
+            if (prices.Count > 0)
+            {
+                firstPrice = prices.Min(p => p.AdultPrice.RetreivePrice()).FixPrice();
+            }
+            return firstPrice;
+        }
+
         public HotelStaring GetHotelStaringById(int staringId)
         {
             return _context.HotelStarings.AsNoTracking().SingleOrDefault(h=> h.StaringId == staringId);
@@ -66,30 +77,10 @@ namespace FasleSafar.Data.Services
 
         public List<HotelStaring> GetHotelStaringsListOfTour(int tourId)
         {
-           return _context.HotelStarings.AsNoTracking().Where(h=> h.TourId == tourId && h.Price > 0).ToList();
+           return _context.HotelStarings.AsNoTracking().Where(h=> h.TourId == tourId).ToList();
         }
 
-        public StaringVM[] GetHotelStaringsOfTour(int tourId)
-        {
-            StaringVM[] hotelStarings = new StaringVM[3];
-            hotelStarings[0] = new StaringVM();
-            hotelStarings[1] = new StaringVM();
-            hotelStarings[2] = new StaringVM();
-            hotelStarings[0].Title = "";
-            hotelStarings[0].Price = "0";
-            hotelStarings[1].Title = "";
-            hotelStarings[1].Price = "0";
-            hotelStarings[2].Title = "";
-            hotelStarings[2].Price = "0";
-            var starings = _context.HotelStarings.AsNoTracking().Where(h => h.TourId == tourId).ToList();
-            hotelStarings[0].Price = starings[0].Price.Value.FixPrice();
-            hotelStarings[1].Price = starings[1].Price.Value.FixPrice();
-            hotelStarings[2].Price = starings[2].Price.Value.FixPrice();
-            hotelStarings[0].Title = starings[0].Title;
-            hotelStarings[1].Title = starings[1].Title;
-            hotelStarings[2].Title = starings[2].Title;
-            return hotelStarings;
-        }
+   
 
 		public List<Tour> GetIranTours()
 		{
@@ -172,34 +163,18 @@ namespace FasleSafar.Data.Services
 			return GetWorldTours().Skip(skip).Take(20).ToList();
 		}
 
-		public void PutPricesOfTour(int tourId, string title1, string title2, string title3, string price3, string price4, string price5)
+        public void PutPricesOfTour(int tourId, List<HotelStaring> starings)
         {
-            _context.HotelStarings.AsNoTracking().Where(h => h.TourId ==tourId).ToList().ForEach(h => _context.HotelStarings.Remove(h));
-            _context.SaveChanges();
-            List<StaringVM> prices = new List<StaringVM>();
-            if (string.IsNullOrEmpty(price3)) price3 = "0";
-            if (string.IsNullOrEmpty(price4)) price4 = "0";
-            if (string.IsNullOrEmpty(price5)) price5 = "0";
-            prices.Add(new StaringVM()
+            foreach (HotelStaring t in starings)
             {
-                Title = title1??"کمترین قیمت",
-                Price = price3
-            });
-            prices.Add(
-                new StaringVM()
-                {
-                    Title = title2 ?? "قیمت متوسط",
-                    Price = price4
-                });
-            prices.Add(new StaringVM()
-            {
-                Title = title3 ?? "بیشترین قیمت",
-                Price = price5
-            });
-            foreach (StaringVM item in prices)
-            {
-                _context.HotelStarings.Add(new HotelStaring() {TourId = tourId,  Price = RetreivePrice(item.Price), Title = item.Title});
+                t.TourId = tourId;
+                t.AdultPrice = string.IsNullOrEmpty(t.AdultPrice) ? "0" : t.AdultPrice;
+                t.ChildPrice = string.IsNullOrEmpty(t.ChildPrice) ? "0" : t.ChildPrice;
+                t.BabyPrice = string.IsNullOrEmpty(t.BabyPrice) ? "0" : t.BabyPrice;
             }
+            var foundstarings = GetHotelStaringsListOfTour(tourId);
+            _context.HotelStarings.RemoveRange(foundstarings);
+            _context.UpdateRange(starings);
             _context.SaveChanges();
         }
 
@@ -218,15 +193,6 @@ namespace FasleSafar.Data.Services
         {
             var tour = GetTourById(tourId);
             RemoveTour(tour);
-        }
-
-        private decimal RetreivePrice(string finalPrice)
-        {
-            for (int i = 0; i < finalPrice.Length; i++)
-            {
-                if (finalPrice[i] == ',') finalPrice.Remove(i, 1);
-            }
-            return decimal.Parse(finalPrice);
         }
     }
 }

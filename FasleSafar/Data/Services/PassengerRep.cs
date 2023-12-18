@@ -16,11 +16,8 @@ namespace FasleSafar.Data.Services
 
 		public void AddPassengersForOrder(List<Passenger> passengers)
 		{
-			foreach (var passenger in passengers)
-			{
-				_context.Passengers.Add(passenger);
-			}
-			_context.SaveChanges();
+            _context.UpdateRange(passengers);
+            _context.SaveChanges();
 			
 		}
 

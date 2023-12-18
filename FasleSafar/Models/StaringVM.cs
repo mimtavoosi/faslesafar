@@ -2,7 +2,8 @@
 {
     public class StaringVM
     {
-        public string Price { get; set; }
-        public string Title { get; set; }
+        public string AdultPrice { get; set; }
+        public string ChildPrice { get; set; }
+        public string BabyPrice { get; set; }
     }
 }

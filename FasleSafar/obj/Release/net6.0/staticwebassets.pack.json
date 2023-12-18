@@ -6777,6 +6777,10 @@
       "PackagePath": "staticwebassets\\js\\dynamicTbl.js"
     },
     {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\js\\dynamicTbl2.js",
+      "PackagePath": "staticwebassets\\js\\dynamicTbl2.js"
+    },
+    {
       "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\js\\jquery-1.11.1.min.js",
       "PackagePath": "staticwebassets\\js\\jquery-1.11.1.min.js"
     },
@@ -7229,6 +7233,34 @@
       "PackagePath": "staticwebassets\\lib\\leaflet\\myLeaflet.js"
     },
     {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\lib\\sweetalert2\\sweetalert2.all.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.all.js"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\lib\\sweetalert2\\sweetalert2.all.min.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.all.min.js"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\lib\\sweetalert2\\sweetalert2.css",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.css"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\lib\\sweetalert2\\sweetalert2.d.ts",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.d.ts"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\lib\\sweetalert2\\sweetalert2.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.js"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\lib\\sweetalert2\\sweetalert2.min.css",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.min.css"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\lib\\sweetalert2\\sweetalert2.min.js",
+      "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.min.js"
+    },
+    {
       "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\log.txt",
       "PackagePath": "staticwebassets\\log.txt"
     },
@@ -7249,8 +7281,60 @@
       "PackagePath": "staticwebassets\\pics\\destpics\\d1-.jpg"
     },
     {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d1023-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d1023-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d1024-.png",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d1024-.png"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d1025-.png",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d1025-.png"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d14-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d14-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d15-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d15-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d16-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d16-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d17-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d17-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d18-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d18-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d19-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d19-.jpg"
+    },
+    {
       "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d2-.jpg",
       "PackagePath": "staticwebassets\\pics\\destpics\\d2-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d20-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d20-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d21-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d21-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d22-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d22-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d23-.jpg",
+      "PackagePath": "staticwebassets\\pics\\destpics\\d23-.jpg"
     },
     {
       "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d3-.jpg",
@@ -7263,6 +7347,10 @@
     {
       "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\destpics\\d5-.jpg",
       "PackagePath": "staticwebassets\\pics\\destpics\\d5-.jpg"
+    },
+    {
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\sitepics\\1031.jpg",
+      "PackagePath": "staticwebassets\\pics\\sitepics\\1031.jpg"
     },
     {
       "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\sitepics\\11.jpg",
@@ -7321,40 +7409,12 @@
       "PackagePath": "staticwebassets\\pics\\sitepics\\whatsapp.png"
     },
     {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1014-.png",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1014-.png"
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t2045-.png",
+      "PackagePath": "staticwebassets\\pics\\tourpics\\t2045-.png"
     },
     {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1015-.png",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1015-.png"
-    },
-    {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1016-.jpg",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1016-.jpg"
-    },
-    {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1016-1.jpg",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1016-1.jpg"
-    },
-    {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1016-2.jpg",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1016-2.jpg"
-    },
-    {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1016-3.jpg",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1016-3.jpg"
-    },
-    {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1019-.jpg",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1019-.jpg"
-    },
-    {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1019-1.jpg",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1019-1.jpg"
-    },
-    {
-      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t1019-3.jpg",
-      "PackagePath": "staticwebassets\\pics\\tourpics\\t1019-3.jpg"
+      "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\pics\\tourpics\\t2055-.png",
+      "PackagePath": "staticwebassets\\pics\\tourpics\\t2055-.png"
     },
     {
       "Id": "E:\\Education\\Programing\\Laboratory\\Current Projects\\FasleSafar\\FasleSafar\\wwwroot\\sass\\bourbon\\_bourbon-deprecated-upcoming.scss",

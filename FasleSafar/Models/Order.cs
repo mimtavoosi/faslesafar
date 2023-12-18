@@ -37,7 +37,10 @@ namespace FasleSafar.Models
         [Display(Name = "وضعیت پرداخت")]
         public string IsFinaly { get; set; }
 
-        [ForeignKey("UserId")] //the under relation is for UserID FK (one-one rel - one order is for one user)
+		[Display(Name = "درخواست فاکتور رسمی")]
+		public bool FactorRequest { get; set; }
+
+		[ForeignKey("UserId")] //the under relation is for UserID FK (one-one rel - one order is for one user)
         public User? User { get; set; }
 
         [ForeignKey("TourId")] //the under rel is for ProductId FK - this declare brcause ProductId FK is not the same name with Product PK (id)

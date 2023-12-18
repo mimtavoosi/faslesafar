@@ -86,7 +86,7 @@ namespace FasleSafar.Controllers
                 DestinationId = tour.DestinationId,
                 EndDate = tour.EndDate,
                 OpenState = tour.OpenState,
-                Price = tour.Price.Value.FixPrice(),
+                Price = _tourRep.GetFirstPriceOfTour(tour.TourId),
                 ScoreCount = tour.ScoreCount,
                 StartDate = tour.StartDate,
                 TotalScore = tour.TotalScore,
@@ -108,14 +108,20 @@ namespace FasleSafar.Controllers
                 ReachTime = tour.ReachTime,
                 ReturnTime = tour.ReturnTime,
                 GeoCoordinates = tour.GeoCoordinates,
+                AvaliableOnlinePay = tour.AvaliableOnlinePay,
             };
             if(User.Identity.IsAuthenticated)
 			{
                 int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 ViewBag.Rate = _tourRep.ExistRating(userId, tourVM.TourId) ? "Exist" : "Not Exist";
             }
-            ViewBag.Prices = _tourRep.GetHotelStaringsListOfTour(tour.TourId);
+            var prices = _tourRep.GetHotelStaringsListOfTour(tour.TourId);
+            ViewBag.Prices = prices;
+            ViewBag.DefaultAdultPrice = prices[0].AdultPrice;
+            ViewBag.DefaultChildPrice = prices[0].ChildPrice;
+            ViewBag.DefaultBabyPrice = prices[0].BabyPrice;
             ViewBag.DepositOn = (tourVM.IsLeasing) && (int.Parse(_contentRep.GetContentById(1018).ContentText) > 0) ? "on" : "off";
+            ViewBag.MaliatPer = int.Parse(_contentRep.GetContentById(1023).ContentText);
             return View(tourVM);
         }
 
@@ -129,7 +135,7 @@ namespace FasleSafar.Controllers
 				DestinationId = t.DestinationId,
 				EndDate = t.EndDate,
 				OpenState = t.OpenState,
-				Price = t.Price.Value.FixPrice(),
+				Price = _tourRep.GetFirstPriceOfTour(t.TourId),
 				ScoreCount = t.ScoreCount,
 				StartDate = t.StartDate,
 				TotalScore = t.TotalScore,
@@ -180,7 +186,7 @@ namespace FasleSafar.Controllers
                 DestinationId = t.DestinationId,
                 EndDate = t.EndDate,
                 OpenState = t.OpenState,
-                Price = t.Price.Value.FixPrice(),
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                 ScoreCount = t.ScoreCount,
                 StartDate = t.StartDate,
                 TotalScore = t.TotalScore,
@@ -226,8 +232,8 @@ namespace FasleSafar.Controllers
 				DestinationId = t.DestinationId,
 				EndDate = t.EndDate,
 				OpenState = t.OpenState,
-				Price = t.Price.Value.FixPrice(),
-				ScoreCount = t.ScoreCount,
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                ScoreCount = t.ScoreCount,
 				StartDate = t.StartDate,
 				TotalScore = t.TotalScore,
 				TourId = t.TourId,
@@ -272,8 +278,8 @@ namespace FasleSafar.Controllers
 				DestinationId = t.DestinationId,
 				EndDate = t.EndDate,
 				OpenState = t.OpenState,
-				Price = t.Price.Value.FixPrice(),
-				ScoreCount = t.ScoreCount,
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                ScoreCount = t.ScoreCount,
 				StartDate = t.StartDate,
 				TotalScore = t.TotalScore,
 				TourId = t.TourId,
@@ -318,7 +324,7 @@ namespace FasleSafar.Controllers
                 DestinationId = t.DestinationId,
                 EndDate = t.EndDate,
                 OpenState = t.OpenState,
-                Price = t.Price.Value.FixPrice(),
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                 ScoreCount = t.ScoreCount,
                 StartDate = t.StartDate,
                 TotalScore = t.TotalScore,
@@ -367,7 +373,7 @@ namespace FasleSafar.Controllers
                 DestinationId = t.DestinationId,
                 EndDate = t.EndDate,
                 OpenState = t.OpenState,
-                Price = t.Price.Value.FixPrice(),
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                 ScoreCount = t.ScoreCount,
                 StartDate = t.StartDate,
                 TotalScore = t.TotalScore,
@@ -410,7 +416,7 @@ namespace FasleSafar.Controllers
                 DestinationId = t.DestinationId,
                 EndDate = t.EndDate,
                 OpenState = t.OpenState,
-                Price = t.Price.Value.FixPrice(),
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                 ScoreCount = t.ScoreCount,
                 StartDate = t.StartDate,
                 TotalScore = t.TotalScore,
@@ -588,22 +594,23 @@ namespace FasleSafar.Controllers
             return View();
         }
 
-        private decimal RetreivePrice(string finalPrice)
-        {
-            for (int i = 0; i < finalPrice.Length; i++)
-            {
-                if (finalPrice[i] == ',') finalPrice.Remove(i, 1);
-            }
-            return decimal.Parse(finalPrice);
-        }
+
 
         [HttpPost]
-        public async Task<string> UpdatePrice(string priceId)
+        public async Task<StaringVM> UpdatePrice(string priceId)
         {
             if (priceId == null) return null;
             int id = int.Parse(priceId);
-            if (_tourRep.GetHotelStaringById(id) == null) return null;
-            return _tourRep.GetHotelStaringById(id).Price.Value.FixPrice() + " تومان";
+            var priceRecord = _tourRep.GetHotelStaringById(id);
+
+			if (priceRecord == null) return null;
+            StaringVM staring = new StaringVM()
+            {
+                 AdultPrice = priceRecord.AdultPrice + " تومان",
+                 ChildPrice = priceRecord.ChildPrice + " تومان",
+                 BabyPrice = priceRecord.BabyPrice   + " تومان",
+            };
+            return staring;
         }
 
         #region Sortings
@@ -628,7 +635,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -659,7 +666,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -691,7 +698,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -713,7 +720,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderBy(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderBy(t => t.Price.RetreivePrice()).ToList();
                             case "4":
                                 return _tourRep.GetOpenToursForPages(int.Parse(GetCookie("NewToursSkip"))).Select(t => new TourVM()
                                 {
@@ -723,7 +730,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -745,7 +752,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderByDescending(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderByDescending(t => t.Price.RetreivePrice()).ToList();
                             case "5":
                                 return _tourRep.GetOpenToursForPages(int.Parse(GetCookie("NewToursSkip"))).Select(t => new TourVM()
                                 {
@@ -755,7 +762,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -787,7 +794,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -826,7 +833,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -858,7 +865,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -890,7 +897,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -912,7 +919,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderBy(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderBy(t => t.Price.RetreivePrice()).ToList();
                             case "4":
                                 return _tourRep.GetFavoriteToursForPages(int.Parse(GetCookie("FavoriteToursSkip"))).Select(t => new TourVM()
                                 {
@@ -922,7 +929,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -944,7 +951,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderByDescending(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderByDescending(t => t.Price.RetreivePrice()).ToList();
                             case "5":
                                 return _tourRep.GetFavoriteToursForPages(int.Parse(GetCookie("FavoriteToursSkip"))).Select(t => new TourVM()
                                 {
@@ -954,7 +961,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -986,7 +993,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1024,7 +1031,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1055,7 +1062,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1086,7 +1093,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1107,7 +1114,7 @@ namespace FasleSafar.Controllers
                                     ReachTime = t.ReachTime,
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
-                                }).OrderBy(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderBy(t => t.Price.RetreivePrice()).ToList();
                             case "4":
                                 return _tourRep.GetOpenToursOfDestinationForPages(int.Parse(GetCookie("CurDestId")), int.Parse(GetCookie("DestinationToursSkip"))).Select(t => new TourVM()
                                 {
@@ -1117,7 +1124,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1138,7 +1145,7 @@ namespace FasleSafar.Controllers
                                     ReachTime = t.ReachTime,
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
-                                }).OrderByDescending(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderByDescending(t => t.Price.RetreivePrice()).ToList();
                             case "5":
                                 return _tourRep.GetOpenToursOfDestinationForPages(int.Parse(GetCookie("CurDestId")), int.Parse(GetCookie("DestinationToursSkip"))).Select(t => new TourVM()
                                 {
@@ -1148,7 +1155,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1180,7 +1187,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1219,7 +1226,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1251,7 +1258,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1283,7 +1290,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1305,7 +1312,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderBy(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderBy(t => t.Price.RetreivePrice()).ToList();
                             case "4":
                                 return _tourRep.GetToursOfUserForPages(userid, int.Parse(GetCookie("UserToursSkip"))).Select(t => new TourVM()
                                 {
@@ -1315,7 +1322,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1337,7 +1344,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderByDescending(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderByDescending(t => t.Price.RetreivePrice()).ToList();
                             case "5":
                                 return _tourRep.GetToursOfUserForPages(userid, int.Parse(GetCookie("UserToursSkip"))).Select(t => new TourVM()
                                 {
@@ -1347,7 +1354,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1379,7 +1386,7 @@ namespace FasleSafar.Controllers
                                     DestinationId = t.DestinationId,
                                     EndDate = t.EndDate,
                                     OpenState = t.OpenState,
-                                    Price = t.Price.Value.FixPrice(),
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                                     ScoreCount = t.ScoreCount,
                                     StartDate = t.StartDate,
                                     TotalScore = t.TotalScore,
@@ -1414,9 +1421,9 @@ namespace FasleSafar.Controllers
                             case "2":
                                 return FoundTours().OrderByDescending(t => t.TourTitle).ToList();
                             case "3":
-                                return FoundTours().OrderBy(t => RetreivePrice(t.Price)).ToList();
+                                return FoundTours().OrderBy(t => t.Price.RetreivePrice()).ToList();
                             case "4":
-                                return FoundTours().OrderByDescending(t => RetreivePrice(t.Price)).ToList();
+                                return FoundTours().OrderByDescending(t => t.Price.RetreivePrice()).ToList();
                             case "5":
                                 return FoundTours().OrderByDescending(t => t.AvgScore).ToList();
                             case "6":
@@ -1437,8 +1444,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1469,8 +1476,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1501,8 +1508,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1523,7 +1530,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderBy(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderBy(t => t.Price.RetreivePrice()).ToList();
 							case "4":
 								return _tourRep.GetIranToursForPages(int.Parse(GetCookie("IranToursSkip"))).Select(t => new TourVM()
 								{
@@ -1533,8 +1540,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1555,7 +1562,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderByDescending(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderByDescending(t => t.Price.RetreivePrice()).ToList();
 							case "5":
 								return _tourRep.GetIranToursForPages(int.Parse(GetCookie("IranToursSkip"))).Select(t => new TourVM()
 								{
@@ -1565,8 +1572,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1597,8 +1604,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1636,8 +1643,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1668,8 +1675,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1700,8 +1707,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1722,7 +1729,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderBy(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderBy(t => t.Price.RetreivePrice()).ToList();
 							case "4":
 								return _tourRep.GetWorldToursForPages(int.Parse(GetCookie("WorldToursSkip"))).Select(t => new TourVM()
 								{
@@ -1732,8 +1739,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1754,7 +1761,7 @@ namespace FasleSafar.Controllers
                                     ReturnTime = t.ReturnTime,
                                     GeoCoordinates = t.GeoCoordinates,
 
-                                }).OrderByDescending(t => RetreivePrice(t.Price)).ToList();
+                                }).OrderByDescending(t => t.Price.RetreivePrice()).ToList();
 							case "5":
 								return _tourRep.GetWorldToursForPages(int.Parse(GetCookie("WorldToursSkip"))).Select(t => new TourVM()
 								{
@@ -1764,8 +1771,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1796,8 +1803,8 @@ namespace FasleSafar.Controllers
 									DestinationId = t.DestinationId,
 									EndDate = t.EndDate,
 									OpenState = t.OpenState,
-									Price = t.Price.Value.FixPrice(),
-									ScoreCount = t.ScoreCount,
+                                    Price = _tourRep.GetFirstPriceOfTour(t.TourId),
+                                    ScoreCount = t.ScoreCount,
 									StartDate = t.StartDate,
 									TotalScore = t.TotalScore,
 									TourId = t.TourId,
@@ -1836,7 +1843,7 @@ namespace FasleSafar.Controllers
                 DestinationId = t.DestinationId,
                 EndDate = t.EndDate,
                 OpenState = t.OpenState,
-                Price = t.Price.Value.FixPrice(),
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                 ScoreCount = t.ScoreCount,
                 StartDate = t.StartDate,
                 TotalScore = t.TotalScore,

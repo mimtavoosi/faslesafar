@@ -58,6 +58,19 @@
         <dd class = "col-sm-8">
             @Html.DisplayFor(model => model.CreateDate) <br />
         </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.FactorRequest)
+        </dt>
+        <dd class="col-sm-8">
+            @if (Model.FactorRequest)
+            {
+                <span>&#9989</span>
+            }
+            else
+            {
+                <span>&#10060</span>
+            } <br />
+        </dd>
          <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.IsFinaly)
         </dt>

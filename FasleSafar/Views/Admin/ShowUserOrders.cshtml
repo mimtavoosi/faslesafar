@@ -46,6 +46,9 @@
              <th>
                 @Html.DisplayNameFor(model => model.CreateDate)
             </th>
+              <th>
+                @Html.DisplayNameFor(model => model.FactorRequest)
+            </th>
              <th>
                 @Html.DisplayNameFor(model => model.IsFinaly)
             </th>
@@ -78,6 +81,16 @@
             </td>
              <td>
                 @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @if (item.FactorRequest)
+                {
+                    <span>&#9989</span>
+                }
+                else
+                {
+                   <span>&#10060</span>      
+                }
             </td>
              <td>
                 @Html.DisplayFor(modelItem => item.IsFinaly)

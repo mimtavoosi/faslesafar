@@ -1,4 +1,4 @@
-/*
+﻿/*
 Template Name: Adminto Dashboard
 Author: CoderThemes
 Email: coderthemes@gmail.com
@@ -23,6 +23,12 @@ File: Components
 .btn {
   border-radius: 2px;
   padding: 6px 14px;
+}
+.mtgridbtn {
+    background-color: transparent;
+    color: black;
+    border-color: darkblue; /* رنگ حاشیه */
+    box-shadow: 0 0 5px gray; /* برجستگی */
 }
 .btn-group-lg > .btn,
 .btn-lg {

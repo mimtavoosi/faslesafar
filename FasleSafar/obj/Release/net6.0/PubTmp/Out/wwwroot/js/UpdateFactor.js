@@ -3,6 +3,7 @@ var oneprice = document.getElementById('oneprice');
 var maliat = document.getElementById('maliat');
 var totalprice = document.getElementById('totalprice');
 var leasingval = $('#leasingval').val();;
+var factorreqval = $('#factorreqval').val();;
 var priceId = $('#priceId').val();
 function UpdatePrice(input) {
     var adult = $('#input-adult').val();
@@ -30,8 +31,10 @@ function UpdatePrice(input) {
                         else {
                             count.innerText = state.adultCount + " بزرگسال";
                         }
-                            oneprice.innerText = state.onePrice + " تومان";
+                        oneprice.innerText = state.onePrice + " تومان";
+                        if (factorreqval == 'on') {
                             maliat.innerText = state.maliat + " تومان";
+                        }
                             totalprice.innerText = state.totalPrice + " تومان";
                     }
                 }
@@ -40,7 +43,9 @@ function UpdatePrice(input) {
                     if (state != undefined && state != null) {
                         oneprice.innerText = state.onePrice + " تومان";
                         deposit.innerText = state.finPrice + " تومان";
-                        maliat.innerText = state.maliat + " تومان";
+                        if (factorreqval == 'on') {
+                            maliat.innerText = state.maliat + " تومان";
+                        }
                         totalprice.innerText = state.totalPrice + " تومان";
                         if (child > 0 || baby > 0) {
                             if (child > 0 && baby <= 0) {

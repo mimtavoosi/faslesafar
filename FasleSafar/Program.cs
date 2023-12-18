@@ -31,7 +31,7 @@ var settings = builder.Configuration.GetSection("Settings").Get<ConfigSettings>(
 //intro dbcontext to Core service for work with database
 builder.Services.AddDbContext<FasleSafarContext>(options =>
 {
-	options.UseSqlServer(settings.ConnectioString);
+    options.UseSqlServer(settings.ConnectionString);
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 

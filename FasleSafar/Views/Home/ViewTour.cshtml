@@ -232,21 +232,32 @@
 													{
 														<div class="search-item item-select">
 								<h4>انتخاب اقامتگاه</h4>
-								<select id="price" name="priceId" class="mtopt"
+								<select id="price" name="priceId" class="mtopt" onloadeddata="updatePriceOption()" onchange="updatePriceOption()"
 	                            asp-items="@(new SelectList(ViewBag.Prices, nameof(HotelStaring.StaringId), nameof(HotelStaring.Title)))"> 
 	                        </select>
 							</div>
 														<ul>
-													<li><span>قیمت : </span><label id="realprice">@Model.Price
-															تومان</label>
-													</li>
+													<li><span>قیمت برای بزرگسال : </span><label id="realprice1">@ViewBag.DefaultAdultPrice تومان</label></li>
+													<li><span>قیمت برای زیر 12 سال : </span><label id="realprice2">@ViewBag.DefaultChildPrice تومان</label></li>
+													<li><span>قیمت برای زیر 2 سال : </span><label id="realprice3">@ViewBag.DefaultBabyPrice تومان</label></li>
 													</ul>
-													if (ViewBag.DepositOn == "on")
+						@if (Model.Price != "0" && Model.AvaliableOnlinePay)
+						{
+							<div class="checkbox-wrapper-15">
+								<input class="inp-cbx" id="factorreq" name="factorreq" type="checkbox" style="display: none;" />
+								<label class="cbx" for="factorreq">
+									<span>
+										<svg width="12px" height="9px" viewbox="0 0 12 9">
+											<polyline points="1 5 4 8 11 1"> </polyline>
+										</svg>
+									</span>
+									<span class="lbl-gh2">درخواست فاکتور رسمی<br/> (+@ViewBag.MaliatPer% مالیات بر ارزش افزوده)</span>
+								</label>
+							</div>
+						}
+						if (ViewBag.DepositOn == "on")
 													{
 
-														@*<input type="checkbox" name="leasing" class="form-check-input" />
-
-														<label class="depositlbl" for="Leasing">خرید اقساطی</label>*@
 
 							<div class="checkbox-wrapper-15">
 								<input class="inp-cbx" id="leasing" name="leasing" type="checkbox" style="display: none;" />
@@ -263,7 +274,7 @@
 
 													}
 													<div class="button-submit">
-														@if (Model.Price == "0")
+														@if (Model.Price == "0" || !Model.AvaliableOnlinePay)
 							{
 						<label class="mtlbl">جهت رزرو تور تماس بگیرید</label>
 					}
@@ -311,5 +322,14 @@
 				</aside>
 			</div>
 		</div>
+
+
+@section Scripts {
+	@{
+		<script src="~/js/UpdatePrice.js"></script>
+
+	}
+}
+
 
 		<!-- //Main Container -->

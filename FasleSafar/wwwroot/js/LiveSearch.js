@@ -71,6 +71,7 @@ $(document).ready(function () {
                                         "<td>" + value.babyCount + "</td>" +
                                         "<td>" + value.user.fullName + "</td>" +
                                         "<td>" + value.createDate + "</td>" +
+                                        "<td>" + setEmoji(value.factorRequest) + "</td>" +
                                         "<td>" + value.isFinaly + "</td>" +
                                         "<td><a type=\"button\" class =\"btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5\" href =\"/Admin/ReadOrder/" + value.orderId + "\"> نمایش</a>" +
                                         "<a type=\"button\" class =\"btn btn-warning btn-rounded w-md waves-effect waves-light m-b-5\" href =\"/Admin/EditState/" + value.orderId + "\"> تغییر وضعیت</a>" +

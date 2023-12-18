@@ -21,6 +21,7 @@
 									<input asp-for="TourId" type="hidden" value="@ViewBag.Tour.TourId" />
 									<input asp-for="PriceId" type="hidden" id="priceId" value="@ViewBag.PriceId" />
 									<input type="hidden" id="leasingval" value="@ViewBag.Leasing" />
+									<input type="hidden" id="factorreqval" value="@ViewBag.FactorReq" />
 									<div class="reviews-content">
 										<div class="star">
 											<span class="@("star" + ViewBag.Tour.AvgScore.ToString().Replace(".","-"))"></span>
@@ -49,12 +50,12 @@
 						<input asp-for="AdultCount" type="number" value="1" min="1" id="input-adult" onchange="UpdatePrice(this),updateForm()">
 							</div>
 							<div class="form-item number">
-								<label class="control-label" for="input-childrens">کودک زیر 12 سال (@(100 - ViewBag.ChildPer)%-)</label>
+								<label class="control-label" for="input-childrens">کودک زیر 12 سال</label>
 								<input asp-for="ChildCount" type="number" value="0" min="0"
 									id="input-childrens" onchange="UpdatePrice(this),updateForm()">
 							</div>
 							<div class="form-item number">
-								<label class="control-label" for="input-babies">کودک زیر 2 سال (@(100 - ViewBag.BabyPer)%-)</label>
+								<label class="control-label" for="input-babies">کودک زیر 2 سال</label>
 								<input asp-for="BabyCount" type="number" value="0" min="0"
 									id="input-babies" onchange="UpdatePrice(this),updateForm()">
 						
@@ -109,10 +110,13 @@
 								<label id="depositlbl">@ViewBag.FinPrice تومان</label>
 							    </li>
 							}
+							@if (ViewBag.FactorReq == "on")
+							{
 							<li>
-								<span>مالیات بر ارزش افزوده (9%)</span>
+								<span>مالیات بر ارزش افزوده (@ViewBag.MaliatPer%)</span>
 								<label id="maliat">@ViewBag.Maliat تومان</label>
 							</li>
+							}
 							<li>
 								<span>مبلغ کل</span>
 								<label id="totalprice">@ViewBag.TotalPrice تومان</label>

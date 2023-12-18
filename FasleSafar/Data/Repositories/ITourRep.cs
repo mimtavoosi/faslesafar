@@ -27,9 +27,9 @@ namespace FasleSafar.Data.Repositories
         public void RemoveTour(Tour tour);
         public void RemoveTour(int tourId);
         public bool ExistTour(int tourId);
-        public StaringVM[] GetHotelStaringsOfTour(int tourId);
-        public void PutPricesOfTour(int tourId,string title1,string title2,string title3,string price3,string price4,string price5);
+        public void PutPricesOfTour(int tourId,List<HotelStaring> starings);
         public List<HotelStaring> GetHotelStaringsListOfTour(int tourId);
+        public string GetFirstPriceOfTour(int tourId);
         public void AddRating(RatingHistory rating);
         public bool ExistRating(int userId,int tourId);
     }

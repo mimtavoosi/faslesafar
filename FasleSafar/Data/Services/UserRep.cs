@@ -135,11 +135,6 @@ namespace FasleSafar.Data.Services
         {
             var uots = GetUsersOfTour(tourId);
             var users = uots.Skip(skip).Take(20).ToList();
-			foreach (User item in users)
-			{
-				item.Password = item.Password?.ToUnHash();
-				item.IsAdmin = item.IsAdmin?.ToUnHash();
-			}
 			return users;
 		}
 

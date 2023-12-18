@@ -39,11 +39,8 @@ namespace FasleSafar.Models
         [Display(Name = "درصد بیعانه")]
         public int? Deposit { get; set; }
 
-        [Display(Name = "درصد قیمت برای کودکان زیر 12 سال")]
-        public int? ChildPrice { get; set; }
-
-        [Display(Name = "درصد قیمت برای کودکان زیر 2 سال")]
-        public int? BabyPrice { get; set; }
+        [Display(Name = "درصد مالیات")]
+        public int? Maliat { get; set; }
 
         [Display(Name = "قوانین سفرهای داخلی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

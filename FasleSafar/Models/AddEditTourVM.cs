@@ -29,30 +29,6 @@ namespace FasleSafar.Models
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int DaysCount { get; set; }
 
-        [Display(Name = "عنوان قیمت اول")]
-        [MaxLength(100)]
-        public string? Price1Title { get; set; }
-
-        [Display(Name = "قیمت اول")]
-        [MaxLength(15)]
-        public string? ThreeStarPrice { get; set; }
-
-        [Display(Name = "عنوان قیمت دوم")]
-        [MaxLength(100)]
-        public string? Price2Title { get; set; }
-
-        [Display(Name = "قیمت دوم")]
-        [MaxLength(15)]
-        public string? FourStarPrice { get; set; }
-
-        [Display(Name = "عنوان قیمت سوم")]
-        [MaxLength(100)]
-        public string? Price3Title { get; set; }
-
-        [Display(Name = "قیمت سوم")]
-        [MaxLength(15)]
-        public string? FiveStarPrice { get; set; }
-
         [Display(Name = "ظرفیت")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int Capacity { get; set; }
@@ -77,6 +53,9 @@ namespace FasleSafar.Models
 
         [Display(Name = "فروش اقساطی")]
         public bool IsLeasing { get; set; }
+
+        [Display(Name = "امکان پرداخت آنلاین")]
+        public bool AvaliableOnlinePay { get; set; }
 
         [Display(Name = "مقصد")]
         [Required(ErrorMessage = "لطفا {0} را انتخاب کنید")]
@@ -141,30 +120,6 @@ namespace FasleSafar.Models
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int DaysCount { get; set; }
 
-        [Display(Name = "عنوان قیمت اول")]
-        [MaxLength(100)]
-        public string? Price1Title { get; set; }
-
-        [Display(Name = "قیمت اول")]
-        [MaxLength(15)]
-        public string? ThreeStarPrice { get; set; }
-
-        [Display(Name = "عنوان قیمت دوم")]
-        [MaxLength(100)]
-        public string? Price2Title { get; set; }
-
-        [Display(Name = "قیمت دوم")]
-        [MaxLength(15)]
-        public string? FourStarPrice { get; set; }
-
-        [Display(Name = "عنوان قیمت سوم")]
-        [MaxLength(100)]
-        public string? Price3Title { get; set; }
-
-        [Display(Name = "قیمت سوم")]
-        [MaxLength(15)]
-        public string? FiveStarPrice { get; set; }
-
         [Display(Name = "ظرفیت")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int Capacity { get; set; }
@@ -189,6 +144,9 @@ namespace FasleSafar.Models
 
         [Display(Name = "فروش اقساطی")]
         public bool IsLeasing { get; set; }
+
+        [Display(Name = "امکان پرداخت آنلاین")]
+        public bool AvaliableOnlinePay { get; set; }
 
         [Display(Name = "مقصد")]
         [Required(ErrorMessage = "لطفا {0} را انتخاب کنید")]

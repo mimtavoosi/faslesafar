@@ -289,7 +289,7 @@ namespace SendReceiptsDemo.Controllers
                 DestinationId = t.DestinationId,
                 EndDate = t.EndDate,
                 OpenState = t.OpenState,
-                Price = t.Price.Value.FixPrice(),
+                Price = _tourRep.GetFirstPriceOfTour(t.TourId),
                 ScoreCount = t.ScoreCount,
                 StartDate = t.StartDate,
                 TotalScore = t.TotalScore,
